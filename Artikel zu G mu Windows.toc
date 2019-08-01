@@ -1,0 +1,34 @@
+\contentsline {section}{\tocsection {}{1}{Introduction(probably to be rewritten)}}{2}
+\contentsline {section}{\tocsection {}{2}{Notations and Conventions}}{3}
+\contentsline {section}{\tocsection {}{3}{Frames}}{3}
+\contentsline {subsection}{\tocsubsection {}{3.1}{The category of frames}}{3}
+\contentsline {subsection}{\tocsubsection {}{3.2}{Main examples of frames}}{4}
+\contentsline {subsubsection}{\tocsubsubsection {}{3.2.1}{The Witt-frame}}{4}
+\contentsline {subsubsection}{\tocsubsubsection {}{3.2.2}{The frame $\mathcal {F}_{inf}$}}{4}
+\contentsline {subsubsection}{\tocsubsubsection {}{3.2.3}{The frame $\mathcal {F}_{cris}$}}{5}
+\contentsline {subsubsection}{\tocsubsubsection {}{3.2.4}{Some important frame-morphisms}}{5}
+\contentsline {subsection}{\tocsubsection {}{3.3}{Descent for frames}}{5}
+\contentsline {subsubsection}{\tocsubsubsection {}{3.3.1}{Descent for the Witt-frame:}}{5}
+\contentsline {subsubsection}{\tocsubsubsection {}{3.3.2}{Descent for the frame $\mathcal {F}_{inf}$:}}{6}
+\contentsline {subsubsection}{\tocsubsubsection {}{3.3.3}{Descent for the frame $\mathcal {F}_{cris}$}}{6}
+\contentsline {section}{\tocsection {}{4}{$\G $-$\mu $-windows}}{7}
+\contentsline {subsection}{\tocsubsection {}{4.1}{Reminder on some group-theory}}{7}
+\contentsline {subsection}{\tocsubsection {}{4.2}{Quotientgroupoid of trivial $\G $-$\mu $-windows}}{8}
+\contentsline {subsection}{\tocsubsection {}{4.3}{Construction of $\G $-$\mu $-windows for some frames}}{9}
+\contentsline {subsubsection}{\tocsubsubsection {}{4.3.1}{$\G $-$\mu $-Displays}}{10}
+\contentsline {subsubsection}{\tocsubsubsection {}{4.3.2}{$\G $-$\mu $-windows for the frame $\mathcal {F}_{inf}$}}{11}
+\contentsline {subsubsection}{\tocsubsubsection {}{4.3.3}{$\G $-$\mu $-windows for the frame $\mathcal {F}_{cris}$}}{12}
+\contentsline {subsection}{\tocsubsection {}{4.4}{Adjoint nilpotency condition}}{12}
+\contentsline {section}{\tocsection {}{5}{Cristalline equivalence}}{16}
+\contentsline {subsection}{\tocsubsection {}{5.1}{Cristalline equivalence modulo $p$}}{16}
+\contentsline {subsection}{\tocsubsection {}{5.2}{Proof of the cristalline equivalence}}{18}
+\contentsline {section}{\tocsection {}{6}{Descent from $\Acris $ to $\Ainf $}}{18}
+\contentsline {subsubsection}{\tocsubsubsection {}{6.0.1}{$\pi $ is crystalline!}}{21}
+\contentsline {subsubsection}{\tocsubsubsection {}{6.0.2}{$\chi $ is crystalline!}}{21}
+\contentsline {subsection}{\tocsubsection {}{6.1}{Extension to the general case}}{23}
+\contentsline {section}{\tocsection {}{7}{Connection to local mixed-characteristic Shtukas \IeC {\`a} la Scholze}}{23}
+\contentsline {subsection}{\tocsubsection {}{7.1}{Classification of adjoint nilpotent $\G $-$\mu $-displays over $\mathcal {O}_{C}$}}{24}
+\contentsline {section}{\tocsection {}{8}{Application to the B\IeC {\"u}ltel-Pappas moduli problem}}{25}
+\contentsline {subsection}{\tocsubsection {}{8.1}{Recollections on the moduli problem}}{25}
+\contentsline {subsection}{\tocsubsection {}{8.2}{Comparison with the Scholze integral model}}{27}
+\contentsline {section}{\tocsection {}{}{Literatur}}{33}

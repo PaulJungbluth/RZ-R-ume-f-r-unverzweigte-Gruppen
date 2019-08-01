@@ -1,0 +1,1840 @@
+%%
+%% Copyright (C) 2007 by Markus Rost
+%%
+%% Created: June 2007
+%% Last Changes:
+
+\NeedsTeXFormat{LaTeX2e}
+
+%%% Falls man deutsche Umlaute und sz benutzt:
+%% Hoffentlich geht das, ich benutze es selbst nicht, sondern
+%% stattdessen \usepackage{german}, s.u.
+% \RequirePackage[german]{babel}
+% \RequirePackage[latin1]{inputenc}
+
+%%% Dokumentation zu AMS-LaTeX
+
+%% <URL:ftp://ftp.ams.org/pub/tex/doc/amsmath/short-math-guide.pdf>
+%% <URL:ftp://ftp.ams.org/pub/tex/doc/amsmath/amsldoc.pdf>
+%% <URL:ftp://ftp.ams.org/pub/tex/doc/amscls/amsthdoc.pdf>
+
+\documentclass[a4paper,10,5 pt]{amsart}
+
+%%% Fuer deutsche Silbentrennung:
+%% Nur falls man \RequirePackage[german]{babel} nicht benutzt.
+\usepackage{german}
+
+%%% Diagramme
+
+%% Ich benutze "amscd".  Dies ist sehr einfach zu lernen
+%% (Dokumentation in amsldoc.pdf).  Es gibt allerdings keine schraegen
+%% Pfeile.  Ich behelfe mich hier mit "=".  Beispiele sind in dieser
+%% Datei.
+\usepackage{amscd}
+\usepackage[arrow, matrix, curve]{xy}
+\usepackage{color}
+
+%% Beliebt scheint auch das "xy"-Paket zu sein:
+% \usepackage[arrow, matrix, curve]{xy}
+
+%%% Matrizen.
+%% Man benutzt pmatrix, Bmatrix, etc. (siehe amsldoc.pdf).  Hat die
+%% Matrix mehr als 10 Spalten, muss man eine maximale Spaltenzahl
+%% explizit angeben.
+% \setcounter{MaxMatrixCols}{12}
+
+%%% Umgebungen (Dokumentation in amsthdoc.pdf):
+\newtheorem{Satz}{Satz}[section]
+\newtheorem{Lemma}[Satz]{Lemma}
+\newtheorem{Corollary}[Satz]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{Definition}{Definition}
+\newtheorem{Remark}{Remark}
+\newtheorem{Theorem}[Satz]{Theorem}
+\newtheorem{Example}[Satz]{Example}
+\newtheorem{proposition}[Satz]{Proposition}
+\newtheorem{construction}[Satz]{Construction}
+\newtheorem{hope}[Satz]{Hope}
+\newtheorem{Fact}[Satz]{Fact}
+
+
+
+
+
+
+
+%% Fuer die "proof"-Umgebung.
+\renewcommand{\proofname}{Proof}
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\renewcommand*\contentsname{Summary}
+
+%%% Fuer zusaetzliche Mathematik-Symbole (Dokumentation in
+%%% short-math-guide.pdf), z.B. fuer \nmid.
+\usepackage{amssymb}
+\usepackage{fullpage}
+%%% Einige spezielle Definitionen.  Fuer weitere Beispiele siehe
+%%% paperD.sty.  In paperD.sty sind praktisch alle Definitionen die
+%%% ich in den letzten Jahren verwendet habe.  Man kann
+%%% paperD.sty auch direkt laden mit
+% \usepackage{paperD.sty}
+
+%% some Calligraphic letters
+\newcommand{\CO}{\mathcal O}
+%% bold Letters ("blackboard" letters)
+\newcommand{\LF}{\mathbf F}
+\newcommand{\LR}{\mathbf R}
+\newcommand{\LC}{\mathbf C}
+\newcommand{\LP}{\mathbf P}
+\newcommand{\LZ}{\mathbf Z}
+
+\newcommand{\bmidb}[2]{\{\nonscript\,{#1}\mid{#2}\nonscript\,\}}
+
+\DeclareMathOperator{\Pf}{Pf}
+\DeclareMathOperator{\Hom}{Hom}
+%% \Homit ist nur zu einer Illustration im Text definiert.
+\DeclareMathOperator{\Homit}{\it Hom}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\car}{char} % \char gibt es schon.
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Lie}{Lie}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Spa}{Spa}
+\DeclareMathOperator{\Spd}{Spd}
+\DeclareMathOperator{\Spf}{Spf}
+\DeclareMathOperator{\Nilp}{Nilp}
+\DeclareMathOperator{\Ens}{Ens}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Om}{\widehat{\Omega}^{d}_{K}}
+\DeclareMathOperator{\k0}{k_{0}}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\Displ}{Displ}
+\DeclareMathOperator{\conj}{conj}
+\DeclareMathOperator{\Cris}{Cris}
+\DeclareMathOperator{\Acris}{\mathbb{A}_{cris}}
+\DeclareMathOperator{\Ainf}{\mathbb{A}_{inf}}
+\DeclareMathOperator{\Rad}{Rad}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\MaxSpec}{MaxSpec}
+\DeclareMathOperator{\Fil}{Fil}
+\DeclareMathOperator{\Br}{Br}
+\DeclareMathOperator{\Nil}{Nil}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\eq}{eq}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Bun}{Bun}
+\DeclareMathOperator{\G}{\mathcal{G}}
+\DeclareMathOperator{\Y}{\mathcal{Y}}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Q}{\mathbb{Q}}
+\DeclareMathOperator{\Z}{\mathbb{Z}}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\F}{\mathbb{F}}
+\DeclareMathOperator{\Div}{Div}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\B+dr}{B_{dR}^{+}}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Cl}{Cl}
+\DeclareMathOperator{\Def}{Def}
+\DeclareMathOperator{\Mat}{Mat}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\DeclareMathOperator{\ggT}{ggT}
+
+%% \idop ist nur zu einer Illustration im Text definiert.
+\DeclareMathOperator{\idop}{id}
+\newcommand{\id}{\mathrm{id}}
+
+\newcommand{\pfister}[1]{\langle\!\langle#1\rangle\!\rangle}
+\newcommand{\qform}[1]{\langle#1\rangle}
+%% \bot as a binary operator
+\newcommand{\orth}{\mathbin\bot}
+
+\newcommand{\inv}{^{-1}}
+
+%% Diese Definition benutze ich hier f\"ur einige Erl\"auterungen zu
+%% TeX-Definitionen, man braucht sie normalerweise nicht.
+\newcommand{\bs}{\char`\\}
+
+%%% Bemerkungen:
+
+%% Ich benutze gerne die Umgebung
+% \begin{displaymath}
+% \end{displaymath}
+%% Dies ist gleichbedeutend mit $$...$$.
+
+%% Spezielle Trennungen
+%\hyphenation{Meeres-spie-gel}
+\begin{document}
+\tableofcontents
+\newpage
+\section{Introduction(probably to be rewritten)}
+The theory of displays was introduced by Zink in \cite{zink-displays} to give a Dieudonné-type classification for formal $p$-divisible groups over general $p$-adic rings. This was motivated by an old paper of Norman \cite{Norman} and Zink succeeds in proving that formal $p$-divisible groups are classified by nilpotent displays over a very large class of rings, for example those $p$-adic rings $R,$ such that $R/pR$ is a finitely generated $\mathbb{F}_{p}$-algebra. Later Lau proved in \cite{Lau Inventiones} that this classification result in fact extends to \textit{all} $p$-adic rings.
+\\
+To give a display is to give a filtered, finitely generated projective module over the $p$-typical Witt-vectors of the $p$-adic ring, we are working over, together with certain Frobenius-linear operators. This data is required to satisfy certain axioms. Instead of recalling this precisely, let us give the following slogans:
+\begin{enumerate}
+\item[(a)] \textit{a display is (locally on the ring) a conjugacy-class of matrices},
+\item[(b)] \textit{a display as a mixed-characteristic analogon of Drinfeld$^{\prime}$s shtukas with one leg.}
+\end{enumerate}
+Let us make this more precise: Concerning (a), we consider the group $\GL_{n}$ over $\mathbb{Z}_{p}$ and let $L^{+}\GL_{n}$ be the Greenberg-transform with points $L^{+}\GL_{n}(R)=GL_{n}(W(R)).$ Next we may consider the subgroupscheme $\GL_{n}(\mathcal{W}(.))_{n,d}\subseteq L^{+}\GL_{n}$ of matrices of the form
+$$
+\begin{bmatrix}
+A & B \\
+J & C
+\end{bmatrix}
+$$
+where $J$ is a block matrix with entries in $I(R)=\text{Im}(V\colon W(R)\rightarrow W(R)).$
+Define the Frobenius-linear grouphomomorphism
+$$
+\Phi_{n,d}\colon \GL_{n}(\mathcal{W}(R))_{n,d}\rightarrow L^{+}\GL_{n}(R),
+$$
+by the formula
+\begin{equation}
+\Phi_{n,d}(\begin{bmatrix}
+A & B \\
+J & C
+\end{bmatrix})=\begin{bmatrix}
+F(A) & pF(B) \\
+V^{-1}(J) & F(C)
+\end{bmatrix}.
+\end{equation}
+Then the precise formulation of slogan (a) is the following statement again due to Zink.
+\begin{proposition}\label{Displays sind lokal Konjugationsklassen von Matrizen}
+Let $R$ be a $p$-adic ring.
+\\
+Then the groupoid of displays (locally of height $n$ and dimension $d$) over $R$ is equivalent to the groupoid of $\GL_{n}(\mathcal{W}(.))_{n,d}$-torseurs $Q$ together with a sheaf-morphism
+$$
+\alpha\colon Q\rightarrow L^{+}\GL_{n},
+$$
+such that
+\begin{equation}
+\alpha(q\cdot h)=h^{-1}q\Phi_{n,d}(h),
+\end{equation}
+for all $q\in Q$ and $h\in \GL_{n}(\mathcal{W}(.))_{n,d}.$
+\end{proposition}
+Note that once we add the Zink-nilpotency condition on displays, this proposition together with the statement that displays indeed classify formal $p$-divisible groups, gives a describtion of formal $p$-divisible groups (of fixed height and dimension) \textit{purely in terms of grouptheory!}
+\\
+The meaning of slogan (b) remains over general base-rings a bit vague. If we instead consider only perfect rings in characteristic $p,$ then we can explain this slogan by the following easy
+\begin{Lemma}
+Let $R$ be a perfect $\mathbb{F}_{p}$-algebra.
+\\
+Then the category of displays over $R$ embeds fully faithfully into the category of finetely generated projective $W(R)$-modules $P$ together with a $F$-linear morphism
+$$
+\varphi_{P}\colon P\rightarrow P,
+$$
+such that $\varphi_{P}[1/p]\colon P\otimes_{W(R)} W(R)[1/p]\rightarrow P\otimes_{W(R)} W(R)[1/p]$ is a $F$-linear isomorphism.
+\end{Lemma}
+Although the above datum of $(P,\varphi_{P})$ has obvious similiarty with a (local) shtuka with only one leg, Scholze spelled out in his Berkeley lectures \cite{Berkeley lecturs} that by using the machinery of perfectoid spaces one can introduce objects living in the realm of rigid-analytic geometry that really deserve to be called local mixed-characteristic shtukas, see \cite[Def. 11.4.1.]{Berkeley lectures}. A theorem of Fargues asserts that in case one is working over a geometric perfectoid point, $p$-divisible groups are indeed classified by local mixed-characteristic shtukas with one leg and a minuscule bound on the singularity at that leg, see \cite[Thm. 14.1.1.]{Berkeley lectures}. If we restrict to formal $p$-divisible groups, we can thus use Scholze$^{\prime}$s mixed-characteristic local shtukas to give a precise meaning to slogan (b) over perfectoid base rings.
+\\
+One of the aims of this article is to extend this picture to formal $p$-divisible groups carrying additional structures and beyond.
+\\
+The main motivation to study the above objects stems from trying to construct their moduli in the hope of achieving geometric realizations of local Langlands correspondences. Propagated by an article of Rapoport-Viehmann and deeply inspired by Deligne$^{\prime}$s grouptheoretical reformulation (and extension) of the theory of Shimura-varieties, an ongoing project right now is to rewrite the theory of Rapoport-Zink spaces and their generic fibers in terms of grouptheory. In particular, this means to extend the theory beyond the cases of (P)EL-type considered by Rapoport-Zink. This program was first achieved by Scholze, who constructed general local Shimura-varieties as rigid analytic spaces. His methods of construcing these spaces used crucially the relative Fargues-Fontaine curve and foundational results of Kedlaya-Liu and took place in the generic fiber. Thus, an open problem is to investigate the existence of integral models for local Shimura-varieties, beyond the PEL-cases considered by Rapoport-Zink. Although Scholze proposes an integral model, he is only able to make sense of this on the level of $v$-sheaves. 
+\\
+This is where the work of Bültel-Pappas \cite{BP} ties in. To explain their ideas, we first simply note that in case we are considering Rapoport-Zink spaces, where we are deforming a formal $p$-divisible group, we can use the classification result of Zink and Lau, to reformulate the Rapoport-Zink moduli problem of $p$-divisible groups completely in terms of nilpotent displays. Therefore, to generalize Rapoport-Zink spaces, we may try to generalize displays. But then we can use the perspective on displays given by Proposition (\ref{Displays sind lokal Konjugationsklassen von Matrizen}), to see that to generalize displays one just has to generalize the group $\GL_{n}(\mathcal{W}(.))_{n,d}$ and the morphism $\Phi_{n,d}.$ This is exactly what Bültel-Papas were able to do for unramified reductive groups $G$ over $\mathbb{Q}_{p}$ and a minuscule cocharacter $\mu.$\footnote{The restriction on unramified groups shows up, because Bültel-Papas in their construction are basically just encoding the Rank-condition on formal $p$-divisible groups, which gives the same condition as the Kottwitz-condition in case one does not have ramification. It is not clear to me, whether one could expect a theory of $\G$-$\mu$-displays for parahoric $\G.$ Furthermore, one should note that Lau is also able to define $\G$-$\mu$-displays for non-minusucle cocharacter.} After having generalized displays to unramified groups, one can introduce moduli problems of those, that in the case of $\GL_{n}$ and a minusucle cocharacter give back the raw Rapoport-Zink spaces. Then Bültel-Papas are able to show that in the Hodge-type case, on locally noetherian test-objects these moduli problems have indeed the expected shape of a (formally smooth) formal scheme, locally formally of finite type. Nevertheless, they leave open the excersise to show that the generic fiber of their moduli problem is indeed a local Shimura-variety as constructed by Scholze.
+\\
+We will solve this excersise in this article, without any restriction on our unramified groups.
+\\
+We will come back to the problem of using moduli spaces of $\G$-$\mu$-displays to construct integral models of local Shimura-varieties for arbitrary unramified reductive groups in a future work.
+
+\section{Notations and Conventions}
+We will fix throughout a prime $p$. All rings will be assumed to be commutative and to have a 1 element. If $R$ is some ring, we denote by $\Nilp_{R}$ the category of $R$-algebras $S$, such that $p$ is nilpotent in $S$. When talking about the ring of Witt-vectors, we always mean the ring of $p$-typical Witt-vectors.
+A ring $R$ is called $p$-adic, when it is complete and seperated in the $p$-adic topology. A surjection of $p$-adic rings $S\rightarrow R$ is called a pd-extension, if $\mathfrak{a}=\Ker(S\rightarrow R)$ is equipped with a divided power structure $\lbrace \gamma_{n} \rbrace,$ that we require to be compatible with the canonical pd-structure on $p\mathbb{Z}_{p}$.  Groups will always act from the right.
+\section{Frames}
+As the terminology already suggests, we first have to introduce the concept of frames, to prepare the study of $\G$-windows with $\mu$-structure. A frame is an axiomatization of the structures on the ring of Witt-vectors, that are used in developing the theory of displays, as done by Zink \cite{zink-displays}. Zink himself and also Lau found many situations, where frames naturally make an appearance. We will be in particular interested in frame structures over integral perfectoid rings arising from constructions in $p$-adic Hodge-theory, that have been discussed by Lau in \cite{Lau perfektoid}.
+\\
+\subsection{The category of frames}
+We will quickly introduce the notion of frames we use and explain what a morphism between them is. The reference for this is \cite[Section 2] {frames finite-groupschemes}.
+\begin{Definition}
+A frame $\mathcal{F}$ consists of a $5$-tuple $(S,R,I,\varphi,\dot{\varphi}),$ where $S$ and $R$ are rings, $I\subset S$ is an ideal, such that $R=S/I$, $\varphi\colon S\rightarrow S$ is a ring-endomorphism and $\dot{\varphi}\colon I \rightarrow S$ is a $\varphi$-linear map. This data is required to fulfill the following properties:
+\begin{enumerate}
+\item[(a)] $\varphi(x)\equiv x^{p} \text{ mod }pS$,
+\item[(b)] $\dot{\varphi}(I)$ generates $S$ as an $S$-module,
+\item[(c)] $pS + I\subseteq \Rad(S)$.
+\end{enumerate}
+\end{Definition}
+\begin{Remark}
+From (b) it follows that there exists a unique element $\zeta_{\mathcal{F}}\in S,$ such that
+$$\zeta_{\mathcal{F}}\dot{\varphi}(i)=\varphi(i),$$
+for all $i\in I.$ We will call this element the \textit{frame-constant of}$\mathcal{F}.$ \footnote{This terminology is not found in the literature, but it sounds reasonable to me.}
+\end{Remark}
+Next, let us quickly introduce morphisms of frames.
+\begin{Definition}
+Let $\mathcal{F}$ and $\mathcal{F}^{\prime}$ be frames.
+\\
+A $u$-frame morphism is the data $(\lambda,u)$ of a ring-homomorphism
+$$
+\lambda\colon \mathcal{F}\rightarrow \mathcal{F}^{\prime}
+$$
+and a unit $u\in (S^{\prime})^{\times},$ such that
+\begin{enumerate}
+\item[(a):] $\lambda(I)\subseteq I^{\prime},$
+\item[(b):] $\varphi^{\prime}\circ \lambda=\lambda\circ \varphi,$
+\item[(c):] $(\dot{\varphi}^{\prime}\circ\lambda)(i)=u\cdot (\lambda\circ \dot{\varphi})(i),$ for all $i\in I.$
+\end{enumerate}
+\end{Definition}
+\begin{Remark}
+\begin{enumerate}
+\item[(i):]
+The unit $u\in (S^{\prime})^{\times}$ is uniquely determined, again thanks to Axiom (b) in the definition of a frame.
+\item[(ii):] For the Frame-constants $\zeta_{\mathcal{F}}$ and $\zeta_{\mathcal{F}^{\prime}}$ we get the relation
+$$u \zeta_{\mathcal{F}^{\prime}}=\lambda(\zeta_{\mathcal{F}}).$$
+\item[(iii):] In case we have for the unit that $u=1,$ we will speak of a strict frame-morphism rather than a $1$-morphism.
+\end{enumerate}
+\end{Remark}
+\subsection{Main examples of frames}
+\subsubsection{The Witt-frame}
+Let $R$ be a $p$-adic ring. Let $W(R)$ the ring of Witt-vectors and denote by $$I(R)=\ker(w_{0}\colon W(R)\rightarrow R)$$ the image of Verschiebung. Then Zink proved that $W(R)$ is $p$-adic and $I(R)$-adic (and both topologies coincide, if $R\in \Nilp_{\mathbb{Z}_{p}}$), see \cite[Prop. 3]{zink-displays}.  It follows that
+$$\mathcal{W}(R)=(W(R),I(R),R,F,V^{-1})$$
+is a frame with frame constant equal to $p$. It is functorial in homomorphisms of $p$-adic rings.
+
+\subsubsection{The frame $\mathcal{F}_{inf}$}
+Let us recall the definition of integral perfectoid rings, as in \cite{BMS1}.
+\begin{Definition}
+An integral perfectoid ring $R$ is a topological ring $R,$ such that
+\begin{enumerate}
+\item[(a):] $R/p$ is semiperfect,
+\item[(b):] $R$ is $p$-adic,
+\item[(c):] $\ker(\theta_{R}\colon W(R^{\flat})\rightarrow R)$ is a principal ideal,
+\item[(d):] there exists an element $\varpi\in R,$ such that
+$$
+\varpi^{p}=pu,
+$$
+where $u\in R^{\times}.$
+\end{enumerate}
+Here $R^{\flat}=\lim_{\text{Frob}}R/p$ is the inverse limit perfection and $\theta_{R}$ is Fontaine$^{\prime}$s map, which exists for any $p$-adic ring.
+\end{Definition}
+Traditionally, one writes $\Ainf(R)=W(R^{\flat})$ and checks that any generator $\xi\in\Ainf(R)$ of $\ker(\theta)$ is automatically a non-zero divisor. Furthermore, $\Ainf(R)$ is $(p,\xi)$-adically complete. We write $\varphi$ for the Witt-vector Frobenius on $\Ainf(R).$
+\\
+Fix a generator $\xi$ of $\ker(\theta).$ Consider the $\varphi$-linear map
+$$
+\dot{\varphi}\colon \ker(\theta)=(\xi)\rightarrow \Ainf(R)
+$$
+given by $\dot{\varphi}(\xi x)=\varphi(x).$ Note that it is well-defined, because $\xi$ is a non-zero divisor, but that it \textit{depends on the choice of}$\xi$.
+It follows that
+$$
+\mathcal{F}_{inf}(R)=(\Ainf(R),R,\ker(\theta)=(\xi),\varphi,\dot{\varphi})
+$$
+is a frame with frame-constant $\varphi(\xi),$ which depends on the choice of $\xi.$ It is functorial for homomorphisms of integral perfectoid rings.
+
+\subsubsection{The frame $\mathcal{F}_{cris}$}
+We consider again an integral perfectoid ring $R.$ Recall the ring $\Acris(R),$ which is the universal $p$-complete pd-thickening of $R.$ One can construct it as the $p$-adic completion of the pd-hull of $\Ainf(R)$ with respect to $\ker(\theta).$ In the following, we consider the ideal $\Fil(\Acris(R))=\ker(\theta\colon \Acris(R)\rightarrow R),$ that turns out to be a pd-ideal. A crucial observation made by Lau is that $\Acris(R)$ is $p$-torsion free, see \cite[Prop. 8.11.]{Lau perfektoid}. It follows that 
+$$\dot{\varphi}=\frac{\varphi}{p}\colon \Fil(\Acris(R)) \rightarrow \Acris(R)$$ is a well-defined $\varphi$-linear map.
+\\
+Then
+$$\mathcal{F}_{cris}(R):=(\Acris(R), \Fil(\Acris(R)),R,\varphi,\dot{\varphi})$$
+is a frame with frame constant equal to $p$. It is functorial in homomorphisms of integral perfectoid rings.
+\begin{Remark}
+A $\mathbb{F}_{p}$-algebra is integral perfectoid if and only if it is perfect. Then we have for integral perfectoid $\mathbb{F}_{p}$-algebras $R$ that $$\mathcal{F}_{cris}(R)=\mathcal{F}_{inf}(R)=\mathcal{W}(R).$$
+\end{Remark}
+\begin{Remark}
+Oriented prisms together with the choice of an orientation naturally give rise to frames. Adjoint nilpotent $\G$-$\mu$-displays over semi-regular, semi-perfectoid rings as in BMS 2 are for $p\geq 3$  classified by adjoint nilpotent $\G$-$\mu$-windows over these frames. Cf. forthcoming work of Anschütz-Le Bras.
+\end{Remark}
+\subsubsection{Some important frame-morphisms}
+\begin{enumerate}\label{Die zwei Framemorphismsen}
+\item[(i):] Let $R$ be an integral perfectoid ring.
+Using the Cartier-morphsim $\delta\colon \Acris(R)\rightarrow W(\Acris(R)),$ one can construct a strict frame-morphism
+$$
+\chi\colon \mathcal{F}_{cris}(R)\rightarrow \mathcal{W}(R),
+$$
+see Lemma \ref{Framemorphismus von Acris nach W(R)}.
+\item[(ii):] Let $R$ be an integral perfectoid ring. Then the natural inclusion $\Ainf(R)\rightarrow \Acris(R)$ induces a $u=\frac{\varphi(\xi)}{p}$-frame morphism (for a choice of a generator $\xi$)
+$$\lambda\colon \mathcal{F}_{inf}(R)\rightarrow \mathcal{F}_{cris}(R).\footnote{One has to check that $u$ is indeed a unit. For completeness, we recall the argument: write $\xi=(a_{0},a_{1},...)$ in Teichmueller-coordinates. Then $u\equiv \frac{[a_{0}]}{p}+[a_{1}]^{p}$ modulo $p\Acris(R),$ thus $u\equiv [a_{1}]^{p}$ modulo $\text{Fil}(\Acris(R))+p\Acris(R)$. But $\text{Fil}(\Acris(R))+p\Acris(R)$ is in the radical of $\Acris(R).$ As $a_{1}$ is a unit, we are done.}$$
+\end{enumerate}
+We will see that $\chi$ induces an equivalence between $\G$-$\mu$-windows over the respective frames, once we add a nilpotency condition discovered by Bültel-Pappas and that $\lambda$ induces an equivalence of $\G$-$\mu$-windows if we assume $p\geq 3.$
+\subsection{Descent for frames}
+As all the previously introduced examples of frames satisfied some functoriality, we can investigate the question, whether there are topologies for which we will get sheaf-properties. To prevent confusion, let us say that a contravariant functor from some category equipped with a site-structure to the category of frames is a sheaf, if each entry in the datum of a frame gives rise to a sheafy verison of the respective structure.
+\subsubsection{Descent for the Witt-frame:}
+Let $R$ be a ring, in which $p$ is nilpotent. Then it follows for example from Zink$^{\prime}$s Witt-descent, that the functor
+$$ (R\rightarrow R^{\prime})\mapsto W(R^{\prime})$$
+is a sheaf for the fpqc-topology on the category of affine $R$-schemes.
+From this one deduces the following
+\begin{Lemma}
+Let $R$ be a ring, in which $p$ is nilpotent. 
+\\
+Then the functor
+$$\mathcal{W}()\colon(\Spec(R)_{fpqc}^{aff})^{op} \rightarrow (Set),$$
+$$(R\rightarrow R^{\prime}) \mapsto \mathcal{W}(R^{\prime})$$
+is a sheaf of frames.
+\end{Lemma}
+
+\subsubsection{Descent for the frame $\mathcal{F}_{inf}$:}
+Let $R$ be an integral perfectoid ring. Then we want to explain how to get a sheafy version for the frame $\mathcal{F}_{inf}(R)$ for the etale topology on $\Spec(R/p)$ (i.e. the $p$-adic etale topology of $\Spf(R)$). This construction rests on observations due to Lau made in \cite{Lau perfektoid}.
+\\
+In the following fix the integral perfectoid ring $R$ from above and also fix a generator $\xi\in \Ainf(R)$ of the kernel of $\theta\colon \Ainf(R)\rightarrow R.$ We first observe that then for any integral perfectoid $R$-algebra $R^{\prime},$ we have that
+$$ \ker(\theta^{\prime}\colon \Ainf(R^{\prime})\rightarrow R^{\prime})=\xi\Ainf(R^{\prime}).$$
+Then Lau proves the following
+\begin{Lemma}\label{Eindeutige integral perfektoide algebra}\cite[Lemma 8.10.]{Lau perfektoid}
+Let $R$ be integral perfectoid. Let $B:=R/p$ and $B\rightarrow B^{\prime}$ be an etale ring-homomorphism. Then there exists an unique integral perfectoid $R$-algebra $R^{\prime},$ such that (i) $R^{\prime}/p=B^{\prime}$ and (ii) all $R/p^{n}\rightarrow R^{\prime}/p^{n}$ are etale, for $n\geq 1$.
+\end{Lemma}
+Here the integral perfectoid $R$-algebra is constructed as $R^{\prime}:=W((B^{\prime})^{\text{perf}})/\xi,$ where $(B^{\prime})^{\text{perf}}=\lim_{\text{Frob}}B^{\prime}$ is the inverse-limit perfection. Using this, we can construct the following pre-sheaves:
+\\
+Let $\Spec(R/p)^{aff}_{et}$ be the category of affine schemes, that are etale over $\Spec(R/p)$. This category carries the structure of a site by declaring jointly surjective morphisms as covers. Then consider
+$$\mathcal{R}\colon (\Spec(R/p)^{aff}_{et})^{op}\rightarrow (Set),$$
+$$\mathcal{R}(B^{\prime})=R^{\prime},$$
+where $R^{\prime}$ is the uniquely determined integral perfectoid $R$-algebra from Lemma \ref{Eindeutige integral perfektoide algebra} above. Furthermore, consider 
+$$\mathcal{A}_{inf}\colon (\Spec(R/p)^{aff}_{et})^{op}\rightarrow (Set),$$
+$$\mathcal{A}_{inf}(B^{\prime})=\Ainf(\mathcal{R}(B^{\prime})).$$ This gives two ring pre-sheaves. We have the following
+\begin{Lemma}\cite[Lemma 10.9]{Lau perfektoid}
+ The pre-sheaves $\mathcal{R}$ and $\mathcal{A}_{inf}$ are sheaves.
+\end{Lemma}
+\begin{Remark}
+Of course this could also be deduced from the fact that the structure sheaf of the prismatic site is a sheaf for the $p$-adic étale topology.
+\end{Remark}
+From this we immediately deduce that 
+$$\mathcal{F}_{inf}(\mathcal{R})\colon (\Spec(R/p)^{aff}_{et})^{op}\rightarrow (Set)$$ is a sheaf of frames.
+\subsubsection{Descent for the frame $\mathcal{F}_{cris}$}
+Let us still consider an integral perfectoid ring $R.$ Note that for an etale $R/p$-algebra $B^{\prime},$ we have that $B^{\prime}$ is still semi-perfect, as in fact $B^{\prime}=\mathcal{R}(B^{\prime})/p.$ Furthermore, we have $\Acris(B^{\prime})=\Acris(\mathcal{R}(B^{\prime})).$ Then we observe the following
+\begin{Lemma}
+The presheave
+$$
+\mathcal{A}_{cris}(\mathcal{R})\colon (\Spec(R/p)^{aff}_{et})^{op}\rightarrow (Set)
+$$
+is a sheaf.
+\end{Lemma}
+\begin{proof}
+Let us give one possible proof using the machinery of $\infty$-categories. A more elementary one is given afterwards.
+\\
+Recall that for a general semi-perfect $\mathbb{F}_{p}$-algebra $B,$ the ring $\Acris(B)$ is the final object of the crystalline site of $\Spec(B)/\Spec(\mathbb{Z}_{p}).$ This implies, that the complex $R\Gamma(\Spec(B)/\Spec(\mathbb{Z}_{p}),\mathcal{O}_{\text{cris}})$ is simply given by $\Acris(B)$ sitting in degree $0.$ If we consider this complex now in the infinity-enhencement of the derived category of sheaves on the crystalline site, we can use étale descent there to conclude the verification.
+\\
+Let us now sketch a more direct argument.\footnote{This was suggested by Matthew Morrow. We thank him for this.} Let $R/p\rightarrow B$ be a faithfully flat étale map and write $S=\mathcal{R}(B)$ for the corresponding integral perfectoid $R$-algebra. Then, it follows that also $R^{\flat}\rightarrow B^{\text{perf}}=S^{\flat}$ is (formally) étale and therefore we may conclude that $W(R^{\flat})\rightarrow W(S^{\flat})$ is likewise so. Furthermore, we have $W(S^{\flat}\otimes_{R^{\flat}} S^{\flat})\simeq W(S^{\flat})\hat{\otimes}_{W(R^{\flat})} W(S^{\flat}),$ where the completed tensor product is taken for the $p$-adic topology. As pd-structures extend uniquely along flat maps, we deduce that
+$$
+\Acris(S/p)\simeq \Acris(R/p)\hat{\otimes}_{W(R^{\flat})} W(S^{\flat}).
+$$
+Now the sheaf property follows, by using flat descent along $W(R^{\flat})\rightarrow W(S^{\flat})$ to check that the Chech-complex for the covering $R/p\rightarrow B$ is indeed exact.
+\end{proof}
+Again, we can immediately deduce that
+$$
+\mathcal{F}_{cris}(\mathcal{R})\colon  (\Spec(R/p)^{aff}_{et})^{op}\rightarrow (Set)
+$$
+is a sheaf of frames.
+\section{$\G$-$\mu$-windows}
+
+\subsection{Reminder on some group-theory}
+Let $\G\rightarrow \Spec(\mathbb{Z}_{p})$ be a smooth affine group scheme. Furthermore, let $k$ be a finite extension of $\mathbb{F}_{p}$ and
+$$\mu\colon \mathbb{G}_{m,W(k)}\rightarrow \G_{W(k)}$$
+be a cocharacter. Following Lau, we will refer to the datum of a pair $(\G,\mu)$ as a \textit{window-datum}. 
+\\
+To this set-up, we can associate the following weight-subgroups
+\begin{enumerate}
+\item[(i):] The closed subgroups $P^{\pm}\hookrightarrow \G_{W(k)},$ that have points in $W(k)$-algebras $R$ given as
+$$ P^{\pm}(R)=\lbrace g\in \G_{W(k)}(R)\colon \lim_{t^{\pm}\rightarrow 0} \mu(t)^{-1}g\mu(t)\text{ exists}\rbrace.$$ Here for example the expression $^{\prime} \lim_{t\rightarrow 0} \mu(t)^{-1}g\mu(t)\text{ exists} ^{\prime}$ means that the orbit map associated to $g:$
+$$\mathbb{G}_{m,R}\rightarrow \G_{R},$$
+$$ t\mapsto \mu(t)^{-1}g\mu(t) $$
+extends (necessarily uniquely) to a morphism
+$$\mathbb{A}_{R}^{1}\rightarrow \G_{R}.\footnote{Note the difference in  sign to \cite{CGP}, because we consistently consider right-actions.}$$
+\item[(ii):] The closed normal subgroups $U^{\pm}\hookrightarrow P^{\pm},$ that have points in $W(k)$-algebras $R$ given as
+$$U^{\pm}(R)=\lbrace g\in \G_{W(k)}(R)\colon \lim_{t^{\pm}\rightarrow 0} \mu(t)^{-1}g\mu(t)\text{ exists and equals the unit-section} \rbrace.$$
+\end{enumerate}
+Let us recall a couple of well-known facts about these groups, that we will use in the following.
+\begin{Fact}\label{Zusammenfassung zu Gewichtsgruppen}
+\item[(i):] The subgroups $P^{\pm}$ and $U^{\pm}$ are smooth over $W(k).$ Furthermore, if $\G$ has connected fibers, then $P^{\pm}$ and $U^{\pm}$ also have connected fibers and $U^{\pm}$ have unipotent fibers. In case $\G$ is a reductive groupscheme, $P^{\pm}$ are parabolic subgroupschemes. 
+\item[(ii):] Multiplication in $\G_{W(k)}$ induces an open immersion
+$$U^{+} \times_{W(k)} P^{-} \rightarrow \G_{W(k)}.$$
+\item[(iii):] Using the adjoint representation of $\G_{W(k)},$ we get a $\mathbb{G}_{m,W(k)}$ representation
+$$\text{Ad}(\mu^{-1})\colon \mathbb{G}_{m,W(k)} \rightarrow \GL(\Lie(\G)_{W(k)}),$$
+which in turn gives the weight decomposition
+$$\Lie(\G)_{W(k)}=\bigoplus_{n\in \mathbb{Z}} (\Lie(\G)_{W(k)})_{n}.$$
+Under this decomposition of the Lie-algebra, we have
+$$
+ \Lie(P^{+})= \bigoplus_{n\geq 0} (\Lie(\G)_{W(k)})_{n} \text{ resp. } \Lie(P^{-})= \bigoplus_{n\leq 0} (\Lie(\G)_{W(k)})_{n},
+$$
+and
+$$
+\Lie(U^{+})= \bigoplus_{n > 0} (\Lie(\G)_{W(k)})_{n} \text{ resp. } \Lie(U^{-})= \bigoplus_{n < 0} (\Lie(\G)_{W(k)})_{n}.
+$$
+\item[(iv):] There exists $\mathbb{G}_{m,W(k)}$-equivariant morphisms of schemes
+$$ \log^{\pm}\colon U^{\pm}\rightarrow V(\Lie(U^{\pm})),$$
+that induce the identity on Lie-algebras. They are necessarily isomorphisms of schemes.
+\\
+Assume in addition that $\Lie(U^{+})=(\Lie(\G)_{W(k)})_{1},$ then the morphism
+$$ \log^{+}\colon U^{+}\rightarrow V(\Lie(U^{+}))$$
+is uniquely characterized by the requirement to be $\mathbb{G}_{m}$-equivariant and to induce the identity on the Lie-algebras. Furthermore, it is a \textit{groupscheme} isomorphism.
+\item[(v):] Assume that $\G$ is a reductive groupscheme, then the condition $\Lie(U^{+})=(\Lie(\G)_{W(k)})_{1}$ is equivalent to $\mu$ being a minuscule cocharacter.
+\end{Fact}
+Following Lau we give the following
+\begin{Definition} Let $(\G,\mu)$ be a window-datum, then
+\begin{enumerate}
+\item[(i):] it is called 1-bound, if
+$
+\Lie(U^{+})=(\Lie(\G)_{W(k)})_{1}
+$,
+\item[(ii):] it is called reductive, if $\G$ is a reductive groupscheme over $\mathbb{Z}_{p}.$
+\end{enumerate}
+\end{Definition}
+\subsection{Quotientgroupoid of trivial $\G$-$\mu$-windows}
+The statements in this subsection are basically easy modifications of the results of Bültel-Pappas \cite{BP}, section 3.1.
+\\
+Let $(\G,\mu)$ be a window-datum, in particular we have fixed a finite extension $k$ of $\mathbb{F}_{p}.$
+\begin{Definition}
+Let $\mathcal{F}=(S,I,R,\varphi,\dot{\varphi})$ be a frame. We will say that $\mathcal{F}$ is a frame over $W(k),$ if $S$ is a $W(k)$-algebra and $\varphi$ extends the Wittvector-Frobenius on $W(k).$
+\end{Definition}
+\begin{Example}
+Let $R\in \Nilp_{W(k)}$ (or a $p$-adic $W(k)$-algebra). Using the Cartier-morphism
+$$\bigtriangleup\colon W(k)\rightarrow W(W(k)),$$
+which is characterized by the formula
+$$
+W_{n}(\bigtriangleup(x))=F^{n}(x),
+$$
+we see that the Witt-frame $\mathcal{W}(R)$ is a frame over $W(k).$ A similiar remark applies to the relative Witt-frame.
+\\
+Furthermore, if $R$ is an integral perfectoid $W(k)$-algebra, then both $\mathcal{F}_{inf}(R)$ and $\mathcal{F}_{cris}(R)$ are frames over $W(k).$
+\end{Example}
+\begin{Definition}
+Let $\mathcal{F}=(S,I,R,\varphi,\dot{\varphi})$ be a frame over $W(k).$ The window-group of the window-datum $(\G,\mu)$ is the group
+$$\G(\mathcal{F})_{\mu}=\lbrace g\in \G_{W(k)}(S)\colon g (\text{ mod }I)\in P^{-}(R) \rbrace.$$
+\end{Definition}
+Let us describe the structure of the window-group as a \textit{set}.
+\begin{Lemma}\label{Zerlegungslemma fuer die Window-gruppe}
+Multiplication in $\G_{W(k)}(S)$ induces a bijection
+$$m\colon U^{+}(I) \times P^{-}(S) \rightarrow \G(\mathcal{F})_{\mu}.$$
+\end{Lemma}
+\begin{proof}
+First, we note that the above map is an injection. Indeed, by Fact \ref{Zusammenfassung zu Gewichtsgruppen} (ii) multiplication is an open immersion and thus a monomorphism.
+\\
+It remains to see the surjectivity. Take a point $g\in \G(\mathcal{F})_{\mu}$ corresponding to a morphism $g\colon \Spec(S) \rightarrow \G_{W(k)}(S),$ that modulo $I$ factors through $P^{-}.$ By the axioms of a frame, $I\subseteq \Rad(S),$ and therefore we have a bijection of maximal prime ideals $\MaxSpec(R) \longleftrightarrow \MaxSpec(S).$ It follows that $g$ maps closed points into the open subscheme $V\subseteq \G_{W(k)},$ which is the image of the open immersion $m$ from above. Now all schemes in sight are affine, thus quasi-compact and in a quasi-compact scheme every point has a closed point in it$^{\prime}$s closure. From this, we deduce that $g$ is in the image.
+\end{proof}
+\begin{Remark}
+The problem that this decomposition does not respect the groupstructure is one of the key disadvantages of the definition of $\G$-$\mu$-windows given here, but circumvent by Lau using his approach with higher frames.
+\end{Remark}
+Next we construct the divided Frobenius
+$$\Phi_{\G,\mu,\mathcal{F}}\colon \G(\mathcal{F})_{\mu}\rightarrow \G_{W(k)}(S)$$
+for window-data $(\G,\mu),$ such that $\Lie(U^{+})=(\Lie(\G)_{W(k)})_{1}.$
+In general it might only be a map of sets. We will explain, why it is a group homomorphism for all frames we are interested in.
+\\
+Let $h\in \G(\mathcal{F})_{\mu}$ and using Lemma \ref{Zerlegungslemma fuer die Window-gruppe} above, we write it uniquely as a product $h=u\cdot p,$ where $u\in U^{+}(I)$ and $p\in P^{-}(S).$ By Fact \ref{Zusammenfassung zu Gewichtsgruppen} (iv), we can define
+$$ \Phi_{\G,\mu,\mathcal{F}}\colon U^{+}(I) \rightarrow U^{+}(S)$$ to be the be the composition, as in the following commutative diagram
+$$
+\xymatrix{
+U^{+}(I) \ar[d]^{\log^{+}} \ar[r]^{\Phi_{\G,\mu,\mathcal{F}}} & U^{+}(S) \\
+\Lie(U^{+}) \otimes I \ar[r]^{id\otimes \dot{\varphi}} & \Lie(U^{+}) \otimes S \ar[u]^{(\text{log}^{+})^{-1}}.
+}
+$$
+Next, we can define $\Phi_{\G,\mu,\mathcal{F}}\colon P^{-}(S) \rightarrow P^{-}(S)$ by $$\Phi_{\G,\mu,\mathcal{F}}=\mu(\zeta_{\mathcal{F}})\varphi(h)\mu(\zeta_{\mathcal{F}})^{-1}.$$ Recall that $\zeta_{\mathcal{F}}\in S$ was the frame-constant, i.e. the unique element such that $\varphi(i)=\zeta_{\mathcal{F}}\dot{\varphi(i)}.$
+\\
+The next statment will explain, why $\Phi_{\G,\mu,\mathcal{F}}$ is a group-homomorphism for the frames $\mathcal{F}_{inf}(R)$ and $\mathcal{F}_{cris}(R).$
+\begin{Lemma}
+Let $\mathcal{F}=(S,I,R,\varphi,\dot{\varphi})$ be a frame over $W(k),$ such that $S$ is $\zeta_{\mathcal{F}}$-torsion free. Then the divided Frobenius
+$$\Phi_{\G,\mu,\mathcal{F}}\colon \G(\mathcal{F})_{\mu}\rightarrow \G_{W(k)}(S)
+$$
+is a group homomorphism.
+\end{Lemma}
+\begin{proof}
+Note that inside $S[1/\zeta_{\mathcal{F}}]$ the relation $\dot{\varphi}(i)=\frac{\varphi(i)}{\zeta_{\mathcal{
+F}}}$ is true for all $i\in I.$ As $\log^{+}$ is $\mathbb{G}_{m,W(k)}$-equivariant and $\Ad(\mu^{-1})((\zeta_{\mathcal{F}})^{-1})$ acts by \textit{division} by $\zeta_{\mathcal{F}}$ on $\Lie(U)^{+},$ we deduce that
+$$\Phi_{\G,\mu,\mathcal{F}}(u)=\mu(\zeta_{\mathcal{F}})\varphi(u)\mu(\zeta_{\mathcal{F}})^{-1}\in \G_{W(k)}(S[1/\zeta_{\mathcal{F}}])
+,$$ for all $u\in U^{+}(I).$
+Thus, we have in total for all $h\in \G(\mathcal{F})_{\mu}$
+\begin{equation}\label{Beschreibung geteilter Frobenius nach invertieren}
+\Phi_{\G,\mu,\mathcal{F}}(h)=\mu(\zeta_{\mathcal{F}})\varphi(h)\mu(\zeta_{\mathcal{F}})^{-1}\in \G_{W(k)}(S[1/\zeta_{\mathcal{F}}]).
+\end{equation}
+This is clearly a group homomorphism and since $S$ is $\zeta_{\mathcal{F}}$-torsion free the map into the localization is injective. This concludes the easy verification.
+\end{proof}
+\begin{Remark}
+Note that the ring of Witt-vectors $W(R)$ for a non-reduced ring in characteristic $p$  is  certainly not $p$-torsion free. Thus the above argument does not apply. Still the divided Frobenius for the Witt-frame is a group homomorphism. In fact, one can prove this either using the argument given by Bültel-Pappas in \cite[Prop. 3.1.2.]{BP}, or using the h-frame structure on the Witt-frame introduced by Lau. In general, we can say that the divided Frobenius $\Phi_{\mathcal{F}}$ is a group homomorphism either in case one can put a h-frame structure on $\mathcal{F}$ or in case $S$ is $\zeta_{\mathcal{F}}$-torsion free. One can in fact construct h-frame structures on $\mathcal{F}_{inf}(R)$ and $\mathcal{F}_{cris}(R),$ which gives another reason, why the divided Frobenius is a group homomorphism in these cases. We decided to stick to the construction of $\G$-$\mu$-windows given here, as we will later need an auxillary frame, for which we were not able to give a h-frame structure.\footnote{This is the frame $\underline{A_{0}}$ from Lemma \ref{Framemorphismus von Acris mod p zu A0}.}
+\end{Remark}
+\begin{Definition}
+Let $\mathcal{F}$ be a frame over $W(k),$ such that the divided Frobenius $\Phi_{\mathcal{F}}$ is a group homomorphism. Then the groupoid of trivial $\G$-$\mu$-windows over $\mathcal{F}$ is the quotient groupoid
+$$
+\G-\mu-\text{Win}(\mathcal{F})_{triv}=[\G_{W(k)}(S)/_{\Phi_{\G,\mu,\mathcal{F}}} \G(\mathcal{F})_{\mu}],
+$$ 
+for the action $g\ast h=h^{-1}g\Phi_{\G,\mu,\mathcal{F}}(h)$ for all $g\in \G_{W(k)}(S)$ and $h\in \G(\mathcal{F})_{\mu}.$
+\end{Definition}
+\begin{Remark}
+We have two kinds of functorialities for these objects: Let $\mathcal{F}\in \lbrace \mathcal{W}(R),\mathcal{W}(S/R),\mathcal{F}_{inf}(R),\mathcal{F}_{cris}(R) \rbrace.$ 
+\begin{enumerate}
+\item[(i)]\textit{Functoriality in minuscule window-data:}
+\\
+A morphism of minuscule window-data $f\colon (\G_{1},\mu_{1})\rightarrow (\G_{2},\mu_{2})$ is a $\mathbb{Z}_{p}$-groupscheme homomorphism $f\colon \G_{1}\rightarrow \G_{2},$ such that $f_{W(k)}\circ \mu_{1}=\mu_{2}.$ It induces a functor
+$$f\colon \G_{1}-\mu_{1}-\text{Win}(\mathcal{F})_{triv}\rightarrow \G_{2}-\mu_{2}-\text{Win}(\mathcal{F})_{triv}.$$
+\item[(ii):]\textit{Functoriality in frame morphisms:}
+\\
+Consider a $u$-frame homomorphism
+$\lambda\colon \mathcal{F}\rightarrow \mathcal{F}^{\prime},$ where $\mathcal{F},\mathcal{F}^{\prime}$ are frames, such that trivial $\G$-$\mu$-windows are defined. Then we get a base-change morphism
+$$
+\lambda_{\bullet}\colon \G-\mu-\text{Win}(\mathcal{F})_{triv} \rightarrow \G-\mu-\text{Win}(\mathcal{F}^{\prime})_{triv},
+$$
+induced by the map $\G(S)\rightarrow \G(S^{\prime}),$ $g\mapsto \lambda(g)\mu(u),$
+in general only in case the frame-constant $\zeta_{\mathcal{F}^{\prime}}$ does not lead to torsion in $S^{\prime},$ or if $u=1.$ We remark here already that in Lemma \ref{chi ist kristalline!} we are faced with an $u$-frame morphism, where the above hypothesis does not apply. Nevertheless, one can check that this morphism induces a base-change functor, because in that example the frame-constants of both the source and the target are $0.$ 
+\end{enumerate}
+\end{Remark}
+\subsection{Construction of $\G$-$\mu$-windows for some frames}
+\subsubsection{$\G$-$\mu$-Displays}
+Here we will briefely recall the construction of $\G$-$\mu$-displays of Bültel-Pappas.
+\\
+Recall the following result due to Greenberg:
+\begin{proposition}
+Let $R$ be a ring and $X\rightarrow W_{n}(R)$ be an affine scheme of finite type (resp. finite presentation).
+\\
+Then the fpqc-sheaf
+$$F_{n}(X)\colon (R-algebras)\rightarrow (Set),$$
+$$F_{n}(X)(R^{\prime})=X_{W_{n}(R)}(W_{n}(R^{\prime}))$$
+is representable by an affine scheme over $R$ of finite type (resp. of finite presentation).
+\end{proposition}
+In the situation of the proposition, one calls the $R$-scheme $F_{n}(X)$ the Greenberg-Transformation of X. It commutes with fiber-products. Thus, in case $X$ is a group scheme, we deduce that $F_{n}(X)$ is a $R$-group scheme.
+\\
+Let $(\G,\mu)$ be a window-datum. Using the Cartier-morphism, we can consider the $W_{n}(W(k))$-group scheme $\G_{W(k)}\times_{W(k)} \Spec(W_{n}(W(k))).$ Then
+$$L^{+}(\G_{W(k)})=\lim_{n\geq 1} F_{n}(\G_{W(k)}\times_{W(k)} \Spec(W_{n}(W(k))))$$
+is an affine $W(k)$-group scheme with points in $W(k)$-algebras $R$ given as
+$$
+L^{+}(\G_{W(k)})(R)=\G_{W(k)}(W(R)).
+$$ One has to be careful, because it will not be of finite type or finite presentation anymore. By \cite[Prop. 2.2.1.,(d)]{BP} it is flat and formally smooth over $W(k).$ One can consider the window-group for the Witt-frame as the sections of a closed subgroup-scheme
+$$\G(\mathcal{W})_{\mu}\hookrightarrow L^{+}(\G_{W(k)}).$$ In case $(\G,\mu)$ is a minuscule window-datum, one checks, see \cite[Prop. 3.1.2.]{BP}, that the divided Frobenius extends to a group-scheme homomorphism
+$$
+\Phi_{\G,\mu,\mathcal{W}}\colon \G(\mathcal{W})_{\mu} \rightarrow L^{+}(\G_{W(k)}).
+$$
+Hence the following definition makes sense.
+\begin{Definition}
+Let $R\in \Nilp_{W(k)}$ (or a $p$-adic $W(k)$-algebra) and $(\G,\mu)$ a minuscule window-datum. 
+\\
+A $\G$-$\mu$-displays over $R$ is a pair $(Q,\alpha),$ where $Q$ is a fpqc $\G(\mathcal{W})_{\mu}$-torsor on $\Spec(R)$ and 
+$$\alpha\colon Q \rightarrow L^{+}(\G_{W(k)})_{R}$$
+is a map of fpqc-sheaves on $\Spec(R),$ such that 
+$$\alpha(q\cdot h)=h^{-1}\alpha(q)\Phi_{\G,\mu,\mathcal{W}}(h)$$
+for all $h\in \G(\mathcal{W})_{\mu}$ and $q\in Q.$
+\end{Definition}
+\begin{Remark}\label{Remark zur Hodge-Filtration}
+Let $R$ be a $W(k)$-algebra, such that $p$ is nilpotent.
+In case $\G$ is assumed to be a reductive group scheme, then the datum of a $\G(\mathcal{W})_{\mu}$-torsor over $\Spec(R)$ is equivalent to the datum of a $\G$-torsor $\mathcal{E}$ on $\Spec(W(R))$ and a section of the proper morphism $\bar{\mathcal{E}}/P^{-}\rightarrow \Spec(R)$. Here we denoted $\bar{\mathcal{E}}=P\times_{\Spec(W(R))} \Spec(R).$ See \cite[3.2.4.]{BP}. In the $\GL_{n}$-case this just means that a display has an underlying finite projective module over the Witt-vectors together with a filtration. Thus, we call the above section the \textit{Hodge-filtration}.
+\end{Remark}
+The next statement appears as \cite[Prop. 3.2.11.]{BP} under a noetherian hypothesis.
+\begin{Lemma}\label{Displays ueber adischen Ringen}
+ Fix a minuscule and reductive window-datum $(\G,\mu).$
+Let $A$ be a $W(k)$-algebra, that is $I$-adically complete and septerated for an ideal $I,$ that contains a power of $p.$ Then there exists a natural equivalence
+$$\G-\mu-\text{Displ}(\Spec(A)) \simeq 2-\lim_{n\geq 1} \G-\mu-\text{Displ}(\Spec(A/I^{n})).$$
+\end{Lemma}
+\begin{proof}
+Given the arguments in the proof of \cite[Prop. 3.2.11.]{BP}, we only have to explain, how to construct from a compatible system of $\G(\mathcal{W})_{\mu}$-torsors $Q_{n}$ over $\Spec(A/I^{n})$ for all $n\geq 1$ a $\G(\mathcal{W})_{\mu}$-torsors over $\Spec(A).$ By Remark \ref{Remark zur Hodge-Filtration} above, we have to show that a compatible system of $L^{+}(\G_{W(k)})$-torsors $\mathcal{E}_{n}$ over $\Spec(A/I^{n})$ together with a compatible system of sections of $\mathcal{E}_{n}/\G(\mathcal{W})_{\mu}\rightarrow \Spec(A/I^{n})$ gives a $L^{+}(\G_{W(k)})$-torsor $\mathcal{E}$ over $\Spec(A)$ together with a section of $\mathcal{E}/\G(\mathcal{W})_{\mu}\rightarrow \Spec(A).$ The $L^{+}(\G_{W(k)})$-torsor $\mathcal{E}$ is constructed in the proof of the cited proposition and for the existence of the section we can use \cite[Remark 4.6.]{Bhatt}, which avoids the use of Grothendieck$^{\prime}$s algebraization theorem. In fact, the theorem of Bhatt gives that
+$$(\mathcal{E}/\G(\mathcal{W})_{\mu})(\Spec(A))=\lim_{n\geq 1} (\mathcal{E}/\G(\mathcal{W})_{\mu})(\Spec(A/I^{n})).$$
+But we have that $(\mathcal{E}/\G(\mathcal{W})_{\mu})\times_{\Spec(A)} \Spec(A/I^{n})\cong (\mathcal{E}_{n}/\G(\mathcal{W})_{\mu})$ and by assumption we have section $s_{n}\in (\mathcal{E}_{n}/\G(\mathcal{W})_{\mu})(\Spec(A/I^{n}).$
+\end{proof}
+\subsubsection{$\G$-$\mu$-windows for the frame $\mathcal{F}_{inf}$}
+Let $(\mathcal{G},\mu)$ be a minuscule window-datum. Fix an integral perfectoid $W(k)$-algebra $R.$
+\begin{Lemma}
+\begin{enumerate}
+\item[(a):] The pre-sheaf
+$$\G(\mathcal{A}_{inf}(\mathcal{R}))\colon (\Spec(R/p)^{aff}_{et})^{op}\rightarrow (Grp)$$ is a sheaf. The same is true for $\G(\mathcal{R}).$
+\item[(b):] The pre-sheaf
+$$\G(\mathcal{F}_{inf}(\mathcal{R}))_{\mu}\colon (\Spec(R/p)^{aff}_{et})^{op}\rightarrow (Grp)$$ is a sheaf.
+\end{enumerate}
+\end{Lemma}
+\begin{proof}
+For (a), we just observe that as $\G/\mathbb{Z}_{p}$ is of finite type, we can consider $\G$ as the equalizer of maps 
+$$
+\xymatrix{
+\mathbb{A}^{n}_{\mathbb{Z}_{p}} \ar@<1ex>[r] \ar@<-1ex>[r] & \mathbb{A}^{m}_{\mathbb{Z}_{p}}
+}
+$$
+in the category of etale sheaves. Obviously, $(\mathcal{A}_{inf})^{k}(B^{\prime})=(\Ainf(R^{\prime}))^{k}$ for $k\geq 1$ are sheaves and therefore the claim follows from the fact that equalizer of etale sheaves are again etale sheaves. The same argument shows that also $\G(\mathcal{R})$ is a sheaf. For (b), we first note that Fontaine$^{\prime}$s map induces a morphism of sheaves
+$$\theta\colon \G(\mathcal{A}_{inf}(\mathcal{R})) \rightarrow \G_{W(k)}(\mathcal{R}).$$
+We have the morphism of sheaves $\iota\colon P^{-}(\mathcal{R})\hookrightarrow \G_{W(k)}(\mathcal{R})$ induced by the closed immersion $P^{-}\subset \G_{W(k)}$ of groupschemes. Then we can write the presheaf $\G(\mathcal{F}_{inf}(\mathcal{R}))_{\mu}$ as the fiber-product
+$$\G(\mathcal{A}_{inf}(\mathcal{R})) \times_{\theta,\G_{W(k)}(\mathcal{R}),\iota} P^{-}(\mathcal{R})$$ and the Lemma is proved.
+\end{proof}
+As the frame-constant $\varphi(\xi)=\zeta_{\mathcal{F}_{inf}(\mathcal{R}(B^{\prime}))}$ for varying etale $B=R/p$-algebras $B^{\prime}$ does not lead to torsion in $\Ainf(\mathcal{R}(B^{\prime}),$ we have a group-sheaf homomorphism
+$$\Phi_{inf}\colon \G(\mathcal{F}_{inf}(\mathcal{R}))_{\mu} \rightarrow \G(\mathcal{A}_{inf}(\mathcal{R})).$$
+Therefore we can make the following
+\begin{Definition}\label{Definition von Windows fuer Ainf}
+Let $R$ be an integral perfectoid $W(k)$-algebra. A $\G$-$\mu$-window for the frame $\mathcal{F}_{inf}$ over $R$ is a tuple $(Q,\alpha),$
+where
+\begin{enumerate}
+\item[(a):] $Q$ is a $\G(\mathcal{F}_{inf}(\mathcal{R}))_{\mu}$-torsor on $\Spec(R/p)_{et}^{aff}$,
+\item[(b):] $\alpha\colon Q\rightarrow \G(\mathcal{A}_{inf}(\mathcal{R}))$ is a morphism of sheaves, such that
+$$\alpha(q\cdot h)=h^{-1}\alpha(q)\Phi_{inf}(h).$$
+\end{enumerate}
+\end{Definition}
+In the following we will denote by $\G-\mu-\text{Win}(\mathcal{F}_{inf}(\mathcal{R}))$ the corresponding stack of $\G$-$\mu$-windows over $R.$ In other words this is just the quotient stack
+$$[\G(\mathcal{A}_{inf}(\mathcal{R}))/_{\Phi_{inf}}\G(\mathcal{F}_{inf}(\mathcal{R}))_{\mu}]$$ over $\Spec(R/p)_{et}^{aff}$.
+\begin{Remark}
+We similiarly see, that one can construct $\G$-$\mu$-windows for prisms giving rise to frames.
+\end{Remark}
+For later use, we record a description of trivial $\G$-$\mu^{\sigma}$-windows for $\mathcal{F}_{inf}(R),$ whose proof is of course very similiar to \cite[Prop. 3.2.15.]{BP}.
+\begin{Lemma}\label{Windows ueber Ainf und BKF lokales Statement}
+There exists an equivalence of groupoids
+$$[\G(\Ainf(R))/_{\Phi_{inf},\G,\mu^{\sigma}}\G(\mathcal{F})_{inf}(R))_{\mu}] \simeq [\G(\Ainf(R))\mu^{\sigma}(\varphi(\xi))\G(\Ainf(R))/_{\varphi}\G(\Ainf(R))].$$
+\end{Lemma}
+\begin{proof}
+Note at first that $\mu$ being minuscule, implies that
+\begin{equation}\label{Beschreibung der Windowgruppe fuer Ainf}
+\G(\mathcal{F}_{inf}(R))_{\mu}=\mu(\xi)^{-1}\G(\Ainf(R))\mu(\xi)\cap \G(\Ainf(R)).
+\end{equation}
+We deduce the equivalence
+$$
+[\G(\Ainf(R))/_{\Phi_{inf,\G,\mu^{\sigma}}}\G(\mathcal{F}_{inf}(R))_{\mu}]\rightarrow [\G(\Ainf(R))\varphi(\mu(\xi))/_{\varphi}\mu(\xi)^{-1}\G(\Ainf(R))\mu(\xi)\cap \G(\Ainf(R))],
+$$
+given by sending $g\mapsto g\varphi(\mu(\xi)).$ But using (\ref{Beschreibung der Windowgruppe fuer Ainf}) above, we deduce that the inclusion induces yet another equivalence
+$$ 
+[\G(\Ainf(R))\varphi(\mu(\xi))/_{\varphi}\mu(\xi)^{-1}\G(\Ainf(R))\mu(\xi)\cap \G(\Ainf(R))] \rightarrow [\G(\Ainf(R))\mu^{\sigma}(\varphi(\xi))\G(\Ainf(R))/_{\varphi}\G(\Ainf(R))].
+$$
+Indeed, to show fully faithfullness, assume that
+$$g_{1}\varphi(\mu(\xi))=h^{-1}g_{2}\varphi(\mu(\xi)) \varphi(h).$$
+This implies that
+$$\varphi(h)=\varphi(\mu(\xi))^{-1}g_{2}^{-1}hg_{1}\varphi(\mu(\xi)).$$
+Then (as $\varphi$ is an automorphism of $\Ainf$) we deduce by (\ref{Beschreibung der Windowgruppe fuer Ainf}) above that $h\in \mu(\xi)\G(\Ainf(R))\mu(\xi)^{-1}\cap \G(\Ainf(R)).$
+\\
+It is essentially surjective: take $g_{1}\varphi(\mu(\xi))g_{2}.$ Then just write $g_{2}=\varphi(h)^{-1},$ for $h\in\G(\Ainf(R)).$ It follows that
+$$h^{-1}g_{1}\varphi(\mu(\xi))g_{2}\varphi(h)\in \G(\Ainf(R))\varphi(\mu(\xi)).$$
+\end{proof}
+\begin{Remark}
+Let $R$ be a perfect $\mathbb{F}_{p}$-algebra. Then $\G$-$\mu$-windows for $\mathcal{F}_{inf}(R)$ are the same as $\G$-$\mu$-displays over $R.$ Thus the previous lemma recovers and extends \cite[Prop. 3.2.15.]{BP}.
+\end{Remark}
+\subsubsection{$\G$-$\mu$-windows for the frame $\mathcal{F}_{cris}$} The construction for these windows works exactly the same way, as for the frame $\mathcal{F}_{inf}.$ Thus, $\G(\mathcal{A}_{cris}(\mathcal{R}))$ and $\G(\mathcal{F}_{cris}(\mathcal{R}))_{\mu}$ are still sheaves for $(\Spec(R/p)^{aff}_{et})^{op}$ and as all rings $\Acris(\mathcal{R})$ are $p$-torsionfree, we have a groupsheafhomomorphism
+$$
+\Phi_{cris}\colon \G(\mathcal{F}_{cris}(\mathcal{R}))_{\mu} \rightarrow \G(\mathcal{A}_{cris}(\mathcal{R})).
+$$
+Thus, one can copy-paste the previous Definition \ref{Definition von Windows fuer Ainf}.
+\subsection{Adjoint nilpotency condition}
+In this section, we briefely recall the adjoint nilpotency condition for $\G$-$\mu$-displays, as formulated by Bültel-Pappas. As in the theory of classical Zink-displays, this nilpotency condition is needed to develop the deformation theory - but we warn the reader that under the equivalence of stacks between classical Zink-displays and $(\GL_{n},\mu_{n,d})$-displays, the nilpotency conditions  do \textit{not coincide.}
+\\
+Let $k_{0}$ be an algebraically closed field of characteristic $p,$ $W=W(k_{0})$ and $L=W(k_{0})[1/p]$ the quotient field. Let $\sigma$ be the Frobenius-automorphism of $L.$ Furthermore, let $(\G,\mu)$ be a minuscule window-datum (i.e. $\mu$ is minuscule) and denote by $G=\G_{\mathbb{Q}_{p}}$ the generic fiber. If $b\in G(L),$ Kottwitz associates a morphism of $L$-groups
+$$
+\nu_{b}\colon \mathbb{D}_{L}\rightarrow G_{L},
+$$
+characterized by the property, that for any $(V,\rho)\in \text{Rep}_{\mathbb{Q}_{p}}(G),$ the $\mathbb{Q}$-graduation on $V_{L}$ given by $\rho\circ \nu_{b}$ coincides with the decomposition in isotopic components of the isocristal $(V_{L},\rho(b)\circ (1\otimes \sigma)).$ Thus we can say that $\rho(b)$ has a slope at $\lambda\in \mathbb{Q}.$ A trivial observation is that this requirement is independent of the choice of a representative $b\in [b]\in B(G).$ 
+By Lemma \ref{Windows ueber Ainf und BKF lokales Statement}, we deduce the
+\begin{Corollary}
+Let $(Q,\alpha)$ a $\G$-$\mu$-display over $k_{0}.$ After trivialization, we may represent it by a section $g\in \G(W).$ Then the requirement that $Ad(g\mu^{\sigma}(p))$ has all slopes greater than $-1$ is independent of the choice of the trivialization.
+\end{Corollary}
+
+Thus, the next definition makes sense.
+\begin{Definition}
+Let $R\in \Nilp_{W(k)}$ and $(Q,\alpha)$ a $\G$-$\mu$-display over $\Spec(R).$ Then $(Q,\alpha)$ is called adjoint nilpotent, if for all geometric points
+$$
+\bar{x}_{k}\colon \Spec(\overline{\kappa(x)})\rightarrow \Spec(R),
+$$
+the pull-back $(\bar{x}_{k})^{*}(Q,\alpha)$ fulfills the requirement of the last corollary.
+\end{Definition}
+We recall the following translation of the adjoint nilpotency condition in the case of a trivialized $\G$-$\mu$-display given in \cite{BP}.
+\begin{proposition}
+Let $R$ be $k$-algebra and $(Q,\alpha)$ a trivialized $\G$-$\mu$-display over $R,$ given by a section $g\in L^{+}(\G)(R).$ Then $(Q,\alpha)$ is adjoint nilpotent, if and only if the endomorphism
+$$
+\text{Ad}(w_{0}(g))\circ (\text{Frob}_{R}\otimes \text{id}) \circ (\text{id}_{R}\otimes \pi)\colon \Lie(U^{+})_{R}\rightarrow \Lie(U^{+})_{R}
+$$
+is nilpotent. Here we denote by $\pi\colon \Lie(\G)\rightarrow \Lie(U^{+})$ the projection onto $\Lie(U^{+}),$ killing $\Lie(P^{+}).$
+\end{proposition}
+The proof is explained in \cite[3.4.4.]{BP}.
+\begin{Remark}
+We briefely comment on the relation between this nilpotency condition and Zink$^{\prime}$s nilpotency condition in the case of the linear group. Let $R\in \Nilp$ and $\mathcal{P}$ be a classical Zink-display over $R.$ Then $\mathcal{P}$ is adjoint nilpotent if and only if there are radical ideals $I_{nil}\subseteq R$ and $I_{uni}\subseteq R,$ with $I_{nil}\cap I_{uni}=\sqrt{pR},$ such that $\mathcal{P}_{R/I_{nil}}$ and $(\mathcal{P}/I_{uni})^{t}$ are Zink-nilpotent. Here $()^{t}$ means the dual display. Compare with 
+\end{Remark}
+We take this as a motiviation to give the following
+\begin{Definition}
+Let $R$ be an integral perfectoid $W(k)$-algebra. Let $\mathcal{F}\in \lbrace \mathcal{F}_{cris}(R),\mathcal{F}_{cris}(R/pR) \rbrace.$ Then a a $\G$-$\mu$-window $\mathcal{P}=(Q,\alpha)$ over $\mathcal{F}$ is said to fulfill the adjoint nilpotency condition, if étale-locally on $\Spec(R/pR)$, we can represent $\mathcal{P}$ by a structure matrix $g\in\G(\Acris(R)),$ such that the endomorphism
+$$
+\psi_{g}\colon \Lie(U^{+})_{\Acris(R)}\rightarrow \Lie(U^{+})_{\Acris(R)},
+$$
+where $\psi_{g}=(id_{Lie(U^{+})}\otimes\varphi)\circ \pr_{2} \circ \Ad(g),$ is nilpotent modulo $\text{Fil}(\Acris(R))+p\Acris(R).$
+\end{Definition}
+\begin{Remark}
+This is independend of the choice of a representative for the $\Phi_{cris}$-conjugacy class of a structure matrix. 
+\\
+In fact, let $\G$-$\mu$-Win($\mathcal{F}_{cris}(\mathcal{R})$) be the stack for the affine-étale topology on $\Spec(R/pR)$ and let $G$-$\varphi$-$\Spec(\text{B}_{cris}^{+}(\mathcal{R}/p\mathcal{R}))$ be the stack for the affine-étale topology on $\Spec(R/pR)$ of $G$-torsors, plus Frobenius-structure on $\Spec(B^{+}_{cris}(\mathcal{R}/p\mathcal{R})).$\footnote{Here one has to note that $B^{+}_{cris}(\mathcal{R}/p\mathcal{R})$ is defined as the sheafification .} As the rings we are working with are semi-perfect, the last stack identifies with the stack of $F$-Isocrystals on $\Spec(\mathcal{R}/p\mathcal{R})$ with $G$-structure, in the sense of Rapoport-Richartz. Then, we can construct a functor
+$$
+(.)_{\eta}\colon \G-\mu-\text{Win}(\mathcal{F}_{cris}(\mathcal{R}))\rightarrow G-\varphi-\Spec(\text{B}_{cris}^{+}(\mathcal{R}/p\mathcal{R}))
+$$
+as follows: Let $(Q,\alpha)$ be a $\G$-$\mu$-window for the frame $\mathcal{F}_{cris}(R).$ Let $R/p\rightarrow B$ faithfully flat étale, trivializing $(Q,\alpha).$ Then we can represent the base-change to $B$ after trivialization by a section $g\in \G(\Acris\mathcal{R}(B))$ and we can consider $b=g\mu^{\varphi}(p)\in G(\text{B}_{cris}^{+}(\mathcal{R}(B)/p\mathcal{R}(B)).$ This definies a trivial $G$-torseur over $\Spec(\text{B}_{cris}^{+}(\mathcal{R}(B)/p\mathcal{R}(B))$ with $\varphi$-structure given by multiplication with $b.$ As
+$$
+\Phi_{cris}(g)=\varphi(\mu(p)g\mu(p))^{-1})\in G(\text{B}_{cris}^{+}(\mathcal{R}(B)/p\mathcal{R}(B)),
+$$
+this construction is independend of the choice of the trivialization of $(Q,\alpha)\times_{R/p} B.$ Using descent for $F$-isocrystals with $G$-structure, we can end the construction of the above functor.
+\\
+Let $\Ad((Q,\alpha)_{\eta})$ be the pushout of $(Q,\alpha)_{\eta}$ along the adjoint representation of $G.$ This is a $F$-isocrystal on $\Spec(R/pR).$ Then we claim, that the adjoint nilpotency condition for $(Q,\alpha)$ is equivalent to the condition that for all geometric points $x_{\bar{k}}$ of $\Spec(R/pR),$ the $F$-isocrystal $ \Ad(x_{\bar{k}}^{*}((Q,\alpha)_{\eta}))$ has all slopes $>-1.$ Therefore in particular independend of the choice of a representative.
+\\
+To see this, we may assume that $(Q,\alpha)$ is trivial over $R/pR.$ Let $g\in \G(\Acris(R))$ be a possible representative. Let $\bar{g} \in\G(R/pR)$ be the reduction modulo $\text{Fil}(\Acris(R))+p\Acris(R).$ Then the nilpotency of $\psi_{\bar{g}}\in End(\Lie(U^{+})_{R/pR})$ may be checked after base-change to geometric points of $\Spec(R/pR).$ The map $R\rightarrow R/pR \rightarrow \bar{\kappa(x)}$ is a map of integral perfectoid rings, and induces $\Acris(R)\rightarrow \Acris(\bar{\kappa(x)})=W(\bar{\kappa(x)}),$ where $x\in \Spec(R/pR).$ The diagram
+$$
+\xymatrix{
+\Acris(R) \ar[r] \ar[d] & W(\bar{\kappa(x)}) \ar[d] \\
+R/pR \ar[r] & \bar{\kappa(x)},
+}
+$$
+where the two maps down are the reduction modulo $\Fil(\Acris(R))+p\Acris(R)$ resp. reduction modulo $pW(\bar{\kappa(x)}),$ is commutative. It follows that the nilpotency of $\psi_{\bar{g}}$ can be checked by the nilpotency of $\psi_{g(x)}\in \Lie(U^{+})_{W(\bar{\kappa(x)})}$ modulo $p,$ where $g(x)\in L^{+}(\G)(\bar{\kappa(x)})$ is the image of $g$ under $\Acris(R)\rightarrow W(\bar{\kappa(x)}).$ But the nilpotency modulo $p$ of $\psi_{g(x)}$ is equivalent to the condition that the following Iso-crystal
+$$
+(\Lie(\G)\otimes W(\bar{\kappa(x)})[1/p]),\varphi_{Ad(b(x))}),
+$$
+has all slopes $>-1,$ where $\varphi_{Ad(b(x))}=Ad(g(x)\mu^{\sigma}(p))\circ (id\otimes \sigma).$ But this condition is independend of the choice of the representative $g\in \G(\Acris(R))$ and this showes furthermore, that the above claim concerning the abstract formulation of the adjoint nilpotency condition is justified.
+\end{Remark}
+\begin{Definition}
+Let $\lambda\colon \mathcal{F}\rightarrow \mathcal{F}^{\prime}$ be a $u$ frame morphism, such that $\G$-$\mu$-windows over $\mathcal{F}$ resp. $\mathcal{F}^{\prime}$ are defined.
+\\
+Then we call $\lambda$ nil-cristallin, if the base-change functor $\lambda_{\bullet}$ induces an equivalence of the corresponding adjoint nilpotency $\G$-$\mu$-window categories.
+\end{Definition}
+Let us give a key criterium for when a frame-morphism will be nil-cristallin, that one can extract from Lau$^{\prime}$s paper \cite{h-frame} (compare also \cite[Theorem 3.5.4.]{BP}).
+\\
+Let $\mathcal{F}$ and $\mathcal{F}^{\prime}$ two frames over $W(k)$.
+We will make the following assumptions:
+\begin{enumerate}
+\item[(a):] There exists a strict frame morphism
+$$\lambda\colon \mathcal{F}\rightarrow \mathcal{F}^{\prime},$$
+given by a surjective ring homomorphism $\lambda\colon S\rightarrow S^{\prime},$ that induces an isomorphism $R\simeq R^{\prime},$
+\item[(b):] let $K=\ker(\lambda),$ an ideal that by assumption (a) lies in $I.$ Then we require that $K$ is $p$-adically complete and separated,
+\item[(c):] finally, we require that $\dot{\varphi}(K)\subseteq K.$
+\end{enumerate}
+\begin{proposition}\label{Unique lifting lemma}
+Let $\mathcal{F}$ and $\mathcal{F}^{\prime}$ two frames over $W(k)$ together with a strict morphism $$\lambda\colon \mathcal{F}\rightarrow \mathcal{F}^{\prime},$$ fulfilling the above hyptoheses $(a)$,$(b)$ and $(c)$. Furthermore let $g_{1},g_{2}\in \G_{W(k)}(S),$ such that the endomorphisms of $\Lie(U^{+})\otimes_{W(k)} S$ given by $$(id_{\Lie(\G)}\otimes \varphi)\circ \pi \circ Ad(g_{i})$$ are nilpotent, where $i=1,2.$
+\\
+If $\lambda(g_{1})=\lambda(g_{2}),$ then there exists a unique $h\in \G_{W(k)}(\mathcal{F})_{\mu},$ such that
+\begin{equation}
+g_{2}=h^{-1}g_{1}\Phi_{\mathcal{F}}(h).
+\end{equation}
+\end{proposition}
+We will recall the proof, because this is a central technical tool.
+\begin{proof}
+We first note that the analogon of \cite[Lemma 7.1.4.]{h-frames} is of cours true in our set-up and proved word by word the same way. We state it explicetly for the readers convenience
+\begin{Lemma}\label{Vorbereitung unique lifting lemma}
+\begin{enumerate}
+\item[(a):] Let $\G(K)=\ker(\G(S)\rightarrow \G(S^{\prime}))$ and $\G(K)_{\mu}=\ker(\G(\mathcal{F})_{\mu}\rightarrow \G(\mathcal{F}^{\prime})_{\mu}).$ We have a natural identification $$\G(K)\cong\G(K)_{\mu},$$
+\item[(b):] $\lambda$ induces a surjective group homomorphism
+$$\G(S)\rightarrow \G(S^{\prime}),$$
+\item[(c):] $\lambda$ induces a surjective group homomorhism, $$\G(\mathcal{F})_{\mu}\rightarrow \G(\mathcal{F^{\prime}})_{\mu}.$$
+\end{enumerate}
+\end{Lemma}
+We have to show that for all $g\in\G(S)$ and all $h\in\G(K),$ there exists a unique $z\in\G(K)_{\mu},$ such that
+\begin{equation}\label{Gleichung fuer transitive Operation}
+z^{-1}g\Phi_{\mathcal{F}}(z)=hg.
+\end{equation}
+Let us formulate (\ref{Gleichung fuer transitive Operation}) in a different way, which is more tractable to proving: We have a natural identification of $\G(K)\simeq \G(K)_{\mu}$ by part (a) of the previous lemma, thus for all $g\in \G(S)$ we can consider the following group homomorphism
+$$ \mathcal{U}_{g}\colon \G(K) \rightarrow \G(K)$$
+$$ z\mapsto g(\Phi_{\mathcal{F}}(z))g^{-1}.$$
+Then (\ref{Gleichung fuer transitive Operation}) is equivalent to
+\begin{equation}
+z^{-1}\mathcal{U}_{g}(z)=h,
+\end{equation}
+Thus we have to show the following
+\\
+\textbf{Claim:} The map $$\G(K)\rightarrow \G(K),$$ $$z\mapsto \mathcal{U}_{g}(z)^{-1}z$$
+is bijective.
+\\
+Note that the assumptions that $K$ is $p$-adic and $\G$ is smooth, together imply that
+$$\G(K)\cong\lim_{i\geq 1}\G(K/p^{i}K).$$
+Furthermore, we will consider
+$$\G(p^{i}K):=\Ker(\G(K)\rightarrow \G(K/p^{i}K)).$$
+ We claim that $\mathcal{U}_{g}$ preserves $\G(p^{i}K),$ then $\mathcal{U}_{g}$ will operate on $\G(K/p^{i}K)\simeq \G(K)/\G(p^{i}K)\footnote{As $\G$ is smooth, the map $\G(K)\rightarrow \G(K/p^{i}K)$ is surjective.}$ and we furthermore claim that it does so pointwise nilpotently. Then the above \textbf{Claim} follows.
+In fact, for $z\in\G(K)$ the product $\Pi:=\cdot\cdot\cdot\mathcal{U}^{2}_{g}(z)\mathcal{U}_{g}(z)z$ then makes sense and it satisfies $\mathcal{U}_{g}(\Pi)^{-1}\Pi=z.$ The injectivity follows, because in case $\mathcal{U}_{g}(z)^{-1}z=\mathcal{U}_{g}(z^{\prime})^{-1}z^{\prime},$ the product $z^{\prime}z^{-1}$ is fixed by $\mathcal{U}_{g}$. But $\mathcal{U}_{g}$ is pointwise nilpotent and thus has as a unique fixpoint the unit section. Therefore, to finish the proof, we have to show the two above properties.
+\\
+For this we first show that $\Phi_{\mathcal{F}}$ respects the decomposition $\G(K)=U^{+}(K)\times P^{-}(K)$ coming from the (omitted) proof of the previous Lemma.
+\\
+We have $\Phi_{\mathcal{F}}=id \otimes \dot{\varphi}$ on $U^{+}(K)\cong\Lie(U^{+})\otimes_{W(k)} K$ and because by assumption $\dot{\varphi}(K)\subseteq K,$ this is ok.
+\\
+Take a section $g\in P^{-}(K)$. This corresponds to a morphism of $W(k)$-algebras
+$$g^{\sharp}\colon A/(A_{>0})\rightarrow S,$$ such that $\lambda(g^{\sharp}(f))=e^{\sharp}_{S^{\prime}}(f),$ where $e_{S^{\prime}}\in P^{-}(S^{\prime})$ the unit section. In terms of our weight-decomposition 
+$$A=\bigoplus_{n\in \mathbb{Z}} A_{n},$$
+we know that $e^{\sharp}_{S^{\prime}}(f_{n})=0,$ for all $n\neq 0.$\footnote{This follows for example because $P^{+}$ and $P^{-}$ are both subgroup schemes of $\G$.} Thus, writing $f=\sum_{n\geq 0} f_{-n}\in A/(A_{>0}),$ we have by assumption that $g\in P^{-}(K)$ that $g^{\sharp}(f_{-n})\in K$ for $n\geq 1$ and that $\lambda(g^{\sharp}(f_{0}))=e_{S^{\prime}}^{\sharp}(f_{0}).$ Recall that we defined
+$$\Phi_{\mathcal{F}}\colon P^{-}(S)\rightarrow P^{-}(S)$$ by $g\mapsto \mu(p)\varphi(g)\mu(p)^{-1}$. This means that
+$$(\Phi(g))^{\sharp}(f_{-n})=p^{n}\varphi(g^{\sharp}(f_{-n})),$$
+for $n\geq 0.$ Thus, it follows for $n\geq 1,$ that $(\Phi(g))^{\sharp}(f_{-n})\in K,$ because $\varphi$ also lets $K$ stable \footnote{We have $\lambda(\varphi(x))=\varphi^{\prime}(\lambda(x))=0,$ for $x\in K.$}. Furthermore, we have that $$\lambda((\Phi(g))^{\sharp}(f_{-0}))=\lambda(\varphi(g^{\sharp}(f_{0}))=\varphi^{\prime}(\lambda(g^{\sharp}(f_{0})))=\varphi^{\prime}(e^{\sharp}_{S^{\prime}}(f_{0}))=e^{\sharp}_{S^{\prime}}(f_{0}),$$ because $\varphi^{\prime}$ induces a group-endomorphism on $P^{-}(S^{\prime})$ and thus sends the unit section to the unit section. In total, we deduce that
+$$
+\lambda((\Phi(g))^{\sharp}(\sum_{n\geq 1}f_{-n})))=\lambda(\sum_{n\geq 1} p^{n}\varphi(g^{\sharp}(f_{-n})))=\lambda(\varphi((f_{-0})))=e^{\sharp}_{S^{\prime}}(f).
+$$
+Note that it also follows, that $\Phi$ stabilzes $U^{+}(p^{i}K)$ and also $P^{-}(p^{i}K)$. We deduce that also $\mathcal{U}_{g}$ stabilizes $U^{+}(p^{i}K)$ and $P^{-}(p^{i}K)$ and the first claim above is proven. Now let us turn to the second:
+\\
+By induction it is sufficient to show that $\mathcal{U}_{g}$ acts pointwise nilpotently on all $$\G(p^{i}K/p^{i+1}K)\cong \G(p^{i}K)/\G(p^{i+1}K)$$ to conclude that $\mathcal{U}_{g}$ is pointwise nilpotent on all $\G(K/p^{i}K),$ for all $i\geq 0.$
+\\
+Let us show the claimed pointwise nilpotency of $\mathcal{U}_{g}$ on $\G(p^{i}K/p^{i+1}K).$
+For this, we first claim that
+$$\Phi_{\mathcal{F}}\colon P^{-}(p^{i}K/p^{i+1}K)\rightarrow P^{-}(p^{i}K/p^{i+1}K)$$ is the zero map. In fact, observe that $P^{-}(p^{i}K/p^{i+1}K)\simeq \Lie(P^{-})\otimes p^{i}K/p^{i+1}K.$ Under this identification $\Phi_{\mathcal{F}}$ corresponds to $\cdot p^{-m}\varphi$ on weight $m$-components, where $m\leq 0.$ As $\varphi=p\dot{\varphi}$ on $K,$ the claim is ok.
+\\
+Therefore, we have the following factorization of the endormorphism $\mathcal{U}_{g}:$
+$$\xymatrix{
+\G(K_{i}) \ar[r]^{pr_{2}} & U^{+}(K_{i}) \ar[r]^{id\otimes \dot{\varphi}} & U^{+}(K_{i}) \ar[r]^{z\mapsto gzg^{-1}} & \G(K_{i}),
+}$$
+here we wrote $K_{i}:=p^{i}K/p^{i+1}K$ to not exceed the margin. This is pointwise nilpotent, if the permutation
+$$
+\xymatrix{
+U^{+}(K_{i}) \ar[r]^{z\mapsto gzg^{-1}} & \G(K_{i}) \ar[r]^{pr_{2}} & U^{+}(K_{i}) \ar[r]^{id\otimes \dot{\varphi}} & U^{+}(K_{i})
+}
+$$
+is pointwise nilpotent.
+But the morphism of pointed sets $U^{+}(K_{i}) \rightarrow U^{+}(K_{i}),$ defined by $z\mapsto pr_{2}(zgz^{-1})$ is described by some power series, whose higher degree terms are annihaled by $id\otimes \dot{\varphi},$ because we have $\dot{\varphi}(ab)=p\dot{\varphi}(a)\dot{\varphi}(b),$ for all $a,b\in K.$ Therefore,
+$$\mathcal{U}_{g}\colon \Lie(U^{+})_{S}\otimes_{S} K_{i} \rightarrow \Lie(U^{+})_{S}\otimes_{S} K_{i}$$
+is given by $\lambda \otimes \dot{\varphi},$ where $\lambda$ is the following $\varphi$-linear endomorphism of $\Lie(U^{+})\otimes_{W(k)} S$:
+$$(1\otimes \varphi)\circ pr_{2} \circ \Ad(g).$$
+But we exactly required that this endomorphism is nilpotent. This concludes the proof.
+\end{proof}
+\section{Cristalline equivalence}
+Fix as usual a 1-bound window-datum $(\G,\mu)$.
+Let $R$ be an integral perfectoid $W(k)$-algebra. In this section we will first construct a strict framemorphism
+$$
+\chi\colon \mathcal{F}_{cris}(R)\rightarrow \mathcal{W}(R)
+$$
+and then proceed to show that the corresponding base-change functor on the level of adjoint nilpotent windows
+$$
+\chi_{\bullet}\colon \G-\mu-\text{Win}(\mathcal{F}_{cris}(R))_{nilp}\rightarrow \G-\mu-\text{Displ}(R)_{nilp}
+$$
+is an equivalence. Recall that Zink proves in \cite{zink-windows} the $\GL_{n}$-case of the crystalline equivalence (in fact, he proves a more general statement). He writes down a quasi-inverse of the base-change functor $\chi_{\bullet},$ by evaluating the crystal of a nilpotent display at the (topological) pd-thickening $\Acris(R)\rightarrow R$ to get the finite projective module over $\Acris(R)$ and then gets the Frobenius-structure by applying functoriality of the crystal to the Frobenius-isogeny of the display. As we are working with torsors, this route is not available. Instead,  the idea is to first prove the statement $^{\prime}$ \textit{modulo }$p$ $^{\prime}$ directly by applying the unique lifting lemma and then study the relation between lifts and lifts of the Hodge-filtration in our set-up, to deduce the full statement.
+\subsection{Cristalline equivalence modulo $p$}
+Let $R$ still be an integral perfectoid $W(k)$-algebra. Then we have the frame $
+\mathcal{F}_{cris}(R/p)=(\Acris(R), \Fil(\Acris(R))+p\Acris(R),R/pR,\varphi,\dot{\varphi}),
+$
+that of course still has frame-constant $p.$
+By Lemma \ref{Framemorphismus von Acris nach W(R)} below,
+we have a strict frame-morphism $\chi\backslash p\colon \mathcal{F}_{cris}(R/p)\rightarrow \mathcal{W}(R/p),$ and the aim of this section is to show that
+$$
+(\chi\backslash p)_{\bullet}\colon \G-\mu-Win(
+\mathcal{F}_{cris}(R/p))_{nilp}\rightarrow \G-\mu-Displ(R/p)_{nilp}
+$$
+is an equivalence of groupoids. By Lemma,\ref{Displays sind ein Stack fuer Laus Garbe}, even further below, we see that objects on both sides satisfy descent for the affine étale topology on $\Spec(R/p)$ and therefore one is immediately reduced to show that $(\chi\backslash p)$ induces an equivalence on the corresponding quotient-groupoids of trivial and adjoint nilpotent windows resp. displays.\footnote{In the classical language this would correspond to reducing to show a statement on windows that have a \textit{free normal decomposition.}}
+\\
+Let us now operate in slightly more generality. We consider a $p$-adic and $p$-torsion free ring $A,$ a $p$-adic ring $R,$ that is the quotient of $A$ by a pd-ideal $\mathfrak{a}\subseteq A.$ We assume that there exists a Frobenius-Lift
+$$
+\varphi\colon A\rightarrow A.
+$$ 
+It follows that we can consider $\dot{\varphi}=\frac{\varphi}{p}\colon \mathfrak{a}\rightarrow A$ and we have a frame 
+$$
+\underline{A}=(A,\mathfrak{a},R,\varphi,\dot{\varphi}).
+$$
+\begin{Lemma}\label{Framemorphismus von Acris nach W(R)}
+There exists a strict frame-morphism
+$$
+\chi\colon \underline{A}\rightarrow \mathcal{W}(R).
+$$
+\end{Lemma}
+\begin{proof}
+This is contained in \cite[Corollary 2.40.]{zink-vorlesung}. The frame-morphism is constructed as the composition of the Cartier-morphism
+$$
+\delta\colon A\rightarrow W(A),
+$$
+with the homomorphism $W(A)\rightarrow W(R).$
+\end{proof}
+Next, we deduce the cristalline equivalence $^{\prime}$ \text{modulo }$p$ $^{\prime}$:
+\begin{Lemma}\label{Kristalline aequivalenz modulo p}
+Keep the assumptions in Lemma \ref{Framemorphismus von Acris nach W(R)}, but add the assumption that $R$ is a semi-perfect $\mathbb{F}_{p}$-algebra. Then the strict frame-morphism $\chi\colon \underline{A}\rightarrow \mathcal{W}(R)$ from above is nil-cristalline, i.e. the base-change functor 
+$$\chi_{\bullet}\colon \G-\mu-\text{Win}(\underline{A})_{triv,nilp}\rightarrow \G-\mu-\text{Displ}(R)_{triv,nilp} $$
+is an equivalence.
+\end{Lemma}
+\begin{proof}
+Write $K=\Ker(\chi\colon A\rightarrow W(R)).$
+We want to apply the unique lifting lemma Proposition \ref{Unique lifting lemma}. Thus we first have to show that $\chi$ satisfies the following hypotheses:
+\begin{enumerate}
+\item[(a):] $\chi\colon A\rightarrow W(R)$ is a surjection.
+\item[(b):] $\Ker(\chi)$ is $p$-adically complete.
+\item[(c):] $\dot{\varphi}$ keeps $\Ker(\chi)$ stable.
+\end{enumerate}
+For part (a), note that $A$ is $p$-adic by assumption and $W(R)$ is $p$-adic by a result of Zink. It follows that it suffices to show the surjectivity of $\chi$ after quotienting out by $p.$ Because $R$ is a $\F_{p}$-algebra, we have $p=VF$ and since $R$ is also semiperfect, we also have $pW(R)=I(R).$ This implies that $\chi$ is surjective, as desired. Furthermore, by definition both $\underline{A}$ and $\mathcal{W}(R)$ are frames over the same ring $R.$
+\\ Part (b) is automatic. Let us show (c). For this, we compute $K=\Ker(\chi).$ Let $a\in A$ and write $\delta(a)=(\delta(a)_{0},\delta(a)_{1},...)\in W(A).$ Then $a\in K,$ iff all $\delta(a)_{i}\in \mathfrak{a}.$ We claim that this is the case iff $\varphi^{n}(a)\in p^{n}\mathfrak{a}.$
+\\
+Let $a\in K.$ Then certainly $\delta(a)_{0}=a\in \mathfrak{a}.$ We have that
+\begin{equation}\label{Geistkomponenten von Cartiermorphismus}
+W_{n}(\delta(a))=a^{p^{n}}+p(\delta(a)_{1}^{p^{n-1}})+...+p^{n}\delta(a)_{n}=\varphi^{n}(a).
+\end{equation}
+From (\ref{Geistkomponenten von Cartiermorphismus}), we get that
+\begin{equation}
+\dot{\varphi}^{n}(a)=(p^{n}-1)!\gamma_{p^{n}}(a)+(p^{n-1}-1)!\gamma_{p^{n-1}}(\delta(a)_{1})+...+\delta(a)_{n}\in \mathfrak{a}.
+\end{equation}
+Here we used that all $\delta(a)_{i}\in \mathfrak{a}$ so that we can apply $\gamma$ and that $\mathfrak{a}$ is a pd-ideal, so that $\gamma_{m}(a)\in \mathfrak{a}.$ It follows that $\varphi^{n}(a)\in p^{n}\mathfrak{a}.$
+\\
+For the other inclusion, we argue by induction: We have that $\delta(a)_{0}=\varphi^{0}(a)=a\in\mathfrak{a}.$ Assume, we already showed for $i\leq n-1$ that $\delta(a)_{i}\in \mathfrak{a}.$ We can write, as $\varphi^{n}(a)\in p^{n}\mathfrak{a},$
+$$\delta(a)_{n}=\frac{\varphi^{n}(a)-(\delta(a)_{0})^{p^{n}}-p(\delta(a)_{1})^{p^{n-1}}-...-p^{(n-1)}(\delta(a)_{n-1})^{p}}{p^{n}}
+$$
+$$
+= \dot{\varphi}^{n}(a)-(p^{n}-1)!\gamma_{p^{n}}(\delta(a)_{0})-...-(p-1)!\gamma_{p}(\delta(a)_{n-1})\in \mathfrak{a}.
+$$
+From this it follows, that
+$\dot{\varphi}(K)\subseteq K:$ Let $a\in K,$ we have that
+$$\varphi^{n}(\dot{\varphi}(a))=\frac{\varphi^{n+1}(a)}{p}\in p^{n}\mathfrak{a},$$
+because $\varphi^{n+1}(a)\in p^{n+1}\mathfrak{a}.$ Now the above description of the kernel, shows that also $\dot{\varphi}(a)\in K.$
+\\
+Let us write again $K_{i}=p^{i}K/p^{i+1}K.$ Then, to conclude the proof as in Proposition \ref{Unique lifting lemma}, we still have to check that the $\varphi$-linear endomorphism
+$$
+\psi_{g}\otimes \dot{\varphi}\colon \Lie(U^{+})_{A} \otimes_{A} K_{i} \rightarrow  \Lie(U^{+})_{A}\otimes_{A} K_{i},
+$$
+is really pointwise nilpotent.
+Recall that here $\psi_{g}$ was the $\varphi$-linear endomorphism of $\Lie(U^{+})_{A}$ given by $(1\otimes \varphi)\circ \pr_{2} \circ \Ad(g).$ But this follows from the adjoint nilpotency condition on $g\in \G(A)$. In fact, to make the argument clearer, let us choose a basis of $\Lie(U^{+}),$ i.e. an isomorphism $\Lie(U^{+})\simeq (W(k))^{n_{1}}.$ Then we have $(\psi_{g}\otimes \dot{\varphi})(x)=N\cdot \dot{\varphi}(\underline{x}),$ where $N\in\Mat_{n_{1}}(A)$ and $\underline{x}\in (K_{i})^{n_{1}}$ is the column-vector corresponding to $x$. Inductively, we get
+$$
+(\psi_{g}\otimes \dot{\varphi})^{n}(x)=N\cdot \varphi(N)\cdot \varphi^{2}(N) ...\varphi^{n-1}(N)\cdot \dot{\varphi}^{n}(\underline{x}).
+$$
+The adjoint nilpotency condition says, that there exists some $c\geq 1,$ such that
+$$
+M=N\cdot \varphi(N)\cdot \varphi^{2}(N) ...\varphi^{c}(N)
+$$
+has coefficients in $\mathfrak{a}.$ Thus, we get that $$(\psi_{g}\otimes \dot{\varphi})^{c+1}(x)=N\cdot \varphi(M)\cdot \dot{\varphi}^{c+1}(\underline{x})=N\cdot\dot{\varphi}(M\cdot \dot{\varphi}^{c}(\underline{x}))=N\cdot \dot{\varphi}(M)\cdot\varphi(\dot{\varphi}(\underline{x}))=0.$$
+Here we used in the third equation, that $\dot{\varphi}$ is $\varphi$-linear, in the fourth equation, that $M$ has coefficients in $\mathfrak{a}$ and in the final equation, that $\varphi(K)\subseteq pK.$ This concludes the proof.
+\end{proof}
+Return to the assumption that $R$ is an integral perfectoid $W(k)$-algebra. Recall that then $R/p$ is semi-perfect. By Lemma \ref{Kristalline aequivalenz modulo p} above, we deduce that the strict frame-morphism
+$$
+\chi/p\colon \mathcal{F}_{cris}(R/p) \rightarrow \mathcal{W}(R/p)
+$$
+is nil-cristalline. 
+\subsection{Proof of the cristalline equivalence}
+To deduce that the morphism $\chi\colon \mathcal{F}_{cris}(R)\rightarrow \mathcal{W}(R)$ is nil-crystalline, we follow \cite[Prop. 9.7.]{Lau perfektoid}.
+\\
+We have a strict frame-morphism $j\colon \mathcal{F}_{cris}(R)\rightarrow \mathcal{F}_{cris}(R/p).$ Note that we get an injective group-homomorphism
+$$
+j\colon\G(\mathcal{F}_{cris}(R))_{\mu}\rightarrow \G(\mathcal{F}_{cris}(R/p))_{\mu}.
+$$ Consider the category $\mathcal{C}$ with objects $\G(\Acris(R))\times \G(\mathcal{F}_{cris}(R/p))_{\mu}/ \G(\mathcal{F}_{cris}(R))_{\mu}$ and morphism given by $\G(\mathcal{F}_{cris}(R/p))_{\mu},$ with the action: $(g,\bar{x})\cdot h=(h^{-1}g\Phi_{\mathcal{F}_{cris}(R/p)}(h),\bar{hx}).$
+\\
+Then it is straight forward to see, that we get an equivalence
+$$
+[\G(\Acris(R))/_{\Phi_{\mathcal{F}_{cris}(R)}} \G(\mathcal{F}_{cris}(R))_{\mu}]\simeq \mathcal{C},
+$$
+given by sending $g\mapsto (g,\bar{e}).$
+Oberserve that under the natural maps
+$$
+\G(\mathcal{F}_{cris}(R/p))_{\mu}/ \G(\mathcal{F}_{cris}(R))_{\mu}\hookrightarrow \G(\Acris(R))/ \G(\mathcal{F}_{cris}(R))_{\mu} \rightarrow (\G/P^{-})(R),
+$$
+the coset $\G(\mathcal{F}_{cris}(R/p))_{\mu}/ \G(\mathcal{F}_{cris}(R))_{\mu}$ gets identified with the sections in the flag-variety, whose reductions modulo $p$ are the identity-coset. Thus lifts under $j$ correspond to lifts of the Hodge-Filtration. On the other hand, by section 3.5.7. in \cite{BP}, we see that lifts of trivial and adjoint nilpotent $\G$-$\mu$-displays over $R/pR$ towards $R$ correspond to the coset-space $\G(W(pR))/\G(\mathcal{W}(pR))_{\mu},$ which is again identified with the sections in the flag-variety, whose reductions modulo $p$ are the identity-coset.
+\\
+Now consider the commutative diagram
+$$
+\xymatrix{
+\G-\mu-\text{win}(\mathcal{F}_{cris}(R))_{nilp}\ar[r]^{\chi} \ar[d]^{j} & \G-\mu-\text{displ}(R)_{nilp} \ar[d]^{\pi} \\
+\G-\mu-\text{win}(\mathcal{F}_{cris}(R/pR))_{nilp} \ar[r]^{\chi/p} & \G-\mu-\text{displ}(R/pR)_{nilp}.
+}
+$$
+Then we just explained that lifts under $j$ and lifts under $\pi$ correspond to lifts of the Hodge-filtration in the same way. We deduce that this diagram of groupoids is cartesian - because $\chi/p$ is already known to induce an equivalence, we deduce that $\chi$ induces an equivalence.
+\section{Descent from $\Acris$ to $\Ainf$}
+In this section we will give a group-theoretical generalization of the descent of classical windows over $\Acris$ to those over $\Ainf,$ as proven by Cais-Lau in Sections 2.2 and 2.3 in \cite{Cais-Lau}. Because we follow their methods, we will have to restrict to the case that $p\geq 3.$
+\\
+Let as usual $(\G,\mu)$ a 1-bound window-datum, $R$ a $p$-torsion free integral perfectoid $W(k)$-algebra. Recall the $u=\frac{\varphi(\xi)}{p}$-frame morphism
+$$
+\lambda\colon \mathcal{F}_{inf}(R)\rightarrow \mathcal{F}_{cris}(R).
+$$
+Then we want to show the following
+\begin{proposition}\label{Deszent von Acris nach Ainf}
+The base-change functor
+$$
+\lambda_{\bullet}\colon \G-\mu-Win(\mathcal{F}_{inf}(R))_{triv}\rightarrow \G-\mu-Win(\mathcal{F}_{cris}(R))_{triv}
+$$
+is crystalline for $p\geq 3.$
+\end{proposition}
+Consider the frames $$\mathcal{F}_{inf,n}(R)=\mathcal{F}_{inf}(R)\otimes \mathbb{Z}/p^{n}\mathbb{Z} = (\Ainf(R)/p^{n}\Ainf(R),(\xi)/p^{n}(\xi),R/p^{n}R,\varphi (\text{ mod}p^{n}), \dot{\varphi} (\text{ mod}p^{n}))$$ for $n\geq 1$ resp. the same with $\mathcal{F}_{cris}(R).$ We thus obtain by assumptions that $\mathcal{F}_{inf}(R)=\lim_{n\geq 1}\mathcal{F}_{inf,n}(R)$ and $\mathcal{F}_{cris}(R)=\lim_{n\geq 1} \mathcal{F}_{cris,n}(R),$ in the sense of \cite[Section 2]{frames finite-groupschemes}. Due to general problems with torsion, let us first check the following
+\begin{Lemma}
+Let $\mathcal{F}=(S,I,R,\varphi,\dot{\varphi})\in \lbrace \mathcal{F}_{inf}(R), \mathcal{F}_{cris}(R)\rbrace$ and $\mathcal{F}_{n}=(S/p^{n}S,I/p^{n}I,R/p^{n}R,\varphi,\dot{\varphi})\in \lbrace \mathcal{F}_{inf,n}(R), \mathcal{F}_{cris,n}(R)\rbrace.$ Then the divided Frobenius-map
+$$
+\Phi_{\mathcal{F}_{n}}\colon \G(\mathcal{F}_{n})_{\mu}\rightarrow \G(S_{n})
+$$
+is a group-homomorphism.
+\end{Lemma}
+\begin{proof}
+The proof rests on the following 
+\\
+\textbf{Claim}: The homomorphisms $G(S)\rightarrow \G(S/p^{n}S)$ and $\G(\mathcal{F})_{\mu}\rightarrow \G(\mathcal{F}_{n})_{\mu}$ are surjective.
+\\
+Let us explain this: We have that $(S,\Ker(\pi_{n})=p^{n}S)$ is a henselian pair by \cite[Tag 0CT7]{stacks-project}. Then we can use that as $\G$ is smooth, the map
+$$\pi_{n}\colon \G(S)\rightarrow \G(S/\Ker(\pi_{n}))=\G(S/p^{n}S)$$ is surjective. This implies, as $P^{-}$ is also smooth, that likewise the map
+$$\pi_{n}\colon P^{-}(S) \rightarrow P^{-}(S/p^{n}S)$$ is surjective. Now the map $I\rightarrow I/p^{n}I$ is surjective. Thus we can use the decomposition $\G(\mathcal{F})_{\mu}\cong P^{-}(S) \times \Lie(U^{+})\otimes I$ to conclude the proof of the \textbf{Claim}.
+\\
+Let us now prove the Lemma. As $\pi_{n}\colon \mathcal{F}\rightarrow \mathcal{F}_{n}$ is a \textit{strict} frame-homomorphism, we have the following commutative diagram
+$$
+\xymatrix{
+\G(\mathcal{F})_{\mu} \ar[r]^{\Phi_{\mathcal{F}}} \ar[d]^{\pi_{n}} & \G(S) \ar[d]^{\pi_{n}} \\
+ \G(\mathcal{F}_{n})_{\mu} \ar[r]^{\Phi_{\mathcal{F}_{n}}} & \G(S/p^{n}S).
+}
+$$
+Let $h_{n},h_{n}^{\prime}\in \G(\mathcal{F}_{n})_{\mu} ,$ we want to show the equation
+\begin{equation}\label{Gleichung geteilter Frobenius gruppenhomomorphismus modulo p}
+\Phi_{\mathcal{F}_{n}}(h_{n}\cdot h_{n}^{\prime})=\Phi_{\mathcal{F}_{n}}(h_{n})\cdot \Phi_{\mathcal{F}_{n}}(h_{n}^{\prime}).
+\end{equation}
+Let $h,h^{\prime}\in \G(\mathcal{F})_{\mu}$ be pre-images of $h_{n},h_{n}^{\prime}$ under $\pi_{n}.$ Then we have the equation
+\begin{equation}\label{Gleichung geteilter Frobenius gruppenhomomorphismus}
+\Phi_{\mathcal{F}}(h\cdot h^{\prime})=\Phi_{\mathcal{F}}(h)\cdot \Phi_{\mathcal{F}}(h^{\prime}),
+\end{equation}
+by the assumption that $\Phi_{\mathcal{F}}$ is a group-homomorphism. Now we can apply $\pi_{n}$ to both sides of equation (\ref{Gleichung geteilter Frobenius gruppenhomomorphismus}) and by the commutativity of the above diagram, we deduce that equation (\ref{Gleichung geteilter Frobenius gruppenhomomorphismus modulo p}) holds true.
+\end{proof}
+We have $u$-frame homomorphisms
+$$
+\lambda_{n}\colon \mathcal{F}_{inf,n}(R)\rightarrow \mathcal{F}_{cris,n}(R),
+$$
+for all $n\geq 1.$
+\begin{Lemma}\label{Liften von kristallinen Morphismen modulo p}
+For all $n\geq 1,$ if $\lambda_{n}$ is crystalline, also $\lambda_{n+1}$ is crystalline.
+\end{Lemma}
+For the proof we will need a certain variation of the usual deformation theory arguments in an additive setting. Thus let us start with a little excursion on this topic.
+\\
+Let $\mathcal{F}$ and $\mathcal{F}^{\prime}$ be two frames over $W(k)$ fulfilling the following properties:
+\begin{enumerate}
+\item[(a):] The divided Frobenii $\Phi_{\mathcal{F}}$ and $\Phi_{\mathcal{F}^{\prime}}$ are group-homomorphisms,
+\item[(b):] We have a $u$-frame-morphism 
+$$
+\lambda\colon \mathcal{F}\rightarrow \mathcal{F}^{\prime},
+$$
+such that the corresponding ring-homomorphism $\lambda\colon S\rightarrow S^{\prime}$ is surjective and we have $R\simeq R^{\prime}.$
+\item[(c):] $\dot{\varphi}(K)\subseteq K$ and
+$$\dot{\varphi}\colon K\rightarrow K$$
+is elementwise (topologically) nilpotent.
+\end{enumerate}
+Let us consider the following quotient-groupoid: We denote by $\mathfrak{g}=\Lie(\G)$ the Lie-algebra, a finite free $\Z_{p}$-module, $\mathfrak{u}^{+}=\Lie(U^{+})$ and $\mathfrak{p}^{-}=\Lie(P^{-}).$ Let $g\in \G(S)$ and $\lambda_{\bullet}(g)=\lambda(g)\mu(u)\in \G(S^{\prime}).$ Furthermore, we will consider the Lie-theoretic analogon of the divided Frobenius map
+$$
+\psi_{\mathcal{F}} \colon \mathfrak{u}^{+}\otimes I \oplus \mathfrak{p}^{-} \otimes S \rightarrow \mathfrak{g}\otimes S,
+$$
+which is defined to be $id\otimes \dot{\varphi}$ on $\mathfrak{u}^{+}\otimes I$ and $\zeta_{\mathcal{F}}^{m}\cdot \varphi$ on weight $m$-components. Consider
+$$
+\mathcal{C}_{g}=[\mathfrak{g}\otimes S/_{g} \mathfrak{u}^{+}\otimes I \oplus \mathfrak{p}^{-}\otimes S],
+$$
+where the action is by $X.Z=X-Ad(g)(Z)+\psi_{\mathcal{F}}(Z).$ Likewise, we have
+$$
+\mathcal{C}_{\lambda_{\bullet}(g)}=[\mathfrak{g}\otimes S^{\prime}/_{\lambda_{\bullet}(g)} \mathfrak{u}^{+}\otimes I^{\prime} \oplus \mathfrak{p}^{-}\otimes S^{\prime}],
+$$
+where the action is now by $X^{\prime}.Z^{\prime}=X^{\prime}-Ad(\lambda_{\bullet}(g))(Z^{\prime})+\psi_{\mathcal{F}^{\prime}}(Z^{\prime}).$
+\begin{Lemma}\label{Aequivalenz der Fasern unter Reduktion modulo p}
+There exists an equivalence of groupoids
+$$
+\mathcal{C}_{g}\rightarrow \mathcal{C}_{\lambda_{\bullet}(g)},
+$$
+which is given by $X\mapsto Ad(\mu(u))(\lambda(X)),$ for all $X\in \mathfrak{g}\otimes S,$ on objects and the identity on morphisms.
+\end{Lemma}
+\begin{proof}
+This is an additive version of the usual argument for a frame morphism being crystalline: First we note that
+$$Ad(\mu(u))\circ (id_{\mathfrak{g}}\otimes \lambda)\colon \mathfrak{g}\otimes S \rightarrow \mathfrak{g}\otimes S^{\prime}$$ is a surjective homomorphism of modules with kernel $\mathfrak{g}\otimes K.$ We have to show that the action of the kernel is simply transitive. Spelled out this means, we have to show that for all $X\in \mathfrak{g}\otimes S$ and all $X_{0}\in \mathfrak{g}\otimes K,$ there exists a unique $Z\in \mathfrak{g}\otimes K,$ such that
+\begin{equation}
+X-Ad(g)(Z)+\psi_{\mathcal{F}}(Z)=X+X_{0}.
+\end{equation}
+Note that as $Ad\colon \G\rightarrow V(\Lie(\G))$ is a group scheme homomorphism, we have the following commutative diagram
+$$
+\xymatrix{
+0 \ar[r] & \mathfrak{g}\otimes K \ar[r] \ar[d]^{Ad(g)} & \mathfrak{g} \otimes S \ar[r]^{\id \otimes \lambda} \ar[d]^{Ad(g)} & \mathfrak{g} \otimes S^{\prime} \ar[d]^{Ad(\lambda(g))} \ar[r] & 0
+\\
+0 \ar[r] & \mathfrak{g}\otimes K \ar[r] & \mathfrak{g} \otimes S \ar[r]^{\id \otimes \lambda} & \mathfrak{g} \otimes S^{\prime} \ar[r] & 0.
+}
+$$
+It follows that $Ad(g)$ induces an automorphism of $\mathfrak{g}\otimes K.$ Furthermore, note that $\psi_{\mathcal{F}}$ stabilizes $\mathfrak{g}\otimes K,$ as $K$ is an ideal and $\dot{\varphi}$ does so by assumption.
+We thus have to show that the map
+$$
+(\psi_{\mathcal{F}}-Ad(g))\colon \mathfrak{g}\otimes K \rightarrow \mathfrak{g} \otimes K
+$$
+is a bijection. As we noted above that $Ad(g)$ induces an automorphism of $\mathfrak{g}\otimes K,$ it suffices to show that $(U-Id)$ is a bijection, where $U=Ad(g)^{-1}\circ \psi_{\mathcal{F}}.$ But note, that as $\varphi=\zeta_{\mathcal{F}}\cdot \dot{\varphi}$ on $K$, we can write
+$$
+\psi_{\mathcal{F}}=\begin{vmatrix}
+E_{n_{1}}& 0 &0 \\
+0 & diag_{n_{2}}(\zeta_{\mathcal{F}})& 0 \\
+0 & 0 & diag_{n_{3}}(\zeta_{\mathcal{F}}^{2})
+\end{vmatrix} \circ \dot{\varphi},
+$$
+where $n_{1}=rg(\mathfrak{u}^{+}),$ $n_{2}=rg(\mathfrak{p}^{0})$ and $n_{3}=rg(\mathfrak{p}^{-1}).$ But we assumed that $\dot{\varphi}$ is pointwise (topologically) nilpotent on $K$. It follows that $U$ is (topologically) nilpotent and thus that $(U-1)$ is a bijection. This should conclude the proof.
+\end{proof}
+Now let us explain, why Lemma \ref{Liften von kristallinen Morphismen modulo p} above is true.
+\begin{proof}
+First, we note that we have strict frame morphisms
+$
+\pi_{n+1}\colon \mathcal{F}_{inf,n+1}(R)\rightarrow \mathcal{F}_{inf,n}(R),
+$ resp. $\pi_{n+1}\colon \mathcal{F}_{cris,n+1}(R)\rightarrow \mathcal{F}_{cris,n}(R),$ for all $n\geq 1,$ induced by reduction modulo $p^{n}.$ Consider the following commutative diagram of groupoids
+$$
+\xymatrix{
+\G-\mu-Win(\mathcal{F}_{inf,n+1}(R))_{triv} \ar[r]^{\lambda_{n+1}} \ar[d]^{\pi_{n+1}} & \G-\mu-Win(\mathcal{F}_{cris,n+1}(R)) \ar[d]^{\pi_{n+1}} \\
+\G-\mu-Win(\mathcal{F}_{inf,n}(R)) \ar[r]^{\lambda_{n}} & \G-\mu-Win(\mathcal{F}_{cris,n}(R)).
+}
+$$ By assumption, we have that the lower horizontal functor is an equivalence. The idea is to show that $\lambda_{n+1}$ induces equivalences on the fibers of the reduction modulo $p^{n}$-functors. Then the statement follows.
+\\
+Let $g_{n}\in \G(\Ainf(R)/p^{n}\Ainf(R)),$ considered as an representative for a trivial $\G$-$\mu$-window over $\mathcal{F}_{inf,n}(R).$ Then we want to understand the fiber over this object of the above frame morphisms as a groupoid. Thus, denote by $\mathcal{L}(g_{n})$ the fiber of $\pi_{n+1,\bullet}$ over $g_{n}.$ This is the quotient groupoid with objects $\lbrace g\in \G(\Ainf(R)/p^{n+1})\colon g \text{ mod }p^{n}=g_{n} \rbrace$ and morphisms $\lbrace h \in \G(\mathcal{F}_{inf,n+1}(R))\colon h\text{ mod }p^{n}=1 \rbrace$ and the usual action by $\Phi$-conjugation. Choosing a lift $\tilde{g_{n+1}}\in \G(\Ainf(R)/p^{n+1})$ of $g_{n}$ (remember $\G$ is smooth), we can identify
+$$\lbrace g\in \G(\Ainf(R)/p^{n+1})\colon g \text{ mod }p^{n}=g_{n} \rbrace \simeq \mathfrak{g}\otimes (\Ainf(R)/p).$$
+Here we used that $p^{n}\Ainf(R)/p^{n+1}\Ainf(R)\simeq \Ainf(R)/p\Ainf(R),$ by $p$-torsion freeness.
+Furthermore, we have a bijection
+$$
+\lbrace h \in \G(\mathcal{F}_{inf,n+1}(R))\colon h\text{ mod }p^{n}=1 \rbrace \simeq \mathfrak{u}^{+} \otimes I_{inf,1} \oplus \mathfrak{p}^{-} \otimes \Ainf(R)/p.
+$$ Let $g_{1}\in \G(\Ainf(R)/p)$ be the reduction modulo $p$ of $g_{n}.$ Under the above identifications, the action of the groupoid $\mathcal{L}(g_{n})$ gets identified with
+$$
+X.Z=X-Ad(g_{1})(Z)+\psi_{\mathcal{F}_{inf,1}(R)}(Z).
+$$
+In the above notation, we have an equivalence of groupoids
+$
+\mathcal{L}(g_{n})\simeq \mathcal{C}_{g_{1}}.
+$  We claim that we have an equivalence
+$$
+\lambda_{n+1}\colon \mathcal{L}(g_{n})\simeq \mathcal{L}(\lambda_{n,\bullet}(g_{n})).
+$$
+But this follows from the above Lemma, applied to the frame morphisms $\pi\colon\mathcal{F}_{inf,1}(R)\rightarrow \underline{A_{0}}$ and $\chi\colon\mathcal{F}_{cris,1}(R)\rightarrow \underline{A_{0}},$ which we shall introduce in the proof of the next Lemma.
+\end{proof}
+To finish the proof of Proposition \ref{Deszent von Acris nach Ainf}, it remains to show the following
+\begin{Lemma}
+Assume that $p\geq 3.$ Then the $u$-frame morphism
+$$
+\lambda_{1}\colon \G-\mu-Win(\mathcal{F}_{inf,1}(R))_{triv}\rightarrow \G-\mu-Win(\mathcal{F}_{cris,1}(R))_{triv}
+$$
+is crystalline.
+\end{Lemma}
+We will show this in two steps. Again, this is a group-theoretic adaptation of the argument of Cais-Lau.
+\subsubsection{$\pi$ is crystalline!}
+Let us introduce the notation $A_{1}:=\Ainf(R)/p\Ainf(R)$ and $A_{0}:=A_{1}/\xi^{p}A_{1}.$
+\\
+We have the following frame-structure on $A_{0}$:
+$$\underline{A_{0}}:=(A_{0},\xi A_{0}/\xi^{p}A_{0},R/p,\varphi=\text{Frob}_{A_{0}},\dot{\varphi}_{0}),$$
+where $\dot{\varphi}_{0}(\xi a)=\varphi(a),$ for all $a\in A_{0}.$ Sometimes we will write $\text{Fil}(A_{0}):=\xi A_{0}/\xi^{p}A_{0}.$ Then it follows that the quotient homomorphism
+$$A_{1}\rightarrow A_{0},$$
+induces a strict frame-morphism
+$$\pi\colon \mathcal{F}_{inf}(R) \otimes \Z /p\Z \rightarrow \underline{A_{0}}.$$
+\begin{Lemma}
+Assume that $p\geq 3,$ then $\pi$ is crystalline.
+\end{Lemma}
+\begin{proof}
+We want to adapt the Unique Lifting Lemma, Proposition \ref{Unique lifting lemma}, to our situation.
+\\
+Consider
+$$K:=\Ker(\pi)=\xi^{p}A_{0}.$$
+Then we have that that  $\dot{\varphi}(\xi^{p}a))=\varphi(\xi)^{p-1}\varphi(a)=\xi^{p(p-1)}a^{p},$ and therefore $\dot{\varphi}$ stabilizes $K.$ Furthermore, we see that for $p\geq 3$ the restriction
+$$\dot{\varphi}\colon K\rightarrow K,$$
+is topologically nilpotent.
+\\
+Recall that in Proposition \ref{Unique lifting lemma} we worked with frames such that the frame-constant is equal to $p.$ Here we are faced with frames, whose frame-constant is $\xi^{p}$. We have to modify the arguments.
+\\
+First, $\Ainf(R)$ is $(p,\xi)$-adically complete, and thus $A_{1}$ is $\xi$-adic and also complete in the $\xi^{p}$-adic topology (since $(\xi^{p})\subseteq (\xi)$) and $K$ is open, thus closed in this topology. In Lemma \ref{Vorbereitung unique lifting lemma} the only place, where we used that the frame-constant is $p,$ was to show that $K/pK$ is a nilideal. Recall that this was true, because $\phi$ is a Frobenius-lift. In our case it follows directly that $K/\xi^{p}K$ is a nil-ideal. In total, we also have Lemma \ref{Vorbereitung unique lifting lemma} in our set-up.
+\\
+Then in the proof of Proposition \ref{Unique lifting lemma} the same arguments work, using in the end that $\dot{\varphi}$ is pointwise topologically nilpotent on $K.$
+\end{proof}
+\subsubsection{$\chi$ is crystalline!}
+Now we want to connect the frame $\underline{A_{0}}$ from before with the frame $\mathcal{F}_{cris}(R)\otimes \Z /p\Z$. To shorten notation, we will write $A_{1}^{cris}:=\Acris(R)/p\Acris(R).$
+\\
+\begin{Lemma}\label{Framemorphismus von Acris mod p zu A0} Assume $p\geq 3.$
+There exists a $u^{-1}$-frame homomorphism
+$$\chi\colon \mathcal{F}_{cris}(R)\otimes \Z /p\Z \rightarrow \underline{A_{0}}.$$
+\end{Lemma}
+\begin{proof}
+We can give the ideal $\text{Fil}(A_{0})$ the trivial pd-structure by setting $\gamma_{p}(\xi)=0.$ The universal property of $A_{1}^{cris}$  gives a unique pd-homomorphism
+$$\chi\colon A_{1}^{cris}\rightarrow A_{0},$$
+extending the map $\pi\colon A_{1}\rightarrow A_{0}$ and sending $\Fil^{p}(A_{1}^{cris})$ to zero. Then the identity of $A_{0}$ factors as
+$$A_{0}=A_{1}/\xi^{p}A_{1}\rightarrow A_{1}^{cris}/\Fil^{p}(A_{1}^{cris}) \rightarrow A_{0}.$$
+Here the first map is surjective and therefore both homomorphisms have to be bijective.
+We have the following identity in $\Acris(R):$
+\begin{equation}
+\dot{\varphi}_{cris}(\frac{\xi^{n}}{n!})=u^{n}\frac{p^{n-1}}{n!}=x\cdot p^{n-1-\nu_{p}(n!)},
+\end{equation}
+where still $u=\frac{\varphi(\xi)}{p}$ and $x$ is some unit. From the estimate $\nu_{p}(n!)\leq \frac{n-1}{p-1}$ we deduce for $p\geq 3$ that $n-1-\nu_{p}(n!)$ is positive and thus
+$$\dot{\varphi}_{cris}\colon \Fil^{p}(A_{1}^{cris})\rightarrow A_{1}^{cris}$$ is the zero map. Therefore
+$$\dot{\varphi}_{cris}\colon \Fil(A_{1}^{cris})\rightarrow A_{1}^{cris}$$ factorizes over $\Fil(A_{0})\rightarrow A_{1}^{cris}$ and induces a map
+$$\overline{\dot{\varphi}}\colon \Fil(A_{0})\rightarrow A_{0}.$$
+Because $\lambda$ is a $u$-framehomomorphism, it follows that $\overline{\dot{\varphi}}=u\cdot \dot{\varphi}_{0}.$ It follows that $\chi$ is a $u^{-1}$-frame-homomorphism, as desired.
+\end{proof}
+\begin{Lemma}\label{chi ist kristalline!}
+Assume $p\geq 3.$ Then the $u^{-1}$-frame homomorphism from Lemma \ref{Framemorphismus von Acris mod p zu A0} before is crystalline.
+\end{Lemma}
+\begin{proof}
+Before checking that the $u^{-1}$-frame morphism is crystalline, let us explain, why it induces indeed a functor of the associated trivial $\G$-$\mu$-window categories.
+Explicitely, this means that we have to show that for $g,g^{\prime}\in \G(A_{1}^{cris}),$ such that there is a $h\in\G(\mathcal{F}_{cris,1}(R))_{\mu}$ with
+\begin{equation}
+g^{\prime}=h^{-1}g\Phi_{cris,1}(h),
+\end{equation}
+there exists a $z\in \G(\underline{A_{0}})_{\mu},$ such that
+\begin{equation}\label{Gleichung fuer chi is funktoriell 3}
+\chi(g^{\prime})\mu(u^{-1})=z^{-1}\chi(g)\mu(u^{-1})\Phi_{\underline{A_{0}}}(z).
+\end{equation}
+For this, write as usual $h=v\cdot q,$ where $v\in U^{+}(\Fil(A_{1}^{cris}))$ and $q\in P^{-}(A_{1}^{cris}).$ Then $z=\chi(v)\cdot \chi(q)\in\G(\underline{A_{0}})_{\mu}$ will be the desired element. In fact, by definition we have that $\Phi_{\underline{A_{0}}}(\chi(q))=\mu(0)\varphi(\chi(q))\mu(0)^{-1},$ as the frame constant of $\underline{A_{0}}$ is zero. This implies that $\Phi_{\underline{A_{0}}}(\chi(q))$ lies in the centralisator of $\mu$ and thus
+\begin{equation}\label{Kommutiert mit Cocharacter}
+\Phi_{\underline{A_{0}}}(\chi(q))\mu(u^{-1})=\mu(u^{-1})\Phi_{\underline{A_{0}}}(\chi(q)).
+\end{equation}
+Furthermore, one checks directly the equations
+\begin{equation}\label{Gleichung fuer chi ist funktoriell 1}
+\mu(u^{-1})\Phi_{\underline{A_{0}}}(\chi(v))\mu(u)=\chi(\Phi_{\mathcal{F}_{cris,1}}(v))
+\end{equation}
+and
+\begin{equation}\label{Gleichung fuer chi is funktoriell 2}
+\Phi_{\underline{A_{0}}}(\chi(q))=\chi(\Phi_{\mathcal{F}_{cris,1}}(q)).
+\end{equation}
+Now equations (\ref{Kommutiert mit Cocharacter})-(\ref{Gleichung fuer chi is funktoriell 2}) together readly imply  equation (\ref{Gleichung fuer chi is funktoriell 3}) for $z=\chi(v)\cdot \chi(q)$ as above.
+\\
+We can now turn to checking that $\chi$ is indeed crystalline, where we already know the game: we have to modify the Unique Lifting Lemma, Proposition \ref{Unique lifting lemma}, to apply it in our situation here.
+\\
+Consider $K:=\Ker(A_{1}^{cris}\rightarrow A_{0})=\Fil^{p}(A_{1}^{cris}).$ This ideal has pd-structure and because $p=0,$ it follows that it is a nil-ideal (to the exponent $p$). Since smooth morphisms, locally of finite presentation satisfy Grothendieck$^{\prime}$s lifting criterium for nilideals and because $K\subseteq \Fil(A_{1}^{cris})\subseteq \Rad(A_{1}^{cris}),$ the same arguments as in the omitted proof of Lemma \ref{Vorbereitung unique lifting lemma} apply. We make the following
+\\
+\textbf{Claim:} The divided Frobenius
+$$\Phi_{\mathcal{F}_{cris}(R)\otimes \Z/p\Z}\colon \G(K) \rightarrow \G(K)$$ is the trivial map.
+\\
+If we have this statement, the proof of the present Lemma follows exactly as in Proposition \ref{Unique lifting lemma}.
+\\
+Let us prove the claim. For 
+$$\Phi_{\mathcal{F}_{cris}(R)\otimes \Z/p\Z}=id \otimes \dot{\varphi}\colon \Lie(U^{+})\otimes K \rightarrow \Lie(U^{+}) \otimes K$$ we already know that it is true, as we computed above that $\dot{\varphi}$ is zero on $K.$
+\\
+For
+$$\Phi_{\mathcal{F}_{cris}(R)\otimes \Z/p\Z}\colon P^{-}(K)\rightarrow P^{-}(K)$$
+the usual argument applies: If $g\in P^{-}(K)$ and $f=\sum_{n\in \Z} f_{n},$ we have that $g^{\sharp}(f_{-n})\in K$ for $n\geq 1.$ As the $\zeta_{\mathcal{F}_{cris}(R)\otimes \Z/p\Z}=p=0,$ $\Phi_{\mathcal{F}_{cris}(R)\otimes \Z/p\Z}(g)^{\sharp}(f_{-n})=0.$ Writing $g^{\sharp}(f_{0})=e^{\sharp}_{A_{1}^{cris}}(f_{0})+k$ for $k\in K,$ we have that $k^{p}=0$ and the Lemma follows, because Frobenius maps the unit section to the unit section.
+\end{proof}
+\subsection{Extension to the general case}
+Now we sketch how to deduce the descent result for an arbitrary integral perfectoid $W(k)$-algebra, that is not necessarily $p$-torsion free\footnote{As the category of integral perfectoids is closed under products, one can certainly construct integral perfectoids with $p$-torsion, that are not perfect.}. This follows by the same arguments as used by Lau to prove the $\GL_{n}$-case, see \cite[Lemma 9.2., Prop. 9.3 ]{Lau perfektoid}. Therefore we just briefely recall these.
+\\
+Let $R$ be an integral perfectoid $W(k)$-algebra, let $R_{1}=R/R[\sqrt{pR}],$ $R_{2}=R/\sqrt{pR}$ and $R_{3}=R_{1}/\sqrt{pR_{1}}.$ Then $R_{1}$ is $p$-torsion free integral perfectoid, while $R_{2}$ and $R_{3}$ are perfect. One then has a crucial pullback and pushout square with the canonical maps
+$$
+\xymatrix{
+R \ar[r] \ar[d] & R_{1} \ar[d] \\
+R_{2} \ar[r] & R_{3}.
+}
+$$
+It follows that one has a  pushout diagram in the category of frames, presenting $\mathcal{F}_{inf}(R)$ (resp. $\mathcal{F}_{cris}(R)$) as the pushout of $\mathcal{F}_{inf}(R_{1})$ and $\mathcal{F}_{inf}(R_{2})$ over $\mathcal{F}_{inf}(R_{3})$ (resp. the same for $\mathcal{F}_{cris}(.)$).
+Thus one has a pushout diagram of groupoids
+$$
+\xymatrix{
+\G-\mu-\text{Win}(\mathcal{F}_{inf}(R)) \ar[r] \ar[d] & \G-\mu-\text{Win}(\mathcal{F}_{inf}(R_{1})) \ar[d] \\
+\G-\mu-\text{Win}(\mathcal{F}_{inf}(R_{2})) \ar[r] & \G-\mu-\text{Win}(\mathcal{F}_{inf}(R_{3})),
+}
+$$
+(resp. the same for trivial $\G$-$\mu$-windows for $\mathcal{F}_{cris}(.)$). The point is that in the descent result, we may reduce to the case that the integral perfectoid $W(k)$-algebra is either a perfect $\mathbb{F}_{p}$-algebra, where it is trivial as the frame morphism $\lambda\colon \mathcal{F}_{inf}(R)\rightarrow \mathcal{F}_{cris}(R)$ is just the identity, or $p$-torsion free, which we proved before.
+\section{Connection to local mixed-characteristic Shtukas à la Scholze}
+Fix a reductive and minuscule window-datum $(\G,\mu).$ We will now explain, how to go from adjoint nilpotent $\G$-$\mu$-displays to local mixed characteristic $\G$-Shtukas. As the real work has been done in the previous sections, we will be rather quick here.
+\\
+We begin with the obvious extension of the notion of a Breuil-Kisin-Fargues module, as in \cite{conjectures curve}, \cite{Lau perfektoid}, that we will use.
+\begin{Definition}
+Let $R$ be an integral perfectoid ring. A Breuil-Kisin-Fargues module with $\G$-structure over $R$ is a pair $(\mathcal{P},\varphi_{\mathcal{P}}),$ where $\mathcal{P}\rightarrow \Spec(\Ainf(R))$ is a $\G$-torsor and 
+$$
+\varphi_{\mathcal{P}}\colon (\varphi^{*}\mathcal{P})[1/\varphi(\xi)]\simeq \mathcal{P}[1/\varphi(\xi)],
+$$
+for some generator $\xi$ of $\ker(\theta)$ and $\mathcal{P}[1/\varphi(\xi)]=\mathcal{P}\times_{\Spec(\Ainf(R))} \Spec(\Ainf(R)[1/\varphi(\xi)]).$
+\end{Definition}
+We will write $\G-BKF(R)$ for the corresponding groupoid and  $\G-BKF(\mathcal{R})$ for the fibered category for the affine etale topology on $\Spec(R/p),$ constructed via Lau$^{\prime}$s sheaf. 
+\begin{Lemma}\label{Displays sind ein Stack fuer Laus Garbe}
+\begin{enumerate}
+\item[(a):] $\G-BKF(\mathcal{R})$ is a stack.
+\item[(b):] $\G$-$\mu$-$Displ(\mathcal{R})$ is a stack.
+\end{enumerate}
+\end{Lemma} 
+\begin{proof}
+We refer the reader to \cite[Lemma 10.9.]{Lau perfektoid}, where the corresponding statements for $\G=\GL_{n}$ and miniscule BKFs resp. $p$-divisible groups are proven. Using \cite[Lemma B.0.4.(b)]{BP} for $\G$-BKFs and GFGA, Lemma \ref{Displays ueber adischen Ringen}, for $\G$-$\mu$-displays, the same arguments apply.
+\end{proof}
+\begin{Corollary}
+Let $R$ be an integral perfectoid $W(k)$-algebra. Then there exists a fully faithful functor
+$
+\G-\mu^{\sigma}-Win(\mathcal{F}_{inf}(R))\rightarrow \G-BKF(R).
+$
+\end{Corollary}
+\begin{proof}
+This follows directly from the local statement in Lemma, \ref{Windows ueber Ainf und BKF lokales Statement}, and the fact that $\G$-$BKF(\mathcal{R})$ forms a stack.
+\end{proof}
+As a consequence of the previously proven equivalence between adjoint nilpotent $\G$-$\mu$ displays over integral perfectoid $W(k)$-algebras and adjoint nilpotent $\G$-$\mu$ windows for the frame $\mathcal{F}_{cris}(R),$ plus the descent result along $\lambda\colon \mathcal{F}_{inf}(R)\rightarrow \mathcal{F}_{cris}(R)$ of the last section, we deduce
+\begin{Corollary}
+Let $R$ still be an integral perfectoid $W(k)$-algebra and assume $p\geq 3,$ there exists a fully faithful functor
+$\G-\mu^{\sigma}-Displ(R)_{nilp}\rightarrow \G-BKF(R).$
+\end{Corollary}
+\begin{Remark}
+Although the frame $\mathcal{F}_{inf}(R)$ depends on a choice of $\xi,$ the above functor does not.
+\end{Remark}
+Let $S=\Spa(R,R^{+})$ be an affinoid perfectoid space over $\Spa(k)$ and $S^{\sharp}=\Spa(R^{\sharp},R^{\sharp,+})$ an untilt over $\Spa(W(k)).$ Then $R^{\sharp,+}$ is an integral perfectoid $W(k)$-algebra and by restricting from $\Spec(\Ainf(R^{+}))$ to $\Spa(W(R^{+}),W(R^{+}))-\lbrace [\varpi]=0 \rbrace = \prime S\times \Spa(\mathbb{Z}_{p}) \prime$ (with the $(p,[\varpi])$-adic topology, where $\varpi\in R$ is of course some pseudo-uniformizer), we are finally able to produce for $p\geq 3$ a local mixed-characteristic $\G$-shtuka over $S$ with a leg at $\prime S^{\sharp}\subset S\times \Spa(\mathbb{Z}_{p})\prime,$ as introduced in \cite{Berkeley lectures}.
+\subsection{Classification of adjoint nilpotent $\G$-$\mu$-displays over $\mathcal{O}_{C}$}
+We will now state a describtion of the essential image of the previous functor from adjoint nilpotent $\G$-$\mu$-displays to local mixed-characteristic $\G$-shtukas over a geometric perfectoid point in terms of the schematical Fargues-Fontaine curve, \cite{the curve} - in the spirit of Scholze-Weinstein. Since most of this material is explained sufficiently in the $\GL_{n}$-case in Scholze$^{\prime}$s Berkeley notes \cite{Berkeley lectures}, and the case of general reductive $\G/\Spec(\mathbb{Z}_{p})$ requires only few new ideas, we decided to not give full proofs here.
+\\
+Let $C$ be a complete non-archimedean, algebraically closed field extension of $W(k)[1/p].$ Then it$^{\prime}$s ring of integers $\mathcal{O}_{C}$ is a strictly henselian and integral perfectoid $W(k)$-algebra. We will abbreviate $\Ainf=\Ainf(\mathcal{O}_{C})$ and $\mathcal{F}_{inf}=\mathcal{F}_{inf}(\mathcal{O}_{C}).$ Note that $\Ainf$ is again a strictly henselian $W(k)$-algebra. Let $X=X_{\mathbb{Q}_{p},C^{\flat}}$ be the schematical Fargues-Fontaine curve over $\mathbb{Q}_{p}$ associated to $C^{\flat}.$ The chosen untilt $C$ of $C^{\flat}$ gives a closed point $\infty\in |X|,$ with residue field $C$ and $\widehat{\mathcal{O}_{X,\infty}}\cong B^{+}_{dR}(C)=B^{+}_{dR}.$
+\\
+The reason why some crucial arguments go through via the Tannakian formalism, is the following handy 
+\begin{Lemma}\label{Fargues Lemma fuer Tannaka Formalismus}
+Let $K$ be a field of characteristic $0,$ $H$ a reductive group over $K,$ $R$ a $K$-algebra and denote by $\Proj_{R}$ the category of finite projective $R$-modules with the usual additive tensor structure. Then a functor
+$$
+\omega\colon \Rep_{K}(H)\rightarrow \Proj_{R}
+$$
+is a fiber functor if and only if it is an additive tensor-functor.
+\end{Lemma}
+For a proof, see Lemma 5.4. in [Fargues, G-Torseurs en Théorie de Hodge p-adique]. Since Fargues-Fontaine showed that the categories of trivial vector bundles on the curve and finite dimensional $\mathbb{Q}_{p}$-vector spaces are equivalent as tensor-categories (compatible with direct sums), we deduce from the previous Lemma that the groupoid of trivial $G$-torsors on $X$ and $G$-torsors on $\Spec(\mathbb{Q}_{p})$ are equivalent.
+\\ 
+Let $G=\G_{\mathbb{Q}_{p}}$ be the associated generic fiber, an unramified reductive group. Consider a $G$-torseur $\mathcal{E}\rightarrow X.$ Under a modification of $\mathcal{E}\rightarrow X$ at the chosen point $\infty,$ one understands the datum of a $G$-torseur $\mathcal{E}^{\prime}\rightarrow X,$ together with an isomorphism
+$$
+\iota\colon \mathcal{E}^{\prime}\mid_{X-\infty}\simeq \mathcal{E}\mid_{X-\infty}.
+$$
+For a (Galois-orbit of a) co-character $\chi\in X_{*}(T)^{+}/\Gamma,$ let us recall, what it means that a modification $(\mathcal{E}^{\prime},\iota)$ is of type $\chi:$ The given isomorphism $\iota$ corresponds to a double coset, that one gets after pullback of $\mathcal{E}$ and $\mathcal{E}^{\prime}$ along $\Spec(B_{dR}^{+})\rightarrow X$ and choosing respective trivializations, and forgetting about them again, in
+$$
+G(B_{dR}^{+})\backslash G(B_{dR})/G(B_{dR}^{+}).
+$$
+By the Cartan-decomposition, this double quotient is in bijection with $X_{*}(T)^{+}/\Gamma.$ Then we require that $\iota$ corresponds to $\chi\in X_{*}(T)^{+}/\Gamma.$
+\\
+Now we can state the following theorem, that in the $\GL_{n}$-case is due to Fargues.
+\begin{Theorem}
+The following categories are equivalent
+\begin{enumerate}
+\item[(a):] $\G$-$\mu^{\sigma}$ windows over $\mathcal{F}_{inf},$ and
+\item[(b):] tuples $(\mathcal{E}_{1},\mathcal{E}^{\prime},\iota,\mathcal{T}),$ where $\mathcal{E}_{1}$ is a trivial $G$-torsor on $X,$ $(\mathcal{E}^{\prime},\iota)$ is a modification of type $\mu^{\sigma}$\footnote{This is the same as being of type $\mu$.} at $\infty$ of $\mathcal{E}_{1},$ $\mathcal{T}$ is a $\G$-torsor on $\Spec(\mathbb{Z}_{p}),$ such that if $\mathcal{V}$ is the $G$-torseur on $\Spec(\mathbb{Q}_{p})$ corresponding to $\mathcal{E}_{1},$ we require that
+$$
+\mathcal{T}\times_{\Spec(\mathbb{Z}_{p})}\Spec(\mathbb{Q}_{p})\cong \mathcal{V}.
+$$
+\end{enumerate}
+\end{Theorem}
+
+\begin{Remark}\label{Bemerkung zum zweiten Buendel in den Modifikationen}
+\begin{enumerate}
+\item[(i):] This is a mild generalization of \cite[Theorem 14.1.1.]{Berkeley lectures}.
+\item[(ii):] Recall that one has an equivalence between vector bundles on $X$ and $\varphi$-modules on $B_{cris}^{+}(\mathcal{O}_{C}/p)$ (as $C$ is algebraically closed). Using Lemma \ref{Fargues Lemma fuer Tannaka Formalismus} above, we deduce that $G$-torsors on $X$ and $G$-torsors with $\varphi$-structure on $B_{cris}^{+}(\mathcal{O}_{C}/p)$ are equivalent. Under this equivalence, the $G$-bundle $\mathcal{E}$ in the theorem corresponds to the base-change of the window over $\mathcal{F}_{inf}$ to $B_{cris}^{+}(\mathcal{O}_{C}/p).$
+\end{enumerate}
+\end{Remark}
+\begin{proof}
+Let us explain, where one has to depart from Scholzes$^{\prime}$s argument in the proof of \cite[Theorem 14.1.1.]{Berkeley lectures}. First, one checks, using that $\Ainf$ is strictly henselian and the local description from Lemma \ref{Windows ueber Ainf und BKF lokales Statement}, that $\G$-$\mu^{\sigma}$-windows over $\mathcal{F}_{inf}$ and $\G$-BKFs over $\mathcal{O}_{C}$ of type $\mu^{\sigma}$ are equivalent. Here $\G$-BKFs over $\mathcal{O}_{C}$ of type $\mu^{\sigma}$ are simliar defined as modifications of $G$-bundles on the curve of type $\mu^{\sigma}.$ In fact, we will actually show that $G$-BKFs are equivalent to tuples as in the theorem and under this being of type $\mu^{\sigma}$ coincides. Then one shows, that local mixed characteristic $\G$-shtuka over $\Spa(C^{\flat})$ with a paw at $\varphi^{-1}(x_{C})$ uniquely extend to $\G$-BKFs over $\mathcal{O}_{C}.$ To extend $\varphi$-modules from $\mathcal{Y}_{[r,\infty)}$ to $\mathcal{Y}_{[r,\infty]},$ where we follow Scholze$^{\prime}$s notation and $r$ is some rational number $0\leq r < \infty,$ Lemma \ref{Fargues Lemma fuer Tannaka Formalismus} saves us, as this is \textit{not} an exact operation. Then one uses a GAGA-statement á la Kedlaya, as reproduced in the form we need it e.g. in \cite[Prop. 5.3.]{Anschuetz}, to transport $\G^{adic}$-torseurs on $\mathcal{Y}_{[0,\infty]}$ to $\G$-torsors on $\Spec(\Ainf)-\lbrace \mathfrak{m} \rbrace,$ where $\mathfrak{m}$ denotes the unique maximal ideal of $\Ainf.$ It remains to extend over the unique closed point, where one can use an old argument of Colliot-Thélène, again reproduced by Anschuetz, see \cite[Prop. 6.5.]{Anschuetz}. Using work of Kedlaya-Liu, one easily checks that $\G$-torseurs on $\Spec(\mathbb{Z}_{p})$ are equivalent to $\G^{adic}$-torsors over $\mathcal{Y}_{[0,r)}$ together with an isomorphism to their Frobenius pullback.\footnote{In other words, one just observes that the equivalence in \cite[Prop. 12.3.5.]{Berkeley lectures} respects exact structures.} Then one has all ingredients one needs to follow the argument given in loc. cit. to conclude.
+\end{proof}
+To conclude this section, we can state the promised classification of adjoint nilpotent $\G$-$\mu^{\sigma}$ displays over $\mathcal{O}_{C}$ in a purely geometric way by using the Fargues-Fontaine curve.
+\begin{Corollary}
+The following categories are equivalent:
+\begin{enumerate}
+\item[(a):] Adjoint nilpotent $\G$-$\mu^{\sigma}$-displays over $\mathcal{O}_{C},$
+\item[(b):] tuples $(\mathcal{E}_{1},\mathcal{E},\iota,\mathcal{T}),$ as in the previous theorem, such that $\Ad(\mathcal{E})$ has all HN-slopes $<1,$ where $\Ad(\mathcal{E})$ is the vector bundle on $X$ obtained by pushing out along the adjoint representation.
+\end{enumerate}
+\end{Corollary}
+\begin{proof}
+Let $\mathcal{P}=(Q,\alpha)$ be an adjoint nilpotent $\G$-$\mu^{\sigma}$-display over $\Spec(\mathcal{O}_{C}).$ Let $\overline{\mathcal{P}}$ be the reduction of $\mathcal{P}$ along the projection of $\mathcal{O}_{C}$ to the residue-field $\kappa.$ Then $\overline{\mathcal{P}}$ is determined by $[b]\in B(G),$ where $b=u\mu^{\sigma}(p),$ for some structure matrix $u\in L^{+}\G(\kappa)$ describing $\overline{\mathcal{P}}.$ Now we fix a splitting of the projection $\mathcal{O}_{C}\rightarrow \kappa,$ so that we can associate to $b$ a $G$-bundle $\mathcal{E}_{b}$ on $X.$
+\\
+On the other hand, we can consider the uniquely determined tuple $(\mathcal{E}_{1},\mathcal{E},\iota,\mathcal{T}),$ as in the previous theorem, associated to $\mathcal{P}.$ It follows from Remark \ref{Bemerkung zum zweiten Buendel in den Modifikationen} (ii), that (non-canonically)
+$$
+\mathcal{E}\simeq \mathcal{E}_{b}.
+$$
+The adjoint nilpotency condition says that the $G$-isocrystal $\Ad(b)$ as all slopes $>-1.$ Passing from $G$-isocrystals to $G$-bundles on the Fargues-Fontaine curve, the HN-slopes swap signs, thus the condition is that $\Ad(\mathcal{E})$ has all slopes $<1.$
+\end{proof}
+\section{Application to the Bültel-Pappas moduli problem}
+\subsection{Recollections on the moduli problem}
+We briefely formulate the moduli problem of deformations of $\G$-$\mu$-displays via quasi-isogenies. First, recall the local analogon of a Shimura-datum.
+\begin{Definition}
+A local Shimura-datum over $\mathbb{Q}_{p}$ is a triple $(G,\lbrace \mu \rbrace,b),$ where
+\begin{enumerate}
+\item[(a):] $G$ is a (connected) reductive group over $\mathbb{Q}_{p},$
+\item[(b):] $\lbrace \mu \rbrace$ is a $G(\bar{\mathbb{Q}}_{p})$-conjugacy class of minuscule geometric cocharacters,
+\item[(c):] $b\in B(G)$ is a $\sigma$-conjugacy class, that lies in Kottwitz$^{\prime}$s set of neutral $\mu$-admissible elements $$B(G,\mu).$$
+\end{enumerate}
+\end{Definition}
+Associated to a local Shimura-datum $(G,\lbrace \mu \rbrace,b),$ we have the field of definition of $\lbrace \mu \rbrace,$ which will be denoted by $E=E(G,\mu).$ It is a finite extension of $\mathbb{Q}_{p}.$ Furthermore, we have the group-scheme, defined over $\mathbb{Q}_{p},$ of self-quasi-isogenies of the $G$-isocrystal determined by $b:$ 
+$$
+J_{b}.
+$$
+Now let us assume that $G$ is quasi-split and split after an unramified extension of $\mathbb{Q}_{p}.$ It is well-known that this is equivalent to the existence of a reductive model $\G$ over $\Spec(\mathbb{Z}_{p}).$
+Under this assumptions, we have that
+\begin{enumerate}
+\item[$\bullet$] There exists a representative $\mu \in \lbrace \mu \rbrace,$ that is defined over $E.$ Furthermore, we can actually find a representative extending to the integral level:
+$$
+\mu\colon \mathbb{G}_{m,\mathcal{O}_{E}}\rightarrow \G_{\mathcal{O}_{E}}.
+$$
+\item[$\bullet$] The extension $E/\mathbb{Q}_{p}$ is unramified.
+\end{enumerate}
+We now fix an algebraic closure $k$ of $\mathbb{F}_{p},$ let $W=W(k)$ and $L=W(k)[1/p]$ and assume that $k_{E}$ is embedded in $k,$ so that $E$ is embedded in $L.$
+To formulate the Bültel-Pappas moduli problem, we make the further assumption that for some (equivalently any) integral representative of $\lbrace \mu \rbrace,$ $b\in B(G)$ has a representative contained in
+$$
+\G(W)\mu^{\sigma}(p)\G(W).
+$$
+In \cite{BP}, a local Shimura-datum $(G,\mu,b)$ satisfying these assumptions is called an \textit{unramified local Shimura-datum}. This is in fact justified, as Rapoport-Richartz Thm. 4.2. implies that a $b\in B(G)$ in the above double coset automatically lies in $B(G,\mu).$
+\\
+Thus, fix an unramified local Shimura-datum $(G,\mu,b)$ and choose a representative of $b,$ that is given by $u\mu^{\sigma}(p),$ for some $u\in \G(W).$ Then take $u$ to be the structure matrix for a trivial $\G$-$\mu$-display $\mathcal{P}_{0}$ over $k,$ whose $G$-iso-display over $k$ is the $G$-isocrystal determined by $b,$ which we will denote by $\mathcal{P}_{b}.$
+\begin{Definition}
+Let $(G,\mu,b)$ be an unramified local Shimura-datum and $\mathcal{P}_{0}$ and $\mathcal{P}_{b}$ as above. Assume that all slopes of $Ad(b)$ are greater than $-1.$
+\\
+Consider the functor
+$$
+\mathcal{M}^{BP}\colon (\Nilp_{W})\rightarrow (\text{Set}),
+$$
+sending a $p$-nilpotent $W$-algebra $R$ to $(\mathcal{P},\rho)/\simeq,$ where 
+\begin{enumerate}
+\item[$\bullet$] $\mathcal{P}$ is a $\G$-$\mu$-display over $\Spec(R),$
+\item[$\bullet$] and $$\rho\colon (\mathcal{P}_{R/p})\dashrightarrow (\mathcal{P}_{b})_{R/p},$$ is a $G$-quasi-isogeny.
+\end{enumerate}
+We consider two pairs $(\mathcal{P}_{1},\rho_{1})$ and $(\mathcal{P}_{2},\rho_{2})$ to be equivalent, if $\rho_{2}^{-1}\circ \rho_{1}$ lifts to an isomorphism between $\mathcal{P}_{1}$ and $\mathcal{P}_{2}$ over $R.$
+\end{Definition}
+\begin{Remark}
+\begin{enumerate}
+\item[(i):] For the definition of a $G$-quasi-isogeny, see \cite[Def. 3.3.5.]{BP}.
+\item[(ii):] Note that a priori passing to the above equivalence might be a horrible operation, as it is not know in general, whether the functor has no non-trivial automorphisms. We will check this in the next (trivial) Lemma for integral perfectoid rings.
+\end{enumerate}
+\end{Remark}
+Let us denote the by $BP_{(\G,\mu,b)}$ be the corresponding fpqc stack on $\Nilp_{W}.$ As we assumed $\G$ to be reductive, we see that we can equivalently consider  $BP_{(\G,\mu,b)}$ as a stack for the etale topology on $\Nilp_{W}.$ It easy to see that
+$$
+ BP_{(\G,\mu,b)}\cong [L^{+}\G\times_{L(G),c_{b}} LG/\G(\mathcal{W})_{\mu}],
+$$
+where the fiber-product is
+$$
+\xymatrix{
+L^{+}G\times_{L(G),c_{b}} LG \ar[r] \ar[d] & LG \ar[d]^{c_{b}} \\
+L^{+}\G \ar[r]^{f_{\mu}} & LG,
+}
+$$
+with $c_{b}(g)=g^{-1}bF(g)$ and $f_{\mu}\colon L^{+}\G \rightarrow LG$ is the composition of the natural map $L^{+}\G\rightarrow LG$ and right multiplication by $\mu^{\sigma}(p)\in G(E).$ The action of $\G(\mathcal{W})_{\mu}$ is
+$$
+(U,g).h=(h^{-1}g\Phi_{\mathcal{W}}(h),gh).
+$$
+It follows that $\mathcal{M}^{BP}$ is given by isomorphism classes of objects in $BP_{(\G,\mu,b)}.$
+\begin{Lemma}
+\begin{enumerate}
+\item[(a):] Let $R$ be an integral perfectoid $W$-algebra. Then the functor 
+$$\G-\mu-\text{Displ}(R)_{nilp} \rightarrow G-\text{Isodispl}(R/\varpi R)$$ is faithfull.
+\item[(b):]  Furthermore, $BP_{\G,\mu,b}(R)$ has no non-trivial automorphism.
+\end{enumerate}
+\end{Lemma}
+\begin{proof}
+First we recall that the statement (a) is proven for $\mathbb{F}_{p}$-algebras $A$ that are Frobenius-seperated, i.e. such that for all $n\geq 1$
+$$
+\bigcap_{m}(\Ker(Frob_{A}^{n}))^{m}=0
+$$
+see Bültel-Pappas, \cite[Prop. 3.6.1.]{BP}. But we claim that this condition is satisfied for $R/\varpi R.$ In fact, Frobenius induces an isomorphism $R/\varpi R\simeq R/pR,$ so that it is enough to check that $R/pR$ is Frobenius-seperated. But we have $R/pR\simeq R^{\flat}/\xi_{0}R^{\flat}$ and as $R^{\flat}$ is perfect, we deduce that
+$$
+\Ker(\text{Frob}^{n}_{R^{\flat}/\xi_{0}})^{p^{n}}=0.
+$$
+\end{proof}
+
+\subsection{Comparison with the Scholze integral model}
+In this final subsection, we will compare the Scholze approach and the Bültel-Papas approach to integral models for local Shimura-varieties. As the latter works only well for unramified local Shimura-data, we will assume as usual that $(\G,\lbrace \mu \rbrace, [b])$ is an unramified local Shimura-data over $\mathbb{Q}_{p},$ as in Definition ?, with local Shimura-field $E=E(\G,\mu),$ which is a finite unramified extension of $\mathbb{Q}_{p}.$ We will have to impose the adjoint nilpotency condition on the $\G$-$\mu$-displays in our moduli problem, thus we assume that all slopes of $Ad(b)$ are strictly greater than $-1.$ We remind again that unfortunately, throughout this section we have to assume that $p\geq 3.$ 
+\\
+Then we will show that the $v$-sheafification of the Bültel-Papas moduli problem of $\G$-$\mu$-displays is isomorphic to the Scholze integral model. This will imply that Bültel-Papas have in fact defined a moduli problem, that gives an integral model of the local Shimura-varieties as constructed by Scholze. Thus we know in particular that the generic fiber of the Bültel-Papas moduli problem is representable by a smooth rigid analytic space over $\breve{E}.$
+\\
+Let $k_{E}$ be the residue-field of $E,$ we will again choose an algebraic closure $\bar{k}_{E},$ which we will identify with the residue field of $\breve{E}.$ Denote by $\text{Perf}_{\bar{k}_{E}}$ the category of affinoid perfectoid spaces over $\bar{k}_{E}.$ Let $\mathcal{M}_{int}^{Scholze}$ be the $v$-sheaf over $\Spd(\mathcal{O}_{\breve{E}}),$ as in  \cite[Def. 25.1.1.]{Berkeley lectures}. As we are working in the unramified case, we can take for the local model just the Flag-variety.
+\\
+Let $\mathcal{M}^{BP,+}$ be the presheaf on $(\text{Perf}_{\bar{k}_{E}})^{op},$ with a structure map towards $\Spd(\mathcal{O}_{\breve{E}}),$ given by
+$$
+\Spa(R,R^{+})\mapsto \mathcal{M}^{BP}(\Spf(R^{\sharp,+})),
+$$
+where $\Spa(R^{\sharp},R^{\sharp,+})$ is the untilt over $\mathcal{O}_{\breve{E}}$ given by the map towards $\Spd(\mathcal{O}_{\breve{E}}).$ Fix a pseudo-uniformizer $\varpi$ of $R$ and let $\varpi^{\sharp}$ be the corresponding one of the untilt. Then the datum of a $\Spa(R,R^{+})$-rational point of $\mathcal{M}^{BP,+}$ is the same as the datum, up to equivalence, of a pair $(\mathcal{P},\rho),$
+where
+\begin{enumerate}
+\item[$\bullet$] $\mathcal{P}$ is an adjoint nilpotent $\G$-$\mu$-display over $\Spec(R^{\sharp,+})$ (this follows by GFGA for displays),
+\item[$\bullet$] and $$\rho\colon \mathcal{P}_{R^{\sharp,+}/\varpi^{\sharp}}\dashrightarrow \mathcal{P}_{b,R^{\sharp,+}/\varpi^{\sharp}}$$ is a $G$-quasi-isogeny.
+\end{enumerate}
+This is in fact independend of the choice of the pseudo-uniformizer.
+\\
+Let us denote by $(\mathcal{M}^{BP})_{v}$ the $v$-sheafification of the presheaf $\mathcal{M}^{BP,+}.$\footnote{In general set-theoretic issues lead to the complication that the $v$-sheafification of an arbitrary presheaf might not exist. But in our case the data of all $\Spa(R,R^{+}))$-valued sections of $\mathcal{M}^{BP,+}$ is set-theoretically bounded and therefore the $v$-sheafification in fact exists.} Our attack of comparing $(\mathcal{M}^{BP})_{v}$ with $\mathcal{M}^{Scholze}_{int}$ is very similiar to what Scholze does in the proof \cite[Thm.25.1.2.]{Berkeley lectures}. With one rather annoying difference: We will not first construct a map of pre-sheaves between $\mathcal{M}^{BP,+}$ and $\mathcal{M}^{Scholze}_{int}$ and then prove that this induces an isomorphism on $v$-sheafifications. Our map will rather only defined \textit{after $v$-sheafification.} This is because, an integral equivalence of categories between adjoint nilpotent $\G$-$\mu$-displays over integral perfectoid rings and $\G$-BKF$^{\prime}$s with $\mu$-structure, does not automatically induce a translation of quasi-isogenies. The issue is again that we are working with groupoids, thus it does not make sense to $^{\prime}$ multiply with a high power of $p$ to kill denominators in the quasi-isogeny$^{\prime}$ and then chase through the already proven equivalence, as one can do this in cases of Hodge-type. We circumvent this problem by directly translating quasi-isogenies for $\G$-$\mu$-displays over $\mathcal{O}_{C},$ where $C/W(k)[1/p]$ is again a geometric perfectoid point, with the help of the curve and then argue that from this case one can see how to construct a map between the Bültel-Papas moduli problem and the Scholze integral model at least $v$-locally.
+\\
+Now the statement we want to prove is the following:
+\begin{proposition}
+There exists an isomorphism of $v$-sheaves over $\Spd(\mathcal{O}_{\breve{E}})$
+$$
+f_{v}\colon (\mathcal{M}^{BP})_{v}\rightarrow \mathcal{M}_{int}^{Scholze}.
+$$
+\end{proposition}
+\begin{proof}
+We will begin by constructing a map of \textit{pre-sheaves} on affinoid perfectoid spaces $\Spa(\tilde{R},\tilde{R}^{+})$ of a very special form: Let $I$ be an arbitrary indexing set, and let $C_{i}$ complete algebraically closed non-archimedean fields over $\bar{k}_{E},$ with ring of integers $\mathcal{O}_{C_{i}}.$ Choose pseudo-uniformizers $\varpi_{i}$ in all $C_{i}.$ Then let $C_{i}^{\sharp}$ untilts of the $C_{i}$ over $\mathcal{O}_{\breve{E}},$ with their ring of integers $\mathcal{O}_{C^{\sharp}_{i}}$ and the family of pseudo-uniformizers $(\varpi^{\sharp}_{i})_{i\in I}$ dividing $p.$ Then let 
+\begin{equation}\label{Gleichung (1) im Beweis der letzten Prop}
+\tilde{R}^{+}=\prod_{i\in I} \mathcal{O}_{C_{i}}
+\end{equation}
+ and
+\begin{equation}\label{Gleichung (2) im Beweis der letzten Prop}
+ \tilde{R}=\tilde{R}^{+}[\frac{1}{\varpi}]
+\end{equation}
+where $\varpi=(\varpi_{i})_{i\in I}\in R^{+}$ and analogously
+\begin{equation}
+\tilde{R}^{\sharp,+}=\prod_{i\in I} \mathcal{O}_{C^{\sharp}_{i}}
+\end{equation}
+and
+\begin{equation}\label{Gleichung (5) im Beweis der letzten Prop}
+\tilde{R}^{\sharp}=\tilde{R}^{\sharp,+}[\frac{1}{\varpi^{\sharp}}].
+\end{equation}
+Then we will construct maps
+\begin{equation}
+f^{+}(\Spa(\tilde{R},\tilde{R}^{+}))\colon \mathcal{M}^{BP,+}(\Spa(\tilde{R},\tilde{R}^{+}))\rightarrow \mathcal{M}^{Scholze}_{int}(\Spa(\tilde{R},\tilde{R}^{+})),
+\end{equation}
+for all $\Spa(\tilde{R},\tilde{R}^{+})$ of the form (\ref{Gleichung (1) im Beweis der letzten Prop}) and (\ref{Gleichung (2) im Beweis der letzten Prop}) above, satisfying obvious conditions of functoriality.
+\\
+This will in fact be enough to construct a map on the $v$-sheafification
+$$
+f_{v}\colon (\mathcal{M}^{BP})_{v}\rightarrow \mathcal{M}_{int}^{Scholze},
+$$
+as in the statement.
+\\
+Let us take the time to explain this. Fix $X=\Spa(A,A^{+})$ an affinoid perfectoid space over $\bar{k}_{E}$ and consider $\mathcal{I}_{X}$ the filtered category of all $v$-covers of $X$ by objects in $\text{Perf}_{\bar{k}_{E}}.$ We recall that by definition objects in $\text{Perf}_{\bar{k}_{E}}$ were supposed to be \textit{affinoid} perfectoid. Given any object $Y\rightarrow X$ inside the filtered category $\mathcal{I}_{X}$, we can refine this cover by a $v$-cover $\tilde{Y}\rightarrow Y,$ where $\tilde{Y}=\Spa(\tilde{R},\tilde{R}^{+})$ and $\tilde{R}$ resp. $\tilde{R}^{+}$ are of the form (\ref{Gleichung (1) im Beweis der letzten Prop}), resp (\ref{Gleichung (2) im Beweis der letzten Prop}). In fact, we can take as the indexing set $I$ the set of all points of $Y$ and  consider as $C_{i}$ the completed algebraic closures of the residue-fields of $Y.$ Thus, if as usual $H^{0}(Y\rightarrow X,\mathcal{M}^{BP}^{+})=\lbrace s\in \mathcal{M}^{BP}^{+}(Y)\colon pr^{1}(s)=pr^{2}(s) \rbrace,$
+ where $pr^{i}\colon Y\times_{X} Y\rightarrow Y$ are the two projections, then we know how to construct maps
+ $$
+H^{0}(Y\rightarrow X,\mathcal{M}^{BP}^{+})\rightarrow \mathcal{M}^{Scholze}_{int}(X).
+ $$
+ In fact, these maps are simply the composition of pullback along $\tilde{Y}\rightarrow Y$ and then the map constructed as in (\ref{Gleichung (5) im Beweis der letzten Prop}). Then the seperation of the presheaf $\mathcal{M}^{BP,+}$ is defined by the presheaf $\mathcal{M}^{BP,\dagger}(X)=colim_{\mathcal{I}^{opp}_{X}}H^{0}(Y\rightarrow X,\mathcal{M}^{BP}^{+}).$ Because $\mathcal{M}^{Scholze}_{int}$ is known to be a $v$-sheaf, we get a well-defined map of presheaves over $\Spd(\mathcal{O}_{\breve{E}})$
+$$
+f^{\dagger}\colon \mathcal{M}^{BP,\dagger}\rightarrow \mathcal{M}^{Scholze}_{int}.
+$$
+Repeating this procedure, we deduce that we get a well defined map on the sheafification $$f_{v}\colon (\mathcal{M}^{BP})_{v}=(\mathcal{M}^{BP,\dagger})^{\dagger}\rightarrow \mathcal{M}^{Scholze}_{int}.$$
+Thus, we have to explain how to construct the maps as in (\ref{Gleichung (5) im Beweis der letzten Prop}) for affinoid perfectoids of the form (\ref{Gleichung (1) im Beweis der letzten Prop}) and (\ref{Gleichung (2) im Beweis der letzten Prop}).
+\\
+For this, we first consider the case where $I=\lbrace \ast \rbrace$ consist just of one element. In case $C^{\sharp}$ is a geometric perfectoid point in characteristic $p,$ $\mathcal{O}_{C^{\sharp}}$ is perfect and the construction of the map is rather easy. The interesting case is thus where $C^{\sharp}$ lives over $\breve{E}.$ As carrying the $\sharp$ along is somewhat cubersome, in the following we will let $C$ be a geometric perfectoid point over $\breve{E}.$ Then we first make the following
+\\
+\textit{Claim}: Let $\mathcal{P}_{i}$ be two adjoint nilpotent $\G$-$\mu$-displays over $\Spec(\mathcal{O}_{C})$ and let $\mathcal{P}_{i,inf}$ be the two uniquely determined Breuil-Kisin-Fargues modules with $\G$-structure (of type $\mu^{\sigma}$) corresponding to our displays.
+\\
+Then a $G$-quasi-isogeny
+\begin{equation}\label{Gleichung Quis im Claim zur Ubersetzung uber einem geom perf Punkt}
+\rho\colon \mathcal{P}_{1}\dashrightarrow \mathcal{P}_{2}
+\end{equation}
+over $\Spec(\mathcal{O}_{C}/p\mathcal{O}_{C})$ corresponds to an isomorphism of $G$-torseurs with $\varphi$-structure
+\begin{equation}\label{Gleichung kristl Quis im Claim zur Ubersetzung uber einem geo perf Punkt}
+\mathcal{P}_{1,inf}\times_{\Ainf(\mathcal{O}_{C})} \Spec(B^{+}_{cris}(\mathcal{O}_{C}/p\mathcal{O}_{C}))\simeq \mathcal{P}_{2,inf}\times_{\Ainf(\mathcal{O}_{C})} \Spec(B^{+}_{cris}(\mathcal{O}_{C}/p\mathcal{O}_{C})).
+\end{equation}
+\begin{proof}{(\textit{of the claim})}
+Note that we have a ring-homomorphism $B^{+}_{cris}(\mathcal{O}_{C}/p\mathcal{O}_{C})\rightarrow W(\mathcal{O}_{C}/p\mathcal{O}_{C})[1/p],$ that gives a map between isomorphisms as in (\ref{Gleichung kristl Quis im Claim zur Ubersetzung uber einem geo perf Punkt}) towards $G$-quasi-isogenies as in (\ref{Gleichung Quis im Claim zur Ubersetzung uber einem geom perf Punkt}), by noting that $\G$-$\mu$-displays, as well as $\G$-BKF$^{\prime}$s are trivial over $\mathcal{O}_{C}$ and then expressing everything in terms of quotient groupoids.
+\\
+We have to find a way to go in the other direction. For this, recall that to $\mathcal{P}_{i,inf}$ correspond tuples $(\mathcal{E}^{(i)}_{1},\mathcal{E}^{(i)},\mathcal{T}^{(i)},\iota^{(i)}),$ of modifications of a trivial $G$-torseur $\mathcal{E}^{(i)}$ at the point $\infty$ on the schematical Fargues-Fontaine curve $X_{C^{\flat}},$ together with a $\G$-lattice $\mathcal{T}^{(i)}$ inside $\mathcal{E}^{(i)}_{1}.$\footnote{This means the following: Recall that trivial $G$-torseurs on $X$ correspond to $G$-torseurs on $\Spec(\mathbb{Q}_{p}),$ and then we want to have an extension to a $\G$-torseur on $\Spec(\mathbb{Z}_{p}).$} Recall further, that $G$-bundels on $X$ are equivalent to $F$-isocrystals with $G$-structure à la Rapoport-Richartz over $\Spec(\mathcal{O}_{C}/p\mathcal{O}_{C}),$ because $C$ is algebraically closed; that is to say: $G$-torseurs with $\varphi$-structure on $\Spec(B^{+}_{cris}(\mathcal{O}_{C}/p\mathcal{O}_{C})).$ Under this equivalence the non-trivial $G$-torseur $\mathcal{E}^{(i)}$ in the tuple corresponding to $\mathcal{P}_{inf,i}$ is given by the base change $\mathcal{P}_{i,inf}\times_{\Ainf(\mathcal{O}_{C})} \Spec(B^{+}_{cris}(\mathcal{O}_{C}/p\mathcal{O}_{C})).$ 
+\\
+On the other hand, let $U_{i}\in \G(W(\mathcal{O}_{C}))$ be some representative for our displays. Let $\bar{U_{i}}\in \G(W(\mathcal{O}_{C}/p\mathcal{O}_{C}))$ be the reduction modulo $p,$ then to give a $G$-quasi-isogeny is to give (modulo $F$-conjugation) an element $g\in G(W(\mathcal{O}_{C}/p\mathcal{O}_{C})[1/p]),$ such that
+\begin{equation}
+g^{-1}\bar{U_{1}}\mu^{\sigma}(p)F(g)=\bar{U_{2}}\mu^{\sigma}(p).
+\end{equation}
+Specializing further, we can consider the images $b_{i}\in G(W(k)[1/p])$ of $\bar{U_{i}}\mu^{\sigma}(p)$ under the projection $\mathcal{O}_{C}\rightarrow k$ to the residue-field. Then the elements $[b_{i}]\in B(G)$ are well-definied, i.e. independend of the choice of a representative $U_{i}$ for our displays by a Lemma of Bültel-Pappas. Let us now fix a section of the projection $\mathcal{O}_{C}\rightarrow k,$ then we can associate to $b_{i}$ a $G$-bundel $\mathcal{E}_{b_{i}}$ on $X.$ Tracing through the identifications, we deduce that we have a \textit{non-canonical}\footnote{Fixing such an isomorphism would corespond to fxing a splitting of the Harder-Narasimhan filtration, as $\mathcal{E}_{b}$ comes along with chose splitting of this filtration.} isomorphism
+$$
+\mathcal{E}^{(i)}\simeq \mathcal{E}_{b_{i}}.
+$$
+But equation $(3)$ gives us after specializing along $\mathcal{O}_{C}/p\mathcal{O}_{C}\rightarrow k,$ that $b_{1}$ and $b_{2}$ are $\sigma$-conjugates of each other. This implies that
+$$
+\mathcal{E}^{(1)}\simeq \mathcal{E}^{(2)}
+$$ 
+and this then gives by the fully faithfulness of the functor from $G$-torseurs with $\varphi$-structure on $\Spec(B^{+}_{cris}(\mathcal{O}_{C}/p\mathcal{O}_{C}))$ towards $G$-bundles on the curve an isomorphism as in (\ref{Gleichung kristl Quis im Claim zur Ubersetzung uber einem geo perf Punkt}), as required.
+\end{proof}
+Next, we will want to explain, how to extend this to the case of arbitrary products. Thus, we make the following
+\\
+\textit{Claim:} Let $I$ be an arbitrary indexing set and consider $C_{i}$ geometric perfectoid points over $\mathcal{O}_{\breve{E}}$ and let $R=\prod_{i\in I}\mathcal{O}_{C_{i}}$ and fix a family of pseudo-uniformizers $(\varpi_{i})_{i \in I}$ dividing $p.$ Let $\mathcal{P}_{j},$ $j=1,2$ two adjoint nilpotent $\G$-$\mu$-displays over $\Spec(R)$ and and let $\mathcal{P}_{j,inf}$ be the two uniquely determined Breuil-Kisin-Fargues modules with $\G$-structure (of type $\mu^{\sigma}$) corresponding to our displays.
+\\
+Then a $G$-quasi-isogeny
+\begin{equation}
+\rho\colon \mathcal{P}_{1}\dashrightarrow \mathcal{P}_{2}
+\end{equation}
+over $\Spec(R/(\varpi))$ corresponds to an isomorphism of $G$-torseurs with $\varphi$-structure
+\begin{equation}
+\mathcal{P}_{1,inf}\times_{\Ainf(R)} \Spec(B^{+}_{cris}(R/(\varpi))\simeq \mathcal{P}_{2,inf}\times_{\Ainf(R)} \Spec(B^{+}_{cris}(R/(\varpi)).
+\end{equation}
+\begin{proof}{(\textit{of the claim})}
+Let us note now for later use that we have $R/(\varpi)\simeq \prod_{i\in I}\mathcal{O}_{C_{i}}/(\varpi_{i}),$ as the natural map $R\rightarrow \prod_{i\in I}\mathcal{O}_{C_{i}}/(\varpi_{i})$ is surjective with kernel exactly generated by $(\varpi).$ It follows that $W(R)=\prod_{i\in I}W(\mathcal{O}_{C_{i}}),W(R/(\varpi))=\prod_{i\in I}W(\mathcal{O}_{C_{i}}/(\varpi_{i})),\Ainf(R)=\prod_{i}\Ainf(\mathcal{O}_{C_{i}}),\Acris(R)=\prod_{i}\Acris(\mathcal{O}_{C_{i}}),$ but of course we have that $$W(R/(\varpi)[1/p]\neq \prod_{i\in I}W(\mathcal{O}_{C_{i}}/(\varpi_{i}))[1/p]$$ and likewise $$B_{cris}^{+}(R/(\varpi))\neq \prod_{i\in I}B_{cris}^{+}(\mathcal{O}_{C_{i}}/(\varpi_{i})).$$
+But it is rather true that $W(R/(\varpi))[1/p]$ (resp. $B_{cris}^{+}(R/(\varpi))$) consists of those products of elements in $W(\mathcal{O}_{C_{i}}/(\varpi_{i}))[1/p]$ (resp. $B_{cris}^{+}(\mathcal{O}_{C_{i}}/(\varpi_{i}))$) such that they all have uniformly bounded denominators of $p.$
+\\
+Let us first assume that the displays $\mathcal{P}_{j}$ are both trivial and represented by sections $U_{j}\in\G(W(R))=\prod_{i\in I}\G(W(\mathcal{O}_{C_{i}})),$ where the last equation is true, as $\G$ is affine. Then let us write $U_{j,i}$ for the $i$-th component. Likewise we have $U_{j,inf}\in \G(\Ainf(R))$ and write $U_{j,inf,i}$ for the $i$-th component. Then a $G$-quasi-isogeny is given by an element $g\in G(W(R/(\varpi)))[1/p],$ such that the equation
+\begin{equation}
+g^{-1}\bar{U}_{1}\mu^{\sigma}(p)F(g)=\bar{U}_{2}\mu^{\sigma}(p)
+\end{equation}
+holds inside of $G(W(R/(\varpi))[1/p].$ Then we let $g_{i}\in G(W(\mathcal{O}_{C_{i}})/(\varpi))[1/p])$ be the images of $g$ under the maps induced by the $i$-th projection $R/(\varpi)\rightarrow \mathcal{O}_{C_{i}}/(\varpi_{i}).$
+Then we get the similiar equation in all $i$-th component. As all the $g_{i}$ come from one $g,$ they all have uniformly bounded denominators of $p,$ in the sense that after choosing an embedding $\G\rightarrow \GL_{n},$ there exists on $N>>0,$ such that for all $i\in I,$ it is true that $p^{N}g_{i}\in \text{Mat}_{n}(W(\mathcal{O}_{C_{i}})/(\varpi_{i})).$ By the previous claim, we get uniquely determined elements $g_{i,cris}\in G(B_{cris}^{+}(\mathcal{O}_{C_{i}})/(\varpi_{i})),$ such that
+\begin{equation}\label{Gleichungen in den Komponenten kristalline Qis}
+g_{i,cris}^{-1}\bar{U}_{1,cris,i}\mu^{\sigma}(p)\varphi(g_{i,cris})=\bar{U}_{2,cris,i}\mu^{\sigma}(p).
+\end{equation}
+It is still true that $p^{N}g_{i,cris}\in \text{Mat}_{n}(\Acris(\mathcal{O}_{C_{i}})).$  It follows, that their product gives a well-defined element $g_{cris}\in G(B_{cris}^{+}(R/(\varpi)))$ and then we get the equation
+\begin{equation}\label{Gleichung in der kristallinen Qis}
+g_{cris}^{-1}\bar{U}_{1,cris}\mu^{\sigma}(p)\varphi(g_{cris})=\bar{U}_{2,cris}\mu^{\sigma}(p)
+\end{equation}
+for free, because both sides are morphisms
+$$
+\Spec(B_{cris}^{+}(R/(\varpi)))\rightarrow G,
+$$
+that agree on the union of the images of the morphisms $\Spec(B_{cris}^{+}(\mathcal{O}_{C_{i}})/(\varpi_{i})).$ As all the $B_{cris}^{+}(\mathcal{O}_{C_{i}})/(\varpi_{i})$ are reduced, this union lies dense and thus it follows from the equations (\ref{Gleichungen in den Komponenten kristalline Qis}), that the (\ref{Gleichung in der kristallinen Qis}) is indeed true. The general case, where our displays are not necessarily trivial is delt with in the same way, by working with affine schemes of isomorphisms between certain torsors.
+\end{proof}
+Now that we know how the quasi-isogeny of adjoint nilpotent displays over integral perfectoid rings of the form (\ref{Gleichung (1) im Beweis der letzten Prop}) and (\ref{Gleichung (2) im Beweis der letzten Prop}) translates on the side of Breuil-Kisin-Fargues modules, we can finally construct the map of presheaves as in (\ref{Gleichung (5) im Beweis der letzten Prop}).
+\\
+In fact, if $\Spa(\tilde{R},\tilde{R}^{+})$ is of that form and $[\mathcal{P},\rho)]\in \mathcal{M}^{BP}(\Spf(\tilde{R}^{\sharp,+})),$ then we can restrict the uniquely determiend $\G$-BKF $\mathcal{P}_{inf}$ over $\Spec(\tilde{R}^{\sharp,+})$ towards $^{\prime}\Spa(W(k))\times \Spa(\tilde{R},\tilde{R}^{+}) ^{\prime}$ to get a well-defined $\G^{adic}$-shtuka with a leg at the untilit $\Spa(\tilde{R}^{\sharp},\tilde{R}^{\sharp,+}).$ Furthermore, by the previous claim, the quasi-isogeny precisely translates into a trivialization of this shtuka on the boundy of the required form. This conlcudes the construction of the map $f_{v}$ on the sheafifications.
+\\
+The next step is to show that this map is indeed an isomorphism.
+\\
+For this, we will make the following
+\\
+\textit{Claims:}
+\begin{enumerate}
+\item[(a):] $f(C,C^{+})$ is a bijection for any algebraically closed non-archimedean $C$ over $\bar{k}_{E}$ with open and bounded valuation subring $C^{+}\subset C.$
+\item[(b):] For all affinoid perfectoid spaces $S=\Spa(R,R^{+}),$ the map
+$$
+\mathcal{M}^{BP}(\Spf(R^{+}))\rightarrow \prod_{s\in S} \mathcal{M}^{BP}(\Spf(k(s)^{a,+}))
+$$
+is injective.
+\item[(c):] Let $C_{i},$ $i\in I,$ be any set of algebraically closed non-archimedean field over $\mathcal{O}_{\breve{E}},$ with ring of integers $\mathcal{O}_{C_{i}}.$ Let $R^{+}=\prod_{i} \mathcal{O}_{C_{i}},$ and $R=R^{+}[1/\varpi].$ Then any section
+$$
+\Spa(R,R^{+})\rightarrow \mathcal{M}^{\text{Scholze}}_{int}
+$$
+factors over $f\colon \mathcal{M}^{BP}\rightarrow \mathcal{M}^{\text{Scholze}}_{int}.$
+\end{enumerate}
+These claims together imply that $f_{v}\colon (\mathcal{M}^{BP})_{v}\rightarrow \mathcal{M}^{\text{Scholze}}_{int}$ is an isomorphism. In fact, (a) and (b) imply that $f_{v}$ is a monomorphism. Let $S=\Spa(R,R^{+})$ be an affinoid perfectoid space over $\bar{k}_{E},$ $a,b\in (\mathcal{M}^{BP}(\Spf(R^{+})))_{v},$ such that $f_{v}(a)=f_{v}(b).$ Replacing $S$ by an affinoid $v$-cover (still denoted by $S$), we may assume that $a$ and $b$ are induced by elements $a^{\prime},b^{\prime}\in \mathcal{M}^{BP}(\Spf(R^{+})).$ By (a) and (b), we have the sequence of injections
+$$
+\mathcal{M}^{BP}(\Spf(R^{+}))\hookrightarrow \prod_{s\in S} \mathcal{M}^{BP}(\Spf(k(s)^{a,+}))\hookrightarrow \prod_{s\in S} \mathcal{M}^{\text{Scholze}}_{int}(\Spf(k(s)^{a,+})).
+$$
+Thus $f_{v}$ is a monomorphism. Furthermore, (c) quickly implies that $f_{v}$ is an epimorphism. In fact, if $S=\Spa(R,R^{+}),$ affinoid perfectoid over $\mathcal{O}_{\breve{E}},$ then let $C_{i}$ as in (c) covering the topological space $|S|.$ Then let $\tilde{R}^{+}$ and $\tilde{R}$ be constructed as in (c), so that
+$\Spa(\tilde{R},\tilde{R}^{+}) \rightarrow \Spa(R,R^{+})$ is by definition a $v$-cover, showing under (c) that $f_{v}$ is indeed an epimorphism.
+\\
+The claim (a) follows for untilts in characteristic $0$ from the equivalence in section 7.2, showing that shtukas extend uniquely to $\G$-torseurs on $\Spec(\Ainf),$ and thus to an adjoint nilpotent display under our assumption on the slope of $b.$ The same argument also goes through in characteristic $p.$
+\\
+Let us show the claim (b).\footnote{This is some kind of seperatedness property. In fact, assuming that the functor $\mathcal{M}^{BP}$ is representable, one should expect that the formal scheme is automatically seperated. From this property (b) would follow. Indeed, if $R^{+}=\prod_{s\in S} k(s)^{a,+}$ and $x,y\colon \Spf(R^{+})\rightarrow \mathcal{M}^{BP},$ such that all $x_{s}=y_{s}\colon \Spf(k(s)^{a,+})\rightarrow \mathcal{M}^{BP},$ then consider the pullback of the diagonal $\Delta\colon \mathcal{M}^{BP}\rightarrow \mathcal{M}^{BP} \times \mathcal{M}^{BP}$ along $(x,y)\colon \Spf(R^{+})\rightarrow \mathcal{M}^{BP}\times \mathcal{M}^{BP}.$ Denoting the pullback by $Y\rightarrow \Spf(R^{+}),$ we have by assumption that this is a closed immersion, thus $Y$ is affine formal. Thus, we get a unique $\Spf(R^{+})\rightarrow Y,$ inducing the given sections over $\Spf(k(s)^{+,a}).$ This implies that $Y\rightarrow \Spf(R^{+})$ is a closed immersion with a section, thus an isomorphism. We deduce that $x=y.$} Let  $\Spa(R,R^{+})$ affinoid perfectoid over $\mathcal{O}_{\breve{E}}$ and $x,y\in\mathcal{M}^{BP}(\Spf(R^{+})),$ such that $x_{s}=y_{s}\in \mathcal{M}^{BP}(\Spf(k(s)^{a,+})),$ for all $s\in \Spa(R,R^{+}).$ We first reduce to the case that the $\G$-$\mu$-displays $\mathcal{P}_{x}, \mathcal{P}_{y}$ over $\Spec(R^{+})$ are trivial. In fact, we find $R^{+}/p\rightarrow \bar{S}$ faithfully flat etale, lifting to an integral perfectoid $R$-algebra $S,$ such that $\bar{S}=S/p$ and all $R/p^{n}\rightarrow S/p^{n}$ are (faithfully) flat, such that
+$$
+\mathcal{P}_{x}\times_{\Spec(R^{+})} \Spec(S),\mathcal{P}_{y}\times_{\Spec(R^{+})} \Spec(S) 
+$$ 
+are both trivial. Because $\G$-$\mu$-displays form a stack for $\mathcal{R}$ over $\Spec(R^{+}/p)_{et},$ see Lemma \ref{BKF und Displays sind stacks fuer Laus Garbe}, and the functor $\mathcal{M}^{BP}(.)$ has no non-trivial automorphisms on integral perfectoids, the map
+$$
+\mathcal{M}^{BP}(\Spf(R^{+}))\rightarrow \mathcal{M}^{BP}(\Spf(S))
+$$
+is injective. Thus, if the statment of claim (b) is true for $\Spa(S[1/\varpi],S),$ then it is also true for $\Spa(R,R^{+}).$ We suppose now that the points $x,y$ come from trivial $\G$-$\mu$-displays, i.e. they correspond to $\G(\mathcal{W})_{\mu}$-equivalence classes of objects $(U,g)$ resp. $(V,h)\in \G(W(R^{+}))\times G(W(R^{+})_{\mathbb{Q}}),$ such that $g^{-1}bF(g)=U\mu^{\sigma}(p)$ resp. $h^{-1}bF(h)=V\mu^{\sigma}(p).$ By assumption, we have that there exist elements $\gamma_{s}\in \G(\mathcal{W}(k(s)^{a,+}))_{\mu},$ such that
+\begin{equation}
+(\gamma_{s}^{-1}U_{s}\Phi_{\mathcal{W}}(\gamma_{s}),g_{s}\gamma_{s})=(V_{s},h_{s}).
+\end{equation}
+We may even suppose that $R^{+}=\prod_{s\in S} k(s)^{a,+}.$ As the display-group is representable by an affine scheme, we have
+$$
+\mathcal{G}(\mathcal{W}(R^{+}))_{\mu}=\prod_{s}\G(\mathcal{W}(k(s)^{a,+}))_{\mu}
+$$
+and thus $\prod_{s}\gamma_{s}=\gamma$ defines an element of $\G(\mathcal{W}(R^{+}))_{\mu}.$ 
+We claim that 
+\begin{equation}
+(\gamma^{-1}U\Phi_{\mathcal{W}}(\gamma),g\gamma)=(V,h),
+\end{equation}
+as desired. The equality
+\begin{equation}
+\gamma^{-1}U\Phi_{\mathcal{W}}(\gamma)=V
+\end{equation} 
+is a tautology, as the operator $\Phi_{\mathcal{W}}$ acts componentwise and we have
+$$
+\G(W(R^{+}))=\prod_{s} \G(W(k(s)^{a,+})).
+$$ Therefore, it is enough to show that
+$$
+G(W(R^{+})_{\mathbb{Q}})\rightarrow \prod_{s}G(W(k(s)^{a,+})_{\mathbb{Q}})
+$$
+is injective, for which it suffices to show that $W(R^{+})_{\mathbb{Q}}\rightarrow \prod_{s}W(k(s)^{a,+})_{\mathbb{Q}}$ is injective (it will not be surjective), as $G$ is affine. Thus, let $x\in W(R^{+})_{\mathbb{Q}},$ such that all $x_{s}=0.$ We have to show that $x=0,$ as all ring of Witt-vectors in sight are $p$-torsionfree and $p$ is a unit in $W(R^{+})_{\mathbb{Q}},$ we may multiply $x$ by a power of $p,$ to suppose that $x\in W(R^{+})\subset W(R^{+})_{\mathbb{Q}}.$ But $W(R^{+})$ injects into $\prod_{s}W(k(s)^{a,+})_{\mathbb{Q}},$ as by $p$-torsionfreeness of $W(k(s)^{a,+})$ and an arbitrary product of injections is injective. This shows claim (b).
+\\
+Now let us turn towards claim (c). We first remark, that the $\Spa(C_{i},C_{i}^{+})$-points of $\mathcal{M}^{BP}$ and equiv (by (a)) $\mathcal{M}^{\text{Scholze}}_{int}$ do not depend on $C_{i}^{+}\subset C_{i}$ (i.e. are partially proper). This follows from description in terms of modifications of $G$-torseurs on the curve, where all data are independent of the choice of $C_{i}^{+},$ so we may just assume that we look at the generique points $\Spa(C_{i},\mathcal{O}_{C_{i}}).$ Then let $R^{+}=\prod_{i}\mathcal{O}_{C_{i}}$ and $R=R^{+}[1/\varpi],$ for some choice of pseudo-uniformizers $(\varpi_{i})_{i\in I},$ dividing $p.$ Let a $\Spa(R,R^{+})$-point $(\mathcal{E},\varphi_{\mathcal{E}},\iota_{r})\in \mathcal{M}^{\text{Scholze}}_{int}(\Spa(R,R^{+}))$ be given. Thus, we get the points $(\mathcal{E}_{i},\varphi_{\mathcal{E}_{i}},\iota_{r_{i}})\in \mathcal{M}^{\text{Scholze}}_{int}(\Spa(C_{i},\mathcal{O}_{C_{i}})),$ which give us adjoint nilpotent $\G$-$\mu$-displays $\mathcal{P}_{i}$ over $\Spec(\mathcal{O}_{C_{i}}),$ by the classification result Lemma \ref{Klassifikation von G mu Displays a la Scholze-Weinstein}. We claim that we can produce an adjoint nilpotent product display $\mathcal{P}$ over $\Spec(R^{+}).$
+\\
+First, the product of the associated $L^{+}(\G)$-torseurs of the $\mathcal{P}_{i}$ defines a $L^{+}(\G)$-torseur $X$ on the product $\Spec(R^{+})$ by \cite[Lemma B.0.4.]{BP}. To get a reduction to a $\G(\mathcal{W})_{\mu}$-torseur, we need a section of the $\G/P^{-}$-bundle $X/\G(\mathcal{W})_{\mu}$ over $\Spec(R^{+}).$ We have sections over all $\Spec(\mathcal{O}_{C_{i}})$ by assumption, and as $X/\G(\mathcal{W})_{\mu}$ is qcqs, a result of Bhatt shows that 
+$$
+X/\G(\mathcal{W})_{\mu}(\prod_{i}\Spec(\mathcal{O}_{C_{i}}))=\prod_{i} X/\G(\mathcal{W})_{\mu}(\Spec(\mathcal{O}_{C_{i}}).
+$$
+The Frobeniusstructure can be constructed similiarly as in the proof of the essential surjectivity in \cite[Lemma B.0.4.]{BP}.
+(Here is another brute-force argument: As all $\mathcal{O}_{C_{i}}$ are strictly henselian, the $\G$-$\mu$-displays $\mathcal{P}_{i}$ over $\Spec(\mathcal{O}_{C_{i}})$ are all trivial. Choose a trivialization and represent them by a structure matrix $U_{i}\in \G(W(\mathcal{O}_{C_{i}})),$ then one could define the product display by the structure matrix
+$$
+U=\prod_{i} U_{i}\in \prod_{i} \G(W(\mathcal{O}_{C_{i}})) = \G(W(R^{+})).
+$$ 
+The choice of a different trivialization leads to an isomorphic product display. This display would thus be automatically trivial - and apparently this construction is different than the one given before...?)
+\\
+Let $\mathcal{P}_{inf}$ be the uniquely determined $\G$-BKF of type $\mu^{\sigma}$ over $\Spec(R^{+}),$ corresponding to the aforementioned product-display. We want to reconstruct $\mathcal{P}_{inf}[1/p]=\mathcal{P}_{inf}\times_{\Spec(\Ainf(R^{+}))} \Spec(\Ainf(R^{+}))[1/p]$ directly from the data  $(\mathcal{E},\varphi_{\mathcal{E}},\iota_{r}).$
+For this, we glue the $\G^{adic}$-torseur $\mathcal{E}$ on $\mathcal{Y}_{[0,\infty)}(\Spa(R,R^{+}))$ with the trivial $G^{adic}$-torseur on $\mathcal{Y}_{[r,\infty]}(\Spa(R,R^{+}))$ along the trivialization $\iota_{r}.$ This produces a $\G^{adic}$-torseur $\mathcal{F}^{\prime}$ on $\mathcal{Y}_{[0,\infty]}(\Spa(R,R^{+})),$ which will then give a $G$-torseur $\mathcal{F}$ on $\Spec(W(R^{+})[1/p])$ as in section 14.3. in the Berkeley notes, \cite{Berkeley lectures}, where we use the observation that Kedlaya$^{\prime}$s equivalence between vectorbundles on $\Spa(A,A^{+})$ for a sheafy Tate-ring $A$ and finite projective $A$-modules is an equivalence of \textit{exact} categories.
+\\
+We claim that
+$$
+\mathcal{F}\simeq \mathcal{P}_{inf}[1/p].
+$$
+\\
+But for this, we can apply the Tannakian formalism to the shtuka $(\mathcal{E},\varphi_{\mathcal{E}})$ and the $\G$-BKF $\mathcal{P}_{inf},$ to reduce to the $\GL_{n}$-case, which has been proven by Scholze.
+\\
+It follows that the trivialization $\iota_{r}$ induces a section of
+$$
+\mathcal{F}\times_{\Spec(W(R^{+})[1/p])} \Spec(B^{+}_{cris}(R^{+}/\varpi))\simeq \mathcal{P}_{inf} \times_{\Spec(W(R^{+}))} \Spec(B^{+}_{cris}(R^{+}/\varpi)).
+$$
+But after base-change along the morphism $\chi\colon \Acris(R^{+})\rightarrow W(R^{+}),$ this section corresponds to the desired quasi-isogeny of our adjoint nilpotent $\G$-$\mu$-displays
+$$
+\mathcal{P}\times_{\Spec(R^{+})} \Spec(R^{+}/\varpi) \dashrightarrow \mathcal{P}_{b} \times_{W(k)} \Spec(R^{+}/\varpi).
+$$
+This shows claim (c) and thus concludes the proof.
+\end{proof}
+From this, we can deduce that the generic fiber of $\mathcal{M}^{BP}$ is representable by a smooth rigid-analytic space, which is nothing else but the local Shimura-variety associated to $(G,\lbrace \mu \rbrace,[b])$ with maximal hyperspecial level $K=\G(\mathbb{Z}_{p}):$ $\mathcal{M}^{Scholze}_{(G,\lbrace \mu \rbrace,[b],K)},$ as constructed by Scholze, see \cite[Definition 24.1.3.]{Berkeley lectures}. As $\mathcal{M}^{BP}$ is not yet known to be a formal scheme, we give a precise formulation as in \cite[Proposition 24.2.4.]{Berkeley lectures}.
+\begin{Corollary}
+Let $\text{CAff}^{op}_{\breve{E}}$ be the category opposite to affinoid complete Huber pairs over $(\breve{E},\mathcal{O}_{\breve{E}}),$ endowed with the site-structure coming from the the analytic topology. Consider the sheafification of the presheaf
+$$
+(R,R^{+})\mapsto \lim_{R_{0}\subset R^{+}} \mathcal{M}^{BP}(\Spf(R_{0})),
+$$
+with the colimit running over bounded and open $\mathcal{O}_{\breve{E}}$-subalgebras of $R^{+}.$ Then this sheafification is representable by the smooth rigid analytic $\breve{E}$-space $\mathcal{M}^{Scholze}_{(G,\lbrace \mu \rbrace,[b],K)}.$
+\end{Corollary}
+\newpage
+\begin{thebibliography}{9}
+\bibitem{Alper}
+J. Alper,
+\textit{Adequate moduli spaces and geometrically reductive group schemes},
+https://arxiv.org/abs/1005.2398,
+2010.
+\bibitem{Anschuetz}
+J. Anschuetz,
+\textit{Extending torsors on the punctured spectrum of Ainf},
+preprint, https://arxiv.org/abs/1804.06356,
+2018.
+\bibitem{Bhatt}
+B.Bhatt,
+\textit{Algebraization and Tannaka duality},
+Cambridge Journal of Mathematics,
+2016, no. 4., 403-461.
+\bibitem{BMS1}
+B.Bhatt,M.Morrow,P.Scholze,
+\textit{Integral $p$-adic Hodge theory},
+preprint, 2016.
+\bibitem{Breuil}
+Ch. Breuil,
+\textit{Schemas en groupes et module filtre},
+C.R. Acad. Sci. Paris Ser.I Math, 328,
+1999, no. 2. 93-97
+\bibitem{Brochi}
+M. Broshi,
+\textit{G-torsors over a Dedekind scheme},
+J. Pure Appl. Algebra 217
+2013, no. 1, 11–19 
+\bibitem{BP}
+O. Bültel, G. Pappas,
+\textit{$(G,\mu)$-displays and Rapoport-Zink spaces},
+https://arxiv.org/abs/1702.00291, 2017.
+\bibitem{Cais-Lau}
+\textit{Dieudonne crystals and Wach-modules for $p$-divisible groups}
+\bibitem{CGP}
+B. Conrad, O. Gabber and G. Prasad,
+\textit{Pseudo-reductive groups},
+second ed., New Mathematical Monographs, vol. 26,
+Cambridge University Press, Cambridge, 2015
+\bibitem{the curve}
+L. Fargues and J.-M. Fontaine,
+\textit{Courbes et fibres vectoriels en theorie de Hodge
+p-adique}
+, 2017,
+https://webusers.imj-prg.fr/
+laurent.fargues/~Courbe
+fichier
+principal.pdf
+\bibitem{conjectures curve}
+L. Fargues,
+\textit{Quelques résultats et conjectures concernant la courbe},
+(WO?) 2014
+\bibitem{buch-fontaine}
+J.M. Fontaine, Y. Ouyang,
+\textit{Theory of $p$-adic representations},
+lectures notes available at https://www.math.u-psud.fr/~fontaine/galoisrep.pdf
+\bibitem{Kreidl}
+M. Kreidl,
+\textit{On $p$-adic lattices and Grassmannians},
+Math. Z. 276, no. 3-4, 859-888,
+2014
+\bibitem{frames finite-groupschemes}
+Eike Lau,
+\textit{Frames and finite group-schemes over complete regular local rings}
+Doc. Math 15, 545-569,
+2010.
+\bibitem{Lau perfektoid}
+Eike Lau,
+\textit{Dieudonne theory over semiperfect and perfectoid rings},
+Preprint, https://arxiv.org/abs/1603.07831, 2016.
+\bibitem{h-frames}
+Eike Lau,
+\textit{Higher Frames and $G$-displays}, secret document, 2017.
+\bibitem{Lau Inventiones}
+\bibitem{Norman}
+\bibitem{Berkeley lectures} 
+Peter Scholze, Jared Weinstein, 
+\textit{Berkeley lectures on $p$-adic geometry}. 
+http://www.math.uni-bonn.de/people/scholze/Berkeley.pdf, 2017.
+\bibitem{diamonds}
+Peter Scholze,
+\textit{Etale Cohomology of Diamonds}
+ \bibitem{skop}
+ Alexei Skorobogatov,
+ \textit{Torsors and rational points},
+ Cambridge tracts in mathematics 144, Cambridge University Press, 2001.
+\bibitem{stacks-project} 
+The stacks-project authors,
+\textit{The stacks-project} 
+\bibitem{zink-displays} 
+Thomas Zink,
+\textit{The display of a formal $p$-divisible group}, 
+Asterisque 2002, no. 278, 127-248, Cohomologies $p$-adiques et applications arithmetiques, I.
+\bibitem{zink-windows}
+Thomas Zink,
+\textit{Windows for displays for $p$-divisible groups},
+Progress in Mathematics, 195, 491-518, Moduli of abelian varieties,  Birkhauser, Basel, 2001.
+\bibitem{zink-vorlesung}
+Thomas Zink,
+\textit{Lecture notes on $p$-divisible groups},
+https://www.math.uni-bielefeld.de/~zink/pDivGr1.pdf, 2012.
+\end{thebibliography}
+\end{document}

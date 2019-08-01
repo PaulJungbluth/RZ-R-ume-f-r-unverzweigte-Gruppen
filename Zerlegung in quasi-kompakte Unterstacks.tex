@@ -1,0 +1,344 @@
+
+%% Copyright (C) 2007 by Markus Rost
+%%
+%% Created: June 2007
+%% Last Changes:
+
+\NeedsTeXFormat{LaTeX2e}
+
+%%% Falls man deutsche Umlaute und sz benutzt:
+%% Hoffentlich geht das, ich benutze es selbst nicht, sondern
+%% stattdessen \usepackage{german}, s.u.
+% \RequirePackage[german]{babel}
+% \RequirePackage[latin1]{inputenc}
+
+%%% Dokumentation zu AMS-LaTeX
+
+%% <URL:ftp://ftp.ams.org/pub/tex/doc/amsmath/short-math-guide.pdf>
+%% <URL:ftp://ftp.ams.org/pub/tex/doc/amsmath/amsldoc.pdf>
+%% <URL:ftp://ftp.ams.org/pub/tex/doc/amscls/amsthdoc.pdf>
+
+\documentclass[a4paper,11,5 pt]{amsart}
+
+%%% Fuer deutsche Silbentrennung:
+%% Nur falls man \RequirePackage[german]{babel} nicht benutzt.
+\usepackage{german}
+
+%%% Diagramme
+
+%% Ich benutze "amscd".  Dies ist sehr einfach zu lernen
+%% (Dokumentation in amsldoc.pdf).  Es gibt allerdings keine schraegen
+%% Pfeile.  Ich behelfe mich hier mit "=".  Beispiele sind in dieser
+%% Datei.
+\usepackage{amscd}
+\usepackage[arrow, matrix, curve]{xy}
+\usepackage{color}
+
+%% Beliebt scheint auch das "xy"-Paket zu sein:
+% \usepackage[arrow, matrix, curve]{xy}
+
+%%% Matrizen.
+%% Man benutzt pmatrix, Bmatrix, etc. (siehe amsldoc.pdf).  Hat die
+%% Matrix mehr als 10 Spalten, muss man eine maximale Spaltenzahl
+%% explizit angeben.
+% \setcounter{MaxMatrixCols}{12}
+
+%%% Umgebungen (Dokumentation in amsthdoc.pdf):
+\newtheorem{Satz}{Satz}[section]
+\newtheorem{Lemma}[Satz]{Lemma}
+\newtheorem{Corollary}[Satz]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{Definition}{Definition}
+\newtheorem{Remark}{Remark}
+\newtheorem{Theorem}[Satz]{Theorem}
+\newtheorem{Example}[Satz]{Example}
+\newtheorem{proposition}[Satz]{Proposition}
+\newtheorem{construction}[Satz]{Construction}
+\newtheorem{hope}[Satz]{Hope}
+\newtheorem{Fact}[Satz]{Fact}
+
+
+
+
+
+
+
+%% Fuer die "proof"-Umgebung.
+\renewcommand{\proofname}{Proof}
+\renewcommand{\thefootnote}{\arabic{footnote}}
+\renewcommand*\contentsname{Summary}
+
+%%% Fuer zusaetzliche Mathematik-Symbole (Dokumentation in
+%%% short-math-guide.pdf), z.B. fuer \nmid.
+\usepackage{amssymb}
+\usepackage{fullpage}
+%%% Einige spezielle Definitionen.  Fuer weitere Beispiele siehe
+%%% paperD.sty.  In paperD.sty sind praktisch alle Definitionen die
+%%% ich in den letzten Jahren verwendet habe.  Man kann
+%%% paperD.sty auch direkt laden mit
+% \usepackage{paperD.sty}
+
+%% some Calligraphic letters
+\newcommand{\CO}{\mathcal O}
+%% bold Letters ("blackboard" letters)
+\newcommand{\LF}{\mathbf F}
+\newcommand{\LR}{\mathbf R}
+\newcommand{\LC}{\mathbf C}
+\newcommand{\LP}{\mathbf P}
+\newcommand{\LZ}{\mathbf Z}
+
+\newcommand{\bmidb}[2]{\{\nonscript\,{#1}\mid{#2}\nonscript\,\}}
+
+\DeclareMathOperator{\Pf}{Pf}
+\DeclareMathOperator{\Hom}{Hom}
+%% \Homit ist nur zu einer Illustration im Text definiert.
+\DeclareMathOperator{\Homit}{\it Hom}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\car}{char} % \char gibt es schon.
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Lie}{Lie}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Spa}{Spa}
+\DeclareMathOperator{\Spd}{Spd}
+\DeclareMathOperator{\Spf}{Spf}
+\DeclareMathOperator{\Nilp}{Nilp}
+\DeclareMathOperator{\Ens}{Ens}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Om}{\widehat{\Omega}^{d}_{K}}
+\DeclareMathOperator{\k0}{k_{0}}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\Displ}{Displ}
+\DeclareMathOperator{\conj}{conj}
+\DeclareMathOperator{\Cris}{Cris}
+\DeclareMathOperator{\Acris}{\mathbb{A}_{cris}}
+\DeclareMathOperator{\Ainf}{\mathbb{A}_{inf}}
+\DeclareMathOperator{\Rad}{Rad}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\MaxSpec}{MaxSpec}
+\DeclareMathOperator{\Fil}{Fil}
+\DeclareMathOperator{\Br}{Br}
+\DeclareMathOperator{\Nil}{Nil}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\eq}{eq}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Bun}{Bun}
+\DeclareMathOperator{\G}{\mathcal{G}}
+\DeclareMathOperator{\Y}{\mathcal{Y}}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Q}{\mathbb{Q}}
+\DeclareMathOperator{\Z}{\mathbb{Z}}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\F}{\mathbb{F}}
+\DeclareMathOperator{\Div}{Div}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\B+dr}{B_{dR}^{+}}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Cl}{Cl}
+\DeclareMathOperator{\Def}{Def}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\DeclareMathOperator{\ggT}{ggT}
+
+%% \idop ist nur zu einer Illustration im Text definiert.
+\DeclareMathOperator{\idop}{id}
+\newcommand{\id}{\mathrm{id}}
+
+\newcommand{\pfister}[1]{\langle\!\langle#1\rangle\!\rangle}
+\newcommand{\qform}[1]{\langle#1\rangle}
+%% \bot as a binary operator
+\newcommand{\orth}{\mathbin\bot}
+
+\newcommand{\inv}{^{-1}}
+
+%% Diese Definition benutze ich hier f\"ur einige Erl\"auterungen zu
+%% TeX-Definitionen, man braucht sie normalerweise nicht.
+\newcommand{\bs}{\char`\\}
+
+%%% Bemerkungen:
+
+%% Ich benutze gerne die Umgebung
+% \begin{displaymath}
+% \end{displaymath}
+%% Dies ist gleichbedeutend mit $$...$$.
+
+%% Spezielle Trennungen
+%\hyphenation{Meeres-spie-gel}
+
+\begin{document}
+The aim is to decompose the stack $M_{\G,\mu,[b]}^{BP}$ by Bueltel-Papas into substacks, that are quasi-compact. Furthermore, I want to explain how one can reduce the representability of the whole moduli problem to the representability of one of these pieces (which might be easier...).
+\\
+Fix a prime $p,$ an unramified connected reductive group $G/\mathbb{Q}_{p},$ $T\subset B \subset G$ a Borel with a maximal torus, both defined over $\mathbb{Q}_{p}.$ Let $\G/\mathbb{Z}_{p}$ a reductive model and $\mu\colon \mathbb{G}_{m,\mathcal{O}_{E}}\rightarrow \G_{\mathcal{O}_{E}}$ a co-character defined over the the ring of integers of the local reflex-field, $E,$ a finite unramified extension of $\mathbb{Q}_{p}.$
+\\
+These ideas belong essentially to Hartl-Viehmann and Xinwen Zhu.
+\\
+Consider Borovoi$^{\prime}$s algebraic fundamental group $\pi_{1}(G)$ of $G,$ (which is here in the quasi-split case just the co-characters modulo the co-root lattice), let $I\subseteq \Gamma=Gal(\overline{\mathbb{Q}_{p}}/\mathbb{Q}_{p})$ the inertia group and recall that Zhu showed the existence of a bijection
+$$
+\pi_{0}(Gr_{\G,\bar{\mathbb{F}_{q}}}^{Witt})\cong\pi_{1}(G)_{I}.
+$$
+Let $S=\Spec(R)\in \Nilp_{\mathcal{O}_{\breve{E}}}$ and consider two $L^{+}(\G)$-torsors $\mathcal{P}_{1},\mathcal{P}_{2}$ on $S,$ equipped with an isomorphism of their induces $LG$-torsors
+$$
+\alpha\colon \mathcal{P}_{1}[1/p]\simeq \mathcal{P}_{2}[1/p].
+$$
+Then we can consider
+$$
+\kappa_{\alpha}()\colon |S|\rightarrow \pi_{1}(G)_{I},
+$$
+given by
+$$
+s\mapsto \overline{\text{Inv}_{s}(\alpha)}.
+$$
+\begin{proposition}
+$\kappa_{\alpha}()$ is locally constant.
+\end{proposition}
+\begin{proof}
+As $p$ is nilpotent on $R,$ we have $|\Spec(R)|\cong |\Spec(R/p)|$ and as going to the inverse-limit perfection induces a (universal) homeomorphism on topological spaces and the invariant-map is invariant of choices of algebraical closures, we may also replace the $\bar{\mathbb{F}_{q}}$-algebra $R/p$ by $(R/p)_{\text{perf}}=\text{colim}_{\text{Frob}_{R/p}} R/p.$
+\\
+Thus, we may assume that $R$ is a perfect $\bar{\mathbb{F}_{q}}$-algebra to start with. Choose $S^{\prime}\rightarrow S$ faithfully flat, etale, trivializing both $L^{+}(\G)$-torsors $\mathcal{P}_{1},\mathcal{P}_{2}.$ After trivialzing them, $\alpha$ is given by $g^{\prime}\in LG(S^{\prime}).$ Then we get a map $|S^{\prime}|\rightarrow \pi_{0}(Gr_{\G,\bar{\mathbb{F}_{q}}}^{Witt}),$ which is independed of the choice of the trivialzation. Thus it descents to a map
+$|S|\rightarrow \pi_{0}(Gr_{\G,\bar{\mathbb{F}_{q}}}^{Witt}),$ that under the bijection $\pi_{0}(Gr_{\G,\bar{\mathbb{F}_{q}}}^{Witt})\cong\pi_{1}(G)_{I}$ indentifies with our map $\kappa_{\alpha}.$ This shows, that it has to be locally constant.
+\end{proof}
+This proof essentially followed Hartl-Viehmann, Prop. 3.4.
+\\
+Then, we get a decomposition into open and closed sub-stacks
+$$
+M^{BP}_{\G,\mu,[b]}=\coprod_{[\chi]\in \pi_{1}(G)_{I}} M^{BP}_{\G,\mu,[b]}[\chi].
+$$
+The individual pieces $M^{BP}_{\G,\mu,[b]}[\chi]$ are not quasi-compact (wrong for the raw RZ-space). Thus, we have to cut them smaller.
+\\
+Let $\sum^{+}$ be the sum of all positive co-roots of $G$ with respect to $T.$ 
+Thus, for $M^{BP}(k)$ for some algebraically closed field over $\mathbb{F}_{q^{s}},$ we want to define something like a quasi-metric. Therefore, let $x=(\mathcal{P}_{1},\rho_{1}),y=(\mathcal{P}_{2},\rho_{2})\in \mathcal{M}^{BP}(k).$ Here $\mathcal{P}_{1}, \mathcal{P}_{2}$ are $\G$-$\mu$-Displays over $k$ and $\rho_{1},\rho_{2}$ are quasi-isogenies to the $\G$-$\mu$-Display $\mathcal{P}_{b},$ which is the trivial $\G(\mathcal{W})_{\mu}$-torseur on $\Spec(k)$ and has structural matrix given by some $u_{0}\in L^{+}(\G)(k).$ Then the associated $G$-iso-display of $\mathcal{P}_{b}$ is given by $b=u\mu^{\sigma}(p)\in G(W(k)[1/p]).$ After trivialization of $\mathcal{P}_{1}$ and $\mathcal{P}_{2},$ these Displays are described by structural matrices $U_{1}\in \G(W(k))$ and $U_{2}\in \G(W(k))$ and the quasi-isogenies $\rho_{1}$ and $\rho_{2}$ are given by $g_{1},g_{2}\in G(W(k)[1/p]),$ fullfilling the equations
+\begin{equation}
+g_{i}^{-1}bF(g_{i})=U_{i}\mu^{\sigma}(p),
+\end{equation}
+$i=1,2.$ Then we define $d(x,y)=n,$ where $n$ is minimal, such that
+$$
+\text{Inv}(g_{1}^{-1}g_{2}) \preceq n\cdot \Sigma^{+}.
+$$
+Note that this is independend of the choice of the trivialization of our Displays, by the very definition of the Invariant-map.
+\begin{Definition}
+We define $
+M^{BP}_{\G,\mu,[b]}[\chi]_{\leq a}$ to be the stack for etale topology on $\Nilp_{W(k)},$ substack of $M^{BP}_{\G,\mu,[b]}[\chi],$ given by the condition that a $S$-point $(\mathcal{P},\rho)$ of $M^{BP}_{\G,\mu,[b]}[\chi]$ satisfies
+$$
+d((\mathcal{P},\rho)_{s},(\mathcal{P}_{b},\text{id})_{s})\leq a,
+$$
+for all geometric points $s$ of $S.$
+\end{Definition}
+\begin{proposition}
+$
+M^{BP}_{\G,\mu,[b]}[\chi]_{\leq a}$ is quasi-compact.
+\end{proposition}
+\begin{proof}
+Because this is a topological question, we may replay $M^{BP}$ by $X_{\mu^{\sigma}}(b)$ and work with this object.
+\\
+Recall that Zhu showed that $Gr^{\text{Witt}}_{ \preceq a\cdot \sum^{+}}$ is quasi-compact. Furthermore, we may write
+$$
+(X_{\mu^{\sigma}}(b)[\chi])_{\leq a}= X_{\mu^{\sigma}}(b) \times_{(Gr^{Witt}) Gr^{\text{Witt}}_{ \preceq a\cdot \sum^{+}}.
+$$
+But this lives closed inside $Gr^{\text{Witt}}_{ \preceq a\cdot \sum^{+}}.$ Indeed, $(X_{\mu^{\sigma}}(b)[\chi])_{\leq a}$ is given inside $Gr^{\text{Witt}}_{ \preceq a\cdot \sum^{+}},$ by the condition that $\text{Inv}_{s}(\beta^{-1}b\sigma(\beta)))=\mu^{\sigma}.$ Because $\mu$ is minuscule, it follows that this is equivalent to $\text{Inv}_{s}(\beta^{-1}b\sigma(\beta))) \preceq\mu^{\sigma},$ which is a closed condition. But a closed subset of a quasi-compact space is itself quasi-compact.
+\end{proof}
+Let $s$ some positive integer, $P\subset \mathbb{F}_{q^{s}}$ a perfect field, let $u_{0}\in \G(W(P)),$ such that $b=u_{0}\mu^{\sigma}(p)$ is a \textit{descent} isocrystal. Choose this set-up to construct our moduli problem. Here is the analogon of RZ-finiteness statement (see Prop. 2.27 in RZ).
+\begin{proposition}
+There exists $c\in \mathbb{N},$ such that for all algebraically closed fields $\mathbb{F}_{q^{s}}\subset k,$ all $(\mathcal{P},\rho)\in M^{BP}_{\G,\mu,[b]}(k),$ there exists a point $(\mathcal{P}^{\prime},\rho^{\prime})\in M^{BP}_{\G,\mu,[b]}(\mathbb{F}_{q^{s}}),$ such that
+$$
+d((\mathcal{P},\rho),(\mathcal{P}^{\prime},\rho^{\prime})_{k})\leq c.
+$$
+\end{proposition}
+\begin{proof}
+Let $X_{\mu^{\sigma}}(b)$ be the affine Deligne-Lustzig-Variety, then we have $(\mathcal{P},\rho)\in X_{\mu^{\sigma}}(b)(k)$ and $(\mathcal{P}^{\prime},\rho^{\prime})\in X_{\mu^{\sigma}}(b)(\mathbb{F}_{q^{s}}).$ Trivializing the torsors, we have $g\in LG(k)$ and $g^{\prime}\in LG(\mathbb{F}_{q^{s}}),$ and the claim is that we find a $c\in \mathbb{N},$ such that
+$g^{-1}g^{\prime}\in \G(W(k))\mu^{\prime}(p)\G(W(k)),$ for some $\mu^{\prime}\preceq c\sum^{+}.$ This condition is in particular satisfied, in case the distance of $g$ and $g^{\prime}$ in the extended Bruhat-Tits-building $\mathcal{B}(G,W(k)[1/p])$ is less than $c.$ But then we can use the finiteness-statment of Rapoport and Zink to deduce.
+\end{proof}
+\begin{Remark}
+To be honest, I did not check this comparision with the Building thing. I checked it for e.g. $PGL_{2}$ (and Timo says he believes it and Hartl-Viehmann write it...).
+\end{Remark}
+Now let us briefely explain how one can reduce the representability of $M^{BP}$ to the representability of $M^{BP}_{\G,\mu,[b]}[\chi]_{\leq a}$ by a formal scheme, locally formally of finite type over $\Spf(W(P)).$
+\\
+Basically, the claim is that then the proof of RZ-verbatim carries over.
+\begin{Lemma}
+Assume that the stacks $
+M^{BP}_{\G,\mu,[b]}[\chi]_{\leq a}$ are representable by formal schemes, formally of finite type over $\Spf(W(P)),$ such that the reduced special fiber is a projective $P$-scheme. 
+\\
+Then $M^{BP}$ is representable by a formal scheme, locally formally of finite type over $\Spf(W(P)).$ 
+\end{Lemma}
+\begin{proof}
+In the following let $P$ and $c$ as above.
+Let $v\in \pi_{1}(G).$ There should exist a self-quasi-isogeny $j_{v}$ of $\mathcal{P}_{b},$ such that $v$ is the image of $j_{v}$ in $\pi_{1}(G).$ Translation by this self-quasi-isogeny reduces the problem to the representability of the whole moduli problem to representability of
+$$
+\widetilde{M^{BP}}=
+M^{BP}_{\G,\mu,[b]}[0].
+$$
+By assumption, $
+\widetilde{M^{BP}}_{\leq a}$ is representable by a formal scheme $
+\widetilde{\mathcal{M}^{BP}}_{\leq a}.$ Let $\mathcal{P}_{a}^{univ},\rho_{a}^{univ}$ be the universal point over $
+\widetilde{\mathcal{M}^{BP}}_{\leq a}.$ Fix $(Y,y\colon \mathcal{P}_{b,P}[1/p]\rightarrow Y[1/p])\in M^{BP}(P).$ Consider the closed set of points
+$$
+\widetilde{\mathcal{M}^{BP}}_{\leq a}(Y)=\lbrace s\in 
+\widetilde{\mathcal{M}^{BP}}_{\leq a}\colon d((\mathcal{P}_{a}^{univ},\rho_{a}^{univ})_{s},Y_{s})\leq c \rbrace \subset \widetilde{\mathcal{M}^{BP}}_{\leq a}.
+$$
+By the triangle inequality, $
+\widetilde{\mathcal{M}^{BP}}_{\leq a}(Y)$ is empty, if $d((\mathcal{P}_{b},id),Y)>a+c.$ By the assumption that the reduced special fiber of $
+\widetilde{\mathcal{M}^{BP}}_{\leq a+c}$ is projective (maybe quasi-projective?), the union
+$$
+\bigcup_{Y\in \widetilde{M}(P),d(\mathcal{P}_{b},Y)\geq f} \widetilde{\mathcal{M}^{BP}}_{\leq a}(Y)
+$$
+is finite. Let $U_{a}^{f}$ be the open formal of $
+\widetilde{\mathcal{M}^{BP}}_{\leq a}$ with underlying topological space the complement of the previous union. The same arguments as in RZ, show that
+$$
+U_{a}^{f}=U_{a+1}^{f},
+$$
+for all $a\geq f+c,$ because one only uses the finiteness statement and the triangle-inequality, which both should be ok in my case. To conclude that
+$$
+\widetilde{M^{BP}}=\bigcup_{f} U^{f},
+$$
+where $U^{f}=U^{f}_{a}$ for $a\geq f+c,$ is an open covering, one again just uses the finiteness statement.
+\end{proof}
+\end{document}

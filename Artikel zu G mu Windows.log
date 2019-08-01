@@ -1,0 +1,441 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.11.15)  18 MAY 2019 18:32
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**"Artikel zu G mu Windows.tex"
+(./Artikel zu G mu Windows.tex
+LaTeX2e <2018-04-01> patch level 2
+Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amscls/amsart.cls
+Document Class: amsart 2017/10/31 v2.20.4
+\linespacing=\dimen102
+\normalparindent=\dimen103
+\normaltopskip=\skip41
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2017/09/02 v2.17a AMS math features
+\@mathmargin=\skip42
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks14
+\ex@=\dimen104
+))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen105
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count80
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count81
+\leftroot@=\count82
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count83
+\DOTSCASE@=\count84
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen106
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count85
+\c@MaxMatrixCols=\count86
+\dotsspace@=\muskip10
+\c@parentequation=\count87
+\dspbrk@lvl=\count88
+\tag@help=\toks15
+\row@=\count89
+\column@=\count90
+\maxfields@=\count91
+\andhelp@=\toks16
+\eqnshift@=\dimen107
+\alignsep@=\dimen108
+\tagshift@=\dimen109
+\tagwidth@=\dimen110
+\totwidth@=\dimen111
+\lineht@=\dimen112
+\@envbody=\toks17
+\multlinegap=\skip43
+\multlinetaggap=\skip44
+\mathdisplay@stack=\toks18
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 398.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
+\copyins=\insert199
+\abstractbox=\box28
+\listisep=\skip45
+\c@part=\count92
+\c@section=\count93
+\c@subsection=\count94
+\c@subsubsection=\count95
+\c@paragraph=\count96
+\c@subparagraph=\count97
+\c@figure=\count98
+\c@table=\count99
+\abovecaptionskip=\skip46
+\belowcaptionskip=\skip47
+\captionindent=\dimen113
+\thm@style=\toks19
+\thm@bodyfont=\toks20
+\thm@headfont=\toks21
+\thm@notefont=\toks22
+\thm@headpunct=\toks23
+\thm@preskip=\skip48
+\thm@postskip=\skip49
+\thm@headsep=\skip50
+\dth@everypar=\toks24
+)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/german/german.sty
+v2.5e 1998-07-08
+Package: german 1998/07/08 v2.5e Support for writing german texts (br)
+\grmnU@D=\dimen114
+german -- \language number for Austrian undefined, default 32 used.
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amscd.sty
+Package: amscd 2017/04/14 v2.1 AMS Commutative Diagrams
+\athelp@=\toks25
+\minaw@=\dimen115
+\bigaw@=\dimen116
+\minCDarrowwidth=\dimen117
+)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xypic/xy.sty
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xypic/xy.tex Bootstrap'ing:
+catcodes, docmode,
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xypic/xyrecat.tex)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xypic/xyidioms.tex)
+
+ Xy-pic version 3.8.9 <2013/10/06>
+ Copyright (c) 1991-2013 by Kristoffer H. Rose <krisrose@tug.org> and others
+ Xy-pic is free software: see the User's Guide for details.
+
+Loading kernel: messages; fonts; allocations: state,
+\X@c=\dimen118
+\Y@c=\dimen119
+\U@c=\dimen120
+\D@c=\dimen121
+\L@c=\dimen122
+\R@c=\dimen123
+\Edge@c=\toks26
+\X@p=\dimen124
+\Y@p=\dimen125
+\U@p=\dimen126
+\D@p=\dimen127
+\L@p=\dimen128
+\R@p=\dimen129
+\Edge@p=\toks27
+\X@origin=\dimen130
+\Y@origin=\dimen131
+\X@xbase=\dimen132
+\Y@xbase=\dimen133
+\X@ybase=\dimen134
+\Y@ybase=\dimen135
+\X@min=\dimen136
+\Y@min=\dimen137
+\X@max=\dimen138
+\Y@max=\dimen139
+\lastobjectbox@=\box29
+\zerodotbox@=\box30
+\almostz@=\dimen140
+ direction,
+\d@X=\dimen141
+\d@Y=\dimen142
+\K@=\count100
+\KK@=\count101
+\Direction=\count102
+\K@dXdY=\dimen143
+\K@dYdX=\dimen144
+\xyread@=\read1
+\xywrite@=\write3
+\csp@=\count103
+\quotPTK@=\dimen145
+
+utility macros; pictures: \xy, positions,
+\swaptoks@@=\toks28
+\connectobjectbox@@=\box31
+ objects,
+\styletoks@=\toks29
+ decorations;
+kernel objects: directionals, circles, text; options; algorithms: directions,
+edges, connections;  Xy-pic loaded)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+)
+Package: xy 2013/10/06 Xy-pic version 3.8.9
+
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xypic/xyarrow.tex
+ Xy-pic option: Arrow and Path feature v.3.9 path, \ar, loaded)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xypic/xymatrix.tex
+ Xy-pic option: Matrix feature v.3.14
+\Row=\count104
+\Col=\count105
+\queue@=\toks30
+\queue@@=\toks31
+\qcount@=\count106
+\qcount@@=\count107
+\matrixsize@=\count108
+ loaded)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xypic/xycurve.tex
+ Xy-pic option: Curve and Spline extension v.3.12 curve,
+\crv@cnt@=\count109
+\crvpts@=\toks32
+\splinebox@=\box32
+\splineval@=\dimen146
+\splinedepth@=\dimen147
+\splinetol@=\dimen148
+\splinelength@=\dimen149
+ circles,
+\L@=\dimen150
+ loaded)
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xypic/xypdf.tex
+ Xy-pic option: PDF driver v.1.7 Xy-pic pdf driver: `curve' extension support
+(/usr/local/texlive/2018/texmf-dist/tex/generic/xypic/xypdf-cu.tex loaded)
+loaded)) (/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 147.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\c@Satz=\count110
+\c@Definition=\count111
+\c@Remark=\count112
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+)
+(/usr/local/texlive/2018/texmf-dist/tex/latex/preprint/fullpage.sty
+Package: fullpage 1999/02/23 1.1 (PWD)
+\FP@margin=\skip51
+)
+LaTeX Info: Redefining \k0 on input line 113.
+LaTeX Info: Redefining \B+dr on input line 140.
+
+
+LaTeX Warning: Unused global option(s):
+    [10,5pt].
+
+(./Artikel zu G mu Windows.aux)
+\openout1 = `"Artikel zu G mu Windows.aux"'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 220.
+LaTeX Font Info:    ... okay on input line 220.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 220.
+LaTeX Font Info:    ... okay on input line 220.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 220.
+LaTeX Font Info:    ... okay on input line 220.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 220.
+LaTeX Font Info:    ... okay on input line 220.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 220.
+LaTeX Font Info:    ... okay on input line 220.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 220.
+LaTeX Font Info:    ... okay on input line 220.
+LaTeX Font Info:    Try loading font information for U+msa on input line 220.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 220.
+
+(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Package xypdf Info: Line width: 0.39998pt on input line 220.
+
+(/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count113
+\scratchdimen=\dimen151
+\scratchbox=\box33
+\nofMPsegments=\count114
+\nofMParguments=\count115
+\everyMPshowfont=\toks33
+\MPscratchCnt=\count116
+\MPscratchDim=\dimen152
+\MPnumerator=\count117
+\makeMPintoPDFobject=\count118
+\everyMPtoPDFconversion=\toks34
+) (./Artikel zu G mu Windows.toc)
+\tf@toc=\write4
+\openout4 = `"Artikel zu G mu Windows.toc"'.
+
+ [1{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+
+LaTeX Warning: Citation `Berkeley lecturs' on page 2 undefined on input line 27
+9.
+
+[2]
+LaTeX Font Info:    Try loading font information for U+euf on input line 293.
+ (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/ueuf.fd
+File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
+)
+Underfull \hbox (badness 10000) in paragraph at lines 295--297
+
+ []
+
+[3] [4] [5] [6] [7] <xymatrix 2x2 182> [8]
+Overfull \hbox (30.06721pt too wide) in paragraph at lines 595--596
+[]\OT1/cmr/bx/n/10 Remark 8. []\OT1/cmr/m/n/10 We ha-ve two kinds of func-to-ri
+a-li-ties for the-se ob-jects: Let $\OMS/cmsy/m/n/10 F 2 fW\OT1/cmr/m/n/10 (\OM
+L/cmm/m/it/10 R\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 W\OT1/cmr/m
+/n/10 (\OML/cmm/m/it/10 S=R\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10
+ F[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 R\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ; \OMS
+/cmsy/m/n/10 F[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 R\OT1/cmr/m/n/10 )\OMS/cmsy/m
+/n/10 g\OML/cmm/m/it/10 :$ 
+ []
+
+[9] [10] <xymatrix 2x1 80>
+Overfull \hbox (12.22711pt too wide) detected at line 718
+\OT1/cmr/m/n/10 [[]([](\OML/cmm/m/it/10 R\OT1/cmr/m/n/10 ))\OML/cmm/m/it/10 '\O
+T1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^V\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^X\OT1/cm
+r/m/n/10 ))\OML/cmm/m/it/10 =[]^^V\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^X\OT1/cmr
+/m/n/10 )[] []([](\OML/cmm/m/it/10 R\OT1/cmr/m/n/10 ))\OML/cmm/m/it/10 ^^V\OT1/
+cmr/m/n/10 (\OML/cmm/m/it/10 ^^X\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 \ []\OT1/cmr
+/m/n/10 ([](\OML/cmm/m/it/10 R\OT1/cmr/m/n/10 ))] \OMS/cmsy/m/n/10 ! \OT1/cmr/m
+/n/10 [[]([](\OML/cmm/m/it/10 R\OT1/cmr/m/n/10 ))\OML/cmm/m/it/10 ^^V[]\OT1/cmr
+/m/n/10 (\OML/cmm/m/it/10 '\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^X\OT1/cmr/m/n/10
+ )) []([](\OML/cmm/m/it/10 R\OT1/cmr/m/n/10 ))\OML/cmm/m/it/10 =[] []\OT1/cmr/m
+/n/10 ([](\OML/cmm/m/it/10 R\OT1/cmr/m/n/10 ))]\OML/cmm/m/it/10 :
+ []
+
+[11] [12] <xymatrix 2x2 154> [13]
+
+LaTeX Warning: Citation `h-frame' on page 14 undefined on input line 810.
+
+[14] <xymatrix 4x1 141> [15] <xymatrix 4x1 141> [16] [17] <xymatrix 2x2 182>
+[18] <xymatrix 2x2 182> [19] <xymatrix 5x2 451> <xymatrix 2x2 182> [20]
+Underfull \hbox (badness 10000) in paragraph at lines 1222--1224
+
+ []
+
+[21] [22] <xymatrix 2x2 154> <xymatrix 2x2 154> [23] [24] [25] <xymatrix 2x2
+168> [26] [27]
+! Double superscript.
+l.1551 ... $H^{0}(Y\rightarrow X,\mathcal{M}^{BP}^
+                                                  {+})=\lbrace s\in \mathcal...
+I treat `x^1^2' essentially like `x^1{}^2'.
+
+! Double superscript.
+l.1551 ...{BP}^{+})=\lbrace s\in \mathcal{M}^{BP}^
+                                                  {+}(Y)\colon pr^{1}(s)=pr^...
+I treat `x^1^2' essentially like `x^1{}^2'.
+
+! Double superscript.
+l.1554 H^{0}(Y\rightarrow X,\mathcal{M}^{BP}^
+                                             {+})\rightarrow \mathcal{M}^{Sc...
+I treat `x^1^2' essentially like `x^1{}^2'.
+
+! Double superscript.
+l.1556 ...}}H^{0}(Y\rightarrow X,\mathcal{M}^{BP}^
+                                                  {+}).$ Because $\mathcal{M...
+I treat `x^1^2' essentially like `x^1{}^2'.
+
+[28]
+Overfull \hbox (45.25543pt too wide) in paragraph at lines 1591--1593
+\OT1/cmr/m/n/10 and this then gi-ves by the ful-ly faith-ful-ness of the func-t
+or from $\OML/cmm/m/it/10 G$\OT1/cmr/m/n/10 -torseurs with $\OML/cmm/m/it/10 '$
+\OT1/cmr/m/n/10 -structure on $[](\OML/cmm/m/it/10 B[]\OT1/cmr/m/n/10 (\OMS/cms
+y/m/n/10 O[]\OML/cmm/m/it/10 =p\OMS/cmsy/m/n/10 O[]\OT1/cmr/m/n/10 ))$
+ []
+
+
+Overfull \vbox (2.1368pt too high) has occurred while \output is active []
+
+
+[29]
+Overfull \hbox (1.30914pt too wide) in paragraph at lines 1626--1628
+\OT1/cmr/m/n/10 that agree on the uni-on of the images of the mor-phisms $[](\O
+ML/cmm/m/it/10 B[]\OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 O[]\OT1/cmr/m/n/10 )\OML/cm
+m/m/it/10 =\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 $[]\OT1/cmr/m/n/10 ))\OML/cmm/m/it
+/10 :$ \OT1/cmr/m/n/10 As all the $\OML/cmm/m/it/10 B[]\OT1/cmr/m/n/10 (\OMS/cm
+sy/m/n/10 O[]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 =\OT1/cmr/m/n/10 (\OML/cmm/m/it/
+10 $[]\OT1/cmr/m/n/10 )$
+ []
+
+[30]
+
+LaTeX Warning: Reference `BKF und Displays sind stacks fuer Laus Garbe' on page
+ 31 undefined on input line 1664.
+
+
+LaTeX Warning: Reference `Klassifikation von G mu Displays a la Scholze-Weinste
+in' on page 31 undefined on input line 1694.
+
+[31] [32]
+Underfull \hbox (badness 10000) in paragraph at lines 1814--1817
+[]\OT1/cmr/m/n/8 Peter Schol-ze, Ja-red Wein-stein, \OT1/cmr/m/it/8 Ber-ke-ley 
+lec-tu-res on $\OML/cmm/m/it/8 p$\OT1/cmr/m/it/8 -adic geo-me-try\OT1/cmr/m/n/8
+ . http://www.math.uni-
+ []
+
+[33] (./Artikel zu G mu Windows.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 4656 strings out of 492649
+ 54926 string characters out of 6129621
+ 166490 words of memory out of 5000000
+ 8345 multiletter control sequences out of 15000+600000
+ 12497 words of font info for 50 fonts, out of 8000000 for 9000
+ 1302 hyphenation exceptions out of 8191
+ 34i,15n,32p,2183b,431s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
+></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.p
+fb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pf
+b></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb>
+</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></
+usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></us
+r/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/
+local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/lo
+cal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local
+/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/te
+xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texli
+ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/
+2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2
+018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/201
+8/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2018/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2018/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2018/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2018/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2018/texmf-d
+ist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2018/texmf
+-dist/fonts/type1/public/amsfonts/euler/eufm7.pfb></usr/local/texlive/2018/texm
+f-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2018/
+texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2
+018/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texliv
+e/2018/texmf-dist/fonts/type1/public/xypic/xyatip10.pfb></usr/local/texlive/201
+8/texmf-dist/fonts/type1/public/xypic/xybtip10.pfb>
+Output written on "Artikel zu G mu Windows.pdf" (33 pages, 487358 bytes).
+PDF statistics:
+ 223 PDF objects out of 1000 (max. 8388607)
+ 158 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
